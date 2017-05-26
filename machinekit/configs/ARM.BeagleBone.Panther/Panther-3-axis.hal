@@ -1,0 +1,270 @@
+# #######################################
+#
+# HAL file for BeagleBone + BeBoPr cape with 4 steppers
+#
+# Derived from example hm2-stepper config
+#
+# ########################################
+
+# Launch the setup script to make sure hardware setup looks good
+loadusr -w ./setup.bridge.sh
+
+
+# ###################################
+# Core EMC/HAL Loads
+# ###################################
+
+# kinematics
+loadrt trivkins
+
+# motion controller, get name and thread periods from ini file
+# trajectory planner
+loadrt tp
+loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES tp=tp kins=trivkins
+
+
+# load low-level drivers
+loadrt hal_bb_gpio output_pins=916,914,819,813 input_pins=911,913,915,817,923,925,927,926,924,826,912,815,942,818,922,921
+loadrt [PRUCONF](DRIVER) prucode=$(HAL_RTMOD_DIR)/[PRUCONF](PRUBIN) [PRUCONF](CONFIG) halname=hpg
+#loadrt pid count=2
+loadrt limit1 count=2
+
+
+# Python user-mode HAL module to read ADC value and generate a thermostat output for PWM
+# c = analog input channel and thermistor table
+# loadusr -Wn Therm hal_temp_bbb -n Therm -c 04:epcos_B57560G1104,05:epcos_B57560G1104 -b CRAMPS
+
+# ################################################
+# THREADS
+# ################################################
+
+addf  hpg.capture-position                 servo-thread
+addf  bb_gpio.read                         servo-thread
+addf  motion-command-handler               servo-thread
+addf  motion-controller                    servo-thread
+#addf pid.0.do-pid-calcs                  servo-thread
+#addf pid.1.do-pid-calcs                  servo-thread
+addf  limit1.0                             servo-thread
+addf  limit1.1                             servo-thread
+addf  hpg.update                           servo-thread
+addf  bb_gpio.write                        servo-thread
+
+
+# ######################################################
+# Axis-of-motion Specific Configs (not the GUI)
+# ######################################################
+
+
+# ################
+# X [0] Axis
+# ################
+
+# axis enable chain
+newsig emcmot.00.enable bit
+sets emcmot.00.enable FALSE
+
+net emcmot.00.enable <= axis.0.amp-enable-out 
+net emcmot.00.enable => hpg.stepgen.00.enable
+
+
+# position command and feedback
+net emcmot.00.pos-cmd <= axis.0.motor-pos-cmd
+net emcmot.00.pos-cmd => hpg.stepgen.00.position-cmd
+
+net motor.00.pos-fb <= hpg.stepgen.00.position-fb
+net motor.00.pos-fb => axis.0.motor-pos-fb
+
+
+# timing parameters
+setp hpg.stepgen.00.dirsetup        [AXIS_0]DIRSETUP
+setp hpg.stepgen.00.dirhold         [AXIS_0]DIRHOLD
+
+setp hpg.stepgen.00.steplen         [AXIS_0]STEPLEN
+setp hpg.stepgen.00.stepspace       [AXIS_0]STEPSPACE
+
+setp hpg.stepgen.00.position-scale  [AXIS_0]SCALE
+
+setp hpg.stepgen.00.maxvel          [AXIS_0]STEPGEN_MAX_VEL
+setp hpg.stepgen.00.maxaccel        [AXIS_0]STEPGEN_MAX_ACC
+
+#setp hpg.stepgen.00.step_type       0
+# P8.9
+setp hpg.stepgen.00.steppin          0x65
+# P8.7 
+setp hpg.stepgen.00.dirpin           0x62
+
+setp hpg.stepgen.00.stepinvert 1
+
+# ################
+# Y [1] Axis
+# ################
+
+# axis enable chain
+newsig emcmot.01.enable bit
+sets emcmot.01.enable FALSE
+
+net emcmot.01.enable <= axis.1.amp-enable-out 
+net emcmot.01.enable => hpg.stepgen.01.enable
+
+
+# position command and feedback
+net emcmot.01.pos-cmd <= axis.1.motor-pos-cmd
+net emcmot.01.pos-cmd => hpg.stepgen.01.position-cmd
+
+net motor.01.pos-fb <= hpg.stepgen.01.position-fb
+net motor.01.pos-fb => axis.1.motor-pos-fb
+
+
+# timing parameters
+setp hpg.stepgen.01.dirsetup        [AXIS_1]DIRSETUP
+setp hpg.stepgen.01.dirhold         [AXIS_1]DIRHOLD
+
+setp hpg.stepgen.01.steplen         [AXIS_1]STEPLEN
+setp hpg.stepgen.01.stepspace       [AXIS_1]STEPSPACE
+
+setp hpg.stepgen.01.position-scale  [AXIS_1]SCALE
+
+setp hpg.stepgen.01.maxvel          [AXIS_1]STEPGEN_MAX_VEL
+setp hpg.stepgen.01.maxaccel        [AXIS_1]STEPGEN_MAX_ACC
+
+#setp hpg.stepgen.01.step_type       0
+# P8.8
+setp hpg.stepgen.01.steppin          0x63
+# P8.10
+setp hpg.stepgen.01.dirpin           0x64
+
+setp hpg.stepgen.01.stepinvert 1
+
+# ################
+# Z [2] Axis
+# ################
+
+# axis enable chain
+newsig emcmot.02.enable bit
+sets emcmot.02.enable FALSE
+
+net emcmot.02.enable <= axis.2.amp-enable-out 
+net emcmot.02.enable => hpg.stepgen.02.enable
+
+
+# position command and feedback
+net emcmot.02.pos-cmd <= axis.2.motor-pos-cmd
+net emcmot.02.pos-cmd => hpg.stepgen.02.position-cmd
+
+net motor.02.pos-fb <= hpg.stepgen.02.position-fb
+net motor.02.pos-fb => axis.2.motor-pos-fb
+
+
+# timing parameters
+setp hpg.stepgen.02.dirsetup        [AXIS_2]DIRSETUP
+setp hpg.stepgen.02.dirhold         [AXIS_2]DIRHOLD
+
+setp hpg.stepgen.02.steplen         [AXIS_2]STEPLEN
+setp hpg.stepgen.02.stepspace       [AXIS_2]STEPSPACE
+
+setp hpg.stepgen.02.position-scale  [AXIS_2]SCALE
+
+setp hpg.stepgen.02.maxvel          [AXIS_2]STEPGEN_MAX_VEL
+setp hpg.stepgen.02.maxaccel        [AXIS_2]STEPGEN_MAX_ACC
+
+#setp hpg.stepgen.02.step_type       0
+# P8.12
+setp hpg.stepgen.02.steppin          0x4C
+# P8.11
+setp hpg.stepgen.02.dirpin           0x4D
+
+setp hpg.stepgen.02.stepinvert 1
+
+# ################
+# A [3] Axis
+# ################
+
+# axis enable chain
+# newsig emcmot.03.enable bit
+# sets emcmot.03.enable FALSE
+
+# net emcmot.03.enable <= axis.3.amp-enable-out 
+# net emcmot.03.enable => hpg.stepgen.03.enable
+
+
+# position command and feedback
+# net emcmot.03.pos-cmd <= axis.3.motor-pos-cmd
+# net emcmot.03.pos-cmd => hpg.stepgen.03.position-cmd
+
+# net motor.03.pos-fb <= hpg.stepgen.03.position-fb
+# net motor.03.pos-fb => axis.3.motor-pos-fb
+
+
+# timing parameters
+# setp hpg.stepgen.03.dirsetup        [AXIS_3]DIRSETUP
+# setp hpg.stepgen.03.dirhold         [AXIS_3]DIRHOLD
+
+# setp hpg.stepgen.03.steplen         [AXIS_3]STEPLEN
+# setp hpg.stepgen.03.stepspace       [AXIS_3]STEPSPACE
+
+# setp hpg.stepgen.03.position-scale  [AXIS_3]SCALE
+
+# setp hpg.stepgen.03.maxvel          [AXIS_3]STEPGEN_MAX_VEL
+# setp hpg.stepgen.03.maxaccel        [AXIS_3]STEPGEN_MAX_ACC
+
+#setp hpg.stepgen.03.step_type       0
+# P8.14
+# setp hpg.stepgen.03.steppin          0x3A
+# P8.16
+# setp hpg.stepgen.03.dirpin           0x4E
+
+
+# ##################################################
+# Standard I/O - EStop, Enables, Limit Switches, Etc
+# ##################################################
+# http://linuxcnc.org/docs/2.6/html/config/emc2hal.html#sec:motion
+# Standard inputs
+net in0 bb_gpio.p9.in-42 => motion.digital-in-00
+net in1 bb_gpio.p8.in-18 => motion.digital-in-01
+net in2 bb_gpio.p9.in-12 => motion.digital-in-02
+net in3 bb_gpio.p8.in-15 => motion.digital-in-03
+
+# Standard outputs
+net out0 motion.digital-out-00 => bb_gpio.p8.out-13
+net out1 motion.digital-out-01 => bb_gpio.p8.out-19
+net out2 motion.digital-out-02 => bb_gpio.p9.out-14
+net out3 motion.digital-out-03 => bb_gpio.p9.out-16
+
+# create a signal for the estop loopback
+# net estop-loop iocontrol.0.user-enable-out => iocontrol.0.emc-enable-in
+net estop bb_gpio.p9.in-21 => iocontrol.0.emc-enable-in
+
+# create signals for tool loading loopback
+net tool-prep-loop iocontrol.0.tool-prepare => iocontrol.0.tool-prepared
+net tool-change-loop iocontrol.0.tool-change => iocontrol.0.tool-changed
+
+
+#setp hpg.pwmgen.00.pwm_period       10000000
+
+# home switches
+
+# invert the home input signals
+#setp bb_gpio.p9.in-27.invert 1
+#setp bb_gpio.p9.in-26.invert 1
+#setp bb_gpio.p9.in-24.invert 1
+
+#setp bb_gpio.p9.in-11.invert 1
+#setp bb_gpio.p9.in-13.invert 1
+#setp bb_gpio.p9.in-15.invert 1
+#setp bb_gpio.p8.in-17.invert 1
+#setp bb_gpio.p9.in-23.invert 1
+#setp bb_gpio.p9.in-25.invert 1
+
+# wire the home inputs
+net Xhome bb_gpio.p9.in-27 => axis.0.home-sw-in
+net Yhome bb_gpio.p9.in-26 => axis.1.home-sw-in
+#net Zhome bb_gpio.p9.in-25 => axis.2.home-sw-in
+
+# wire the limit inputs
+net Xmin bb_gpio.p9.in-11 => axis.0.neg-lim-sw-in
+net Xmax bb_gpio.p9.in-13 => axis.0.pos-lim-sw-in
+net Ymin bb_gpio.p9.in-15 => axis.1.neg-lim-sw-in
+net Ymax bb_gpio.p8.in-17 => axis.1.pos-lim-sw-in
+net Zmin bb_gpio.p9.in-23 => axis.2.neg-lim-sw-in
+net Zmax bb_gpio.p9.in-25 => axis.2.pos-lim-sw-in axis.2.home-sw-in
+
