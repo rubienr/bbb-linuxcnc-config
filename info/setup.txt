@@ -1,0 +1,8 @@
+sudo dpkg-reconfigure locales // en_EN UTF8
+sudo dpkg-reconfigure keyboard-config
+setupcon
+sudo reboot
+
+in /boot/uEnv.txt remove quiet and splash:
+cmdline=coherent_pool=1M net.ifnames=0 cape_universal=enable
+

@@ -1,5 +1,0 @@
-geany-plugins
-vim 
-lxlauncher
-lxde-icon-theme
-
