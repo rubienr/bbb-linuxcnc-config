@@ -1,3 +1,0 @@
-geany-plugins
-vim 
-devscripts
