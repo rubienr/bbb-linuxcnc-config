@@ -63,9 +63,14 @@ The basic steps in a nutshell:
 ## In case of the [Necitec's](https://www.necitec.de/index.php/de/)Panther cape
 * The Panther overlay must be copied from the necitec provided image to our debian image on the BBB, otherwise [this](https://github.com/rubienr/bbb-linuxcnc-config/blob/master/machinekit/configs/ARM.BeagleBone.Panther/setup.bridge.sh#L37) will fail:
 ````
-/lib/firmware/panther-00A0.dtbo # compiled -> copy to our debian image onto BBB
+# compiled -> copy to debian image onto BBB
+/lib/firmware/panther-00A0.dtbo 
+
+# source
 /home/machinekit/machinekit/configs/ARM.BeagleBone.Panther/panther-00A0.dts 
-# compile source: dtc -O dtb -o panther-00A0.dtbo -b 0 -@ /home/machinekit/machinekit/configs/ARM.BeagleBone.Panther/panther-00A0.dts
+
+# optional: compile source
+sudo dtc -O dtb -o /lib/firmware/panther-00A0.dtbo -b 0 -@ /home/machinekit/machinekit/configs/ARM.BeagleBone.Panther/panther-00A0.dts
 ````
 
 # Tested With 
