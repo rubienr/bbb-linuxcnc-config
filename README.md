@@ -34,27 +34,30 @@ The basic steps in a nutshell:
 1. return to your BBB and run machinekit
  
 ## Rough Procedure Description
-* on beaglebone black 
-````
-machinekit@beaglebone:~$ mkdir ~/git
-machinekit@beaglebone:~/git$ cd ~/git
-machinekit@beaglebone:~/git$ git clone https://github.com/machinekit/machinekit.git
-````
+1. on beaglebone black
+
+    1. clone repository 
+        ````
+        machinekit@beaglebone:~$ mkdir ~/git
+        machinekit@beaglebone:~/git$ cd ~/git
+        machinekit@beaglebone:~/git$ git clone https://github.com/machinekit/machinekit.git
+        ````
         
-Compile linuxcnc on BBB as far as possible, which means until the compiler crashes due to out of memory.
+    1. Compile linuxcnc on BBB as far as possible, which means until the compiler crashes due to out of memory.
 
-* on a different machine
-Download and prepare the changeroot as described [here](https://github.com/rubienr/machinekit-img-chrooting).
+1. on a different machine
 
-````
-user@host:~/bone-debian-8.7-machinekit-armhf-chroot$ sshfs machinekit@<machinekit-ip>:~/<build-folder>  ./home/machinekit/<build-folder>
-root@host:~/bone-debian-8.7-machinekit-armhf-chroot$ sudo chroot  <path-to-your-chroot> /bin/bash
-root@host:/$ su - machinekit
-(chroot)machinekit@host:~$ cd <build-folder>
-(chroot)machinekit@host:~/git/machinekit$ make
-````
+    1. Download and prepare the changeroot as described [here](https://github.com/rubienr/machinekit-img-chrooting).
 
-* return to your BBB and proceed further as described in the [Machinekit Developer Howto](http://www.machinekit.io/docs/developing/machinekit-developing/#install-development-packages).
+        ````
+        user@host:~/bone-debian-8.7-machinekit-armhf-chroot$ sshfs machinekit@<machinekit-ip>:~/<build-folder>  ./home/machinekit/<build-folder>
+        root@host:~/bone-debian-8.7-machinekit-armhf-chroot$ sudo chroot  <path-to-your-chroot> /bin/bash
+        root@host:/$ su - machinekit
+        (chroot)machinekit@host:~$ cd <build-folder>
+        (chroot)machinekit@host:~/git/machinekit$ make
+        ````
+
+1. return to your BBB and proceed further as described in the [Machinekit Developer Howto](http://www.machinekit.io/docs/developing/machinekit-developing/#install-development-packages).
 
 # Hints
 ## In case of using the Panther cape of [Necitec](https://www.necitec.de/index.php/de/)
