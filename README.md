@@ -14,11 +14,11 @@ In our case we mount the build folder from the BBB via **sshfs** to a **changero
 The basic steps in a nutshell: 
 
 1. compile on BBB as far as possible ([Machinekit Developer Howto](http://www.machinekit.io/docs/developing/machinekit-developing/#install-development-packages))
-        1. install prerequisites
+  1. install prerequisites
         
-        1. configure 
+  1. configure 
         
-        1. make
+  1. make
 
 1. compile the rest in a changeroot
 
