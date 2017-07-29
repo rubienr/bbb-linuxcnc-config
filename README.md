@@ -33,7 +33,7 @@ The basic steps in a nutshell:
 
 1. return to your BBB and run machinekit
  
-## Rough procedure description
+## Rough Procedure Description
 * on beaglebone black 
 ````
 machinekit@beaglebone:~$ mkdir ~/git
