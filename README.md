@@ -23,7 +23,7 @@ The basic steps in a nutshell:
 
 1. compile the rest in a changeroot
 
-        1. download debian ARM image and changeroot as described in [this repository](https://github.com/rubienr/machinekit-img-chrooting)
+    1. download debian ARM image and changeroot as described in [this repository](https://github.com/rubienr/machinekit-img-chrooting)
 
     1. install prerequisites as done above
 
@@ -31,7 +31,7 @@ The basic steps in a nutshell:
 
     1. compile the rest
 
-1. return to your BBB and start machinekit
+1. return to your BBB and run machinekit
  
 ## Rough procedure description
 * on beaglebone black 
