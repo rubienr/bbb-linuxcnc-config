@@ -57,11 +57,11 @@ The basic steps in a nutshell:
         (chroot)machinekit@host:~/git/machinekit$ make
         ````
 
-1. return to your BBB and proceed further as described in the [Machinekit Developer Howto](http://www.machinekit.io/docs/developing/machinekit-developing/#install-development-packages).
+1. Return to your BBB and proceed further as described in the [Machinekit Developer Howto](http://www.machinekit.io/docs/developing/machinekit-developing/#install-development-packages).
 
 # Hints
-## In case of using the Panther cape of [Necitec](https://www.necitec.de/index.php/de/)
-* The Panther overlay must be copied from the necitec image to the debian image on your BBB, otherwise [this](https://github.com/rubienr/bbb-linuxcnc-config/blob/master/machinekit/configs/ARM.BeagleBone.Panther/setup.bridge.sh#L37) will fail:
+## In case of the [Necitec's](https://www.necitec.de/index.php/de/)Panther cape
+* The Panther overlay must be copied from the necitec provided image to our debian image on the BBB, otherwise [this](https://github.com/rubienr/bbb-linuxcnc-config/blob/master/machinekit/configs/ARM.BeagleBone.Panther/setup.bridge.sh#L37) will fail:
 ````
 $ sudo find ./ -iname "*panther-00A0.dtb"        
 $ ...
@@ -69,4 +69,4 @@ $ ls -lah ./lib/firmware/panther-00A0.dtbo
 ````
 
 # Tested With 
-* Debian GNU/Linux 8 - Machinekit Debian Image 2017-02-12 Linux beaglebone 3.8.13-xenomai-r78 #1 Sat Sep 26 17:07:01 UTC 2015 armv7l GNU/Linux
+* **Debian GNU/Linux 8** - Machinekit Debian Image 2017-02-12 Linux beaglebone **3.8.13-xenomai-r78** #1 Sat Sep 26 17:07:01 UTC 2015 armv7l GNU/Linux
