@@ -1,20 +1,36 @@
 # bbb-linuxcnc-config
-A Linuxcnc configuration using the Panther cape (necitec). Since the configuration relys on a new machinekit version, this notes also leave some hints on how to intall a debian image and compiele machinekit on the BBB.
+A Linuxcnc configuration using the Panther cape (necitec). Since the configuration relys on a new machinekit version, this notes also leave some hints on how to install a debian image and compile [Machinekit](http://www.machinekit.io/) on the BBB.
+
+* Usage 
+Checkout the reposigory and start machinekit with the correct arguments, i.e.:
+````
+machinekit@beaglebone:~$ machinekit <repository-clone>/machinekit/configs/ARM.BeagleBone.Panther/Panther-3-axis.ini
+````
 
 # Compile Machinekit (optional)
 Since the compiling process requires more memory as provided by the BBB, it cannot be completed using the BBB only.
 In our case we mount the build folder from the BBB via **sshfs** to a **changeroot** on a diffrerent machine.
 
 The basic steps in a nutshell: 
+
 1. compile on BBB as far as possible ([Machinekit Developer Howto](http://www.machinekit.io/docs/developing/machinekit-developing/#install-development-packages))
+
         1. install prerequisites
+
         1. configure 
+
         1. make
+
 1. compile the rest in a changeroot
+
         1. download debian ARM image and changeroot as described in [this repository](https://github.com/rubienr/machinekit-img-chrooting)
+
         1. install prerequisites as done above
+
         1. mount the BBB build folder to your changeroot
+
         1. compile the rest
+
 1. return to your BBB and start machinekit
  
 ## Rough procedure description
