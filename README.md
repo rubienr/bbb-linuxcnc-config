@@ -65,5 +65,5 @@ $ ...
 $ ls -lah ./lib/firmware/panther-00A0.dtbo
 ````
 
-* Tested with 
-** Debian GNU/Linux 8 - Machinekit Debian Image 2017-02-12 Linux beaglebone 3.8.13-xenomai-r78 #1 Sat Sep 26 17:07:01 UTC 2015 armv7l GNU/Linux
+# Tested With 
+* Debian GNU/Linux 8 - Machinekit Debian Image 2017-02-12 Linux beaglebone 3.8.13-xenomai-r78 #1 Sat Sep 26 17:07:01 UTC 2015 armv7l GNU/Linux
