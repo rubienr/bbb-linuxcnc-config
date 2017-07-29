@@ -14,6 +14,7 @@ In our case we mount the build folder from the BBB via **sshfs** to a **changero
 The basic steps in a nutshell: 
 
 1. compile on BBB as far as possible ([Machinekit Developer Howto](http://www.machinekit.io/docs/developing/machinekit-developing/#install-development-packages))
+
     1. install prerequisites
         
     1. configure 
@@ -24,21 +25,21 @@ The basic steps in a nutshell:
 
         1. download debian ARM image and changeroot as described in [this repository](https://github.com/rubienr/machinekit-img-chrooting)
 
-        1. install prerequisites as done above
+    1. install prerequisites as done above
 
-        1. mount the BBB build folder to your changeroot
+    1. mount the BBB build folder to your changeroot
 
-        1. compile the rest
+    1. compile the rest
 
 1. return to your BBB and start machinekit
  
 ## Rough procedure description
 * on beaglebone black 
-        ````
-        machinekit@beaglebone:~$ mkdir ~/git
-        machinekit@beaglebone:~/git$ cd ~/git
-        machinekit@beaglebone:~/git$ git clone https://github.com/machinekit/machinekit.git
-        ````
+````
+machinekit@beaglebone:~$ mkdir ~/git
+machinekit@beaglebone:~/git$ cd ~/git
+machinekit@beaglebone:~/git$ git clone https://github.com/machinekit/machinekit.git
+````
         
 Compile linuxcnc on BBB as far as possible, which means until the compiler crashes due to out of memory.
 
@@ -58,11 +59,11 @@ root@host:/$ su - machinekit
 # Hints
 ## In case of using the Panther cape of [Necitec](https://www.necitec.de/index.php/de/)
 * The Panther overlay must be copied from the necitec image to the debian image on your BBB, otherwise [this](https://github.com/rubienr/bbb-linuxcnc-config/blob/master/machinekit/configs/ARM.BeagleBone.Panther/setup.bridge.sh#L37) will fail:
-        ````
-        $ sudo find ./ -iname "*panther-00A0.dtb"        
-        $ ...
-        $ ls -lah ./lib/firmware/panther-00A0.dtbo
-        ````
-* Tested with 
+````
+$ sudo find ./ -iname "*panther-00A0.dtb"        
+$ ...
+$ ls -lah ./lib/firmware/panther-00A0.dtbo
+````
 
-** 3.8.13-xenomai-r78
+* Tested with 
+** Debian GNU/Linux 8 - Machinekit Debian Image 2017-02-12 Linux beaglebone 3.8.13-xenomai-r78 #1 Sat Sep 26 17:07:01 UTC 2015 armv7l GNU/Linux
