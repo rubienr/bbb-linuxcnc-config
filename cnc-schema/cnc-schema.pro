@@ -1,4 +1,4 @@
-update=Son 30 Jul 2017 00:18:22 CEST
+update=Son 30 Jul 2017 12:22:54 CEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -25,6 +25,16 @@ version=1
 NetIExt=net
 [general]
 version=1
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
 [eeschema]
 version=1
 LibDir=
@@ -63,13 +73,5 @@ LibName31=hws100-48
 LibName32=ks400a-230s24-scn
 LibName33=p5v1a
 LibName34=low-power-step-up
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
-LabSize=60
+LibName35=switches
+LibName36=relays
