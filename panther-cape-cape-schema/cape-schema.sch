@@ -851,7 +851,7 @@ U 1 1 5986B7FE
 P 8050 1400
 F 0 "P15" H 8050 1550 50  0000 C CNN
 F 1 "Z_SENSORS" V 8150 1400 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm_SMD_Pin1Left" H 8050 1400 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x01_Pitch2.54mm_SMD" H 8050 1400 50  0001 C CNN
 F 3 "" H 8050 1400 50  0000 C CNN
 	1    8050 1400
 	1    0    0    -1  
