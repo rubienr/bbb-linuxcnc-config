@@ -1,0 +1,1188 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:cape-schema-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "3-Axis CNC Schema for Panther Cape (BBB)"
+Date "2017-07-29"
+Rev "0.16"
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L CONN_02X10 P6
+U 1 1 597D5753
+P 3800 1550
+F 0 "P6" H 3800 2100 50  0000 C CNN
+F 1 "IN1 P1" V 3800 1550 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_2x10_Pitch2.54mm" H 3800 600 50  0001 C CNN
+F 3 "" H 3800 600 50  0000 C CNN
+	1    3800 1550
+	0    1    1    0   
+$EndComp
+$Comp
+L CONN_02X10 P2
+U 1 1 597D5847
+P 2500 1550
+F 0 "P2" H 2500 2100 50  0000 C CNN
+F 1 "IN2 P2" V 2500 1550 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_2x10_Pitch2.54mm" H 2500 600 50  0001 C CNN
+F 3 "" H 2500 600 50  0000 C CNN
+	1    2500 1550
+	0    1    1    0   
+$EndComp
+$Comp
+L CONN_02X10 P4
+U 1 1 597D589B
+P 3100 2950
+F 0 "P4" H 3100 3500 50  0000 C CNN
+F 1 "OUT1 P3" V 3100 2950 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_2x10_Pitch2.54mm" H 3100 2000 50  0001 C CNN
+F 3 "" H 3100 2000 50  0000 C CNN
+	1    3100 2950
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CONN_02X10 P1
+U 1 1 597D58A1
+P 1400 1950
+F 0 "P1" H 1400 2500 50  0000 C CNN
+F 1 "OUT2 P4" V 1400 1950 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_2x10_Pitch2.54mm" H 1400 1000 50  0001 C CNN
+F 3 "" H 1400 1000 50  0000 C CNN
+	1    1400 1950
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R3
+U 1 1 597E6187
+P 9100 2150
+F 0 "R3" V 9180 2150 50  0000 C CNN
+F 1 "470R" V 9100 2150 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 9030 2150 50  0001 C CNN
+F 3 "" H 9100 2150 50  0000 C CNN
+	1    9100 2150
+	-1   0    0    1   
+$EndComp
+NoConn ~ 6200 7100
+NoConn ~ 6200 7200
+NoConn ~ 6200 7300
+NoConn ~ 6200 7400
+NoConn ~ 5600 7600
+NoConn ~ 5600 7500
+NoConn ~ 5600 7400
+NoConn ~ 6600 7500
+NoConn ~ 6600 7600
+NoConn ~ 6200 7600
+NoConn ~ 6200 7500
+Text Notes 850  850  0    60   ~ 12
+Panther-Cape Cape
+$Comp
+L GND #PWR01
+U 1 1 597F5B77
+P 1300 5000
+F 0 "#PWR01" H 1300 4750 50  0001 C CNN
+F 1 "GND" H 1300 4850 50  0000 C CNN
+F 2 "" H 1300 5000 50  0000 C CNN
+F 3 "" H 1300 5000 50  0000 C CNN
+	1    1300 5000
+	-1   0    0    -1  
+$EndComp
+$Comp
+L R R1
+U 1 1 597DCA82
+P 3500 5400
+F 0 "R1" V 3580 5400 50  0000 C CNN
+F 1 "10k" V 3500 5400 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 3430 5400 50  0001 C CNN
+F 3 "" H 3500 5400 50  0000 C CNN
+	1    3500 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR02
+U 1 1 597DD37B
+P 3500 5600
+F 0 "#PWR02" H 3500 5350 50  0001 C CNN
+F 1 "GND" H 3500 5450 50  0000 C CNN
+F 2 "" H 3500 5600 50  0000 C CNN
+F 3 "" H 3500 5600 50  0000 C CNN
+	1    3500 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR03
+U 1 1 597DE3B5
+P 4600 5600
+F 0 "#PWR03" H 4600 5350 50  0001 C CNN
+F 1 "GND" H 4600 5450 50  0000 C CNN
+F 2 "" H 4600 5600 50  0000 C CNN
+F 3 "" H 4600 5600 50  0000 C CNN
+	1    4600 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R2
+U 1 1 597DE41A
+P 4600 4800
+F 0 "R2" V 4680 4800 50  0000 C CNN
+F 1 "20k" V 4600 4800 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 4530 4800 50  0001 C CNN
+F 3 "" H 4600 4800 50  0000 C CNN
+	1    4600 4800
+	1    0    0    -1  
+$EndComp
+Text Notes 5550 7000 0    60   ~ 12
+Unconnected Cape Pins
+Text GLabel 2700 800  2    47   Input ~ 0
+SPINDLE_RPM_FEEDBACK
+Text GLabel 2650 2600 1    47   Output ~ 0
+X_STEP
+Text GLabel 2750 2600 1    47   Output ~ 0
+X_DIR
+Text GLabel 2950 3300 3    47   Output ~ 0
+Y_STEP
+Text GLabel 3050 3300 3    47   Output ~ 0
+Y_DIR
+Text GLabel 3150 2600 1    47   Output ~ 0
+Z_STEP
+Text GLabel 3250 2600 1    47   Output ~ 0
+Z_DIR
+Text GLabel 4600 4600 1    47   Input ~ 0
+PC+
+Text GLabel 3500 4600 1    47   Input ~ 0
+PC+
+Text GLabel 1300 4850 0    39   Output ~ 0
+PC+
+Text GLabel 3350 5100 1    47   Output ~ 0
+EMERGENCY_STOP
+Text GLabel 4450 5100 1    47   Output ~ 0
+Z_PROBE
+Text GLabel 2950 1900 3    47   Input ~ 0
+EMERGENCY_STOP
+Text GLabel 2850 1900 3    47   Input ~ 0
+Z_PROBE
+$Comp
+L GND #PWR04
+U 1 1 5980718D
+P 2050 1850
+F 0 "#PWR04" H 2050 1600 50  0001 C CNN
+F 1 "GND" H 2050 1700 50  0000 C CNN
+F 2 "" H 2050 1850 50  0000 C CNN
+F 3 "" H 2050 1850 50  0000 C CNN
+	1    2050 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR05
+U 1 1 598088DD
+P 1100 2450
+F 0 "#PWR05" H 1100 2200 50  0001 C CNN
+F 1 "GND" H 1100 2300 50  0000 C CNN
+F 2 "" H 1100 2450 50  0000 C CNN
+F 3 "" H 1100 2450 50  0000 C CNN
+	1    1100 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR06
+U 1 1 59809B8D
+P 3350 1850
+F 0 "#PWR06" H 3350 1600 50  0001 C CNN
+F 1 "GND" H 3350 1700 50  0000 C CNN
+F 2 "" H 3350 1850 50  0000 C CNN
+F 3 "" H 3350 1850 50  0000 C CNN
+	1    3350 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR07
+U 1 1 59809E77
+P 2650 3250
+F 0 "#PWR07" H 2650 3000 50  0001 C CNN
+F 1 "GND" H 2650 3100 50  0000 C CNN
+F 2 "" H 2650 3250 50  0000 C CNN
+F 3 "" H 2650 3250 50  0000 C CNN
+	1    2650 3250
+	1    0    0    -1  
+$EndComp
+Text GLabel 3450 3300 3    47   Output ~ 0
+A_STEP
+Text GLabel 3550 3300 3    47   Output ~ 0
+A_DIR
+Text GLabel 3450 1200 1    47   Input ~ 0
+Y_HOME
+Text GLabel 3750 1900 3    47   Input ~ 0
+X_HOME
+Text GLabel 3850 1200 1    47   Input ~ 0
+Y_LIMIT_MAX
+Text GLabel 3950 1200 1    47   Input ~ 0
+Y_LIMIT_MIN
+Text GLabel 3650 1900 3    47   Input ~ 0
+Z_LIMIT_MAX
+Text GLabel 3300 1100 0    47   Input ~ 0
+Z_LIMIT_MIN
+Text GLabel 4150 1900 3    47   Input ~ 0
+X_LIMIT_MAX
+Text GLabel 4250 1900 3    47   Input ~ 0
+X_LIMIT_MIN
+Text GLabel 2450 1900 3    47   Input ~ 0
+Y_ALARM
+Text GLabel 2350 1900 3    47   Input ~ 0
+Z_ALARM
+Text GLabel 2050 1200 1    47   Input ~ 0
+IN16
+Text GLabel 2150 1200 1    47   Input ~ 0
+IN15
+Text GLabel 2550 1200 1    47   Input ~ 0
+X_ALARM
+Text GLabel 1700 2100 2    47   Output ~ 0
+OUT4
+Text GLabel 1700 1900 2    47   Output ~ 0
+OUT6
+Text GLabel 1700 2000 2    47   Output ~ 0
+OUT5
+Text GLabel 1700 1500 2    47   Input ~ 0
+AIN0
+Text GLabel 1700 1600 2    47   Input ~ 0
+AIN1
+Text GLabel 1700 1700 2    47   Input ~ 0
+AIN2
+Text GLabel 1700 1800 2    47   Input ~ 0
+AIN3
+Text GLabel 6200 7100 2    47   Output ~ 0
+AIN0
+Text GLabel 6200 7200 2    47   Output ~ 0
+AIN1
+Text GLabel 6200 7300 2    47   Output ~ 0
+AIN2
+Text GLabel 6600 7500 2    47   Output ~ 0
+IN15
+Text GLabel 5600 7400 2    47   Input ~ 0
+OUT4
+Text GLabel 6200 7400 2    47   Output ~ 0
+AIN3
+Text GLabel 6600 7600 2    47   Output ~ 0
+IN16
+Text GLabel 5600 7500 2    47   Input ~ 0
+OUT5
+Text GLabel 6200 7500 2    47   Input ~ 0
+A_DIR
+Text GLabel 5600 7600 2    47   Input ~ 0
+OUT6
+Text GLabel 6200 7600 2    47   Input ~ 0
+A_STEP
+Text GLabel 5650 1450 0    47   Output ~ 0
+X_LIMIT_MAX
+Text GLabel 5650 1350 0    47   Output ~ 0
+X_LIMIT_MIN
+Text GLabel 5650 1900 0    47   Output ~ 0
+X_HOME
+Text GLabel 6700 1350 0    47   Output ~ 0
+Y_LIMIT_MAX
+Text GLabel 6700 1250 0    47   Output ~ 0
+Y_LIMIT_MIN
+Text GLabel 6700 1450 0    47   Output ~ 0
+Y_HOME
+Text GLabel 7800 1450 0    47   Output ~ 0
+Z_LIMIT_MAX
+Text GLabel 7800 1350 0    47   Output ~ 0
+Z_LIMIT_MIN
+Text GLabel 1300 4750 0    47   Output ~ 0
+SENSORS+
+Text GLabel 1100 1500 0    47   Input ~ 0
+AGND1
+Text GLabel 1100 1600 0    47   Input ~ 0
+AGND0
+Text GLabel 6800 7100 0    47   Output ~ 0
+AGND0
+Text GLabel 6800 7200 0    47   Output ~ 0
+AGND1
+Text GLabel 6800 7300 0    47   Output ~ 0
+AVDD0
+Text GLabel 6800 7400 0    47   Output ~ 0
+AVDD1
+Text GLabel 1100 1700 0    47   Input ~ 0
+AVDD1
+Text GLabel 1100 1800 0    47   Input ~ 0
+AVDD0
+NoConn ~ 6800 7400
+NoConn ~ 6800 7300
+NoConn ~ 6800 7100
+NoConn ~ 6800 7200
+Text GLabel 9100 1950 1    47   Input ~ 0
+PC+
+Text GLabel 10050 3700 0    47   Output ~ 0
+Z_ALARM
+$Comp
+L R R6
+U 1 1 59863833
+P 10300 3800
+F 0 "R6" V 10380 3800 50  0000 C CNN
+F 1 "1k" V 10300 3800 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 10230 3800 50  0001 C CNN
+F 3 "" H 10300 3800 50  0000 C CNN
+	1    10300 3800
+	0    -1   -1   0   
+$EndComp
+Text GLabel 10050 3200 0    47   Input ~ 0
+PC+
+$Comp
+L R R5
+U 1 1 5986417D
+P 10300 3600
+F 0 "R5" V 10380 3600 50  0000 C CNN
+F 1 "1k" V 10300 3600 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 10230 3600 50  0001 C CNN
+F 3 "" H 10300 3600 50  0000 C CNN
+	1    10300 3600
+	0    -1   -1   0   
+$EndComp
+Text GLabel 10050 3500 0    47   Output ~ 0
+Y_ALARM
+$Comp
+L R R4
+U 1 1 598659E4
+P 10300 3200
+F 0 "R4" V 10380 3200 50  0000 C CNN
+F 1 "1k" V 10300 3200 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 10230 3200 50  0001 C CNN
+F 3 "" H 10300 3200 50  0000 C CNN
+	1    10300 3200
+	0    -1   -1   0   
+$EndComp
+Text GLabel 10050 3100 0    47   Output ~ 0
+X_ALARM
+$Comp
+L GND #PWR08
+U 1 1 5986714A
+P 9100 2900
+F 0 "#PWR08" H 9100 2650 50  0001 C CNN
+F 1 "GND" H 9100 2750 50  0000 C CNN
+F 2 "" H 9100 2900 50  0000 C CNN
+F 3 "" H 9100 2900 50  0000 C CNN
+	1    9100 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X02 P16
+U 1 1 5985FDCC
+P 8850 2650
+F 0 "P16" H 8850 2800 50  0000 C CNN
+F 1 "DRIVER_ENABLE_SWITCH" V 8950 2650 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x01_Pitch2.54mm_SMD" H 8850 2650 50  0001 C CNN
+F 3 "" H 8850 2650 50  0000 C CNN
+	1    8850 2650
+	-1   0    0    1   
+$EndComp
+$Comp
+L CONN_01X03 P3
+U 1 1 5985FE44
+P 2550 4850
+F 0 "P3" H 2550 5050 50  0000 C CNN
+F 1 "POWER_SUPPLY" V 2650 4850 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm_SMD_Pin1Left" H 2550 4850 50  0001 C CNN
+F 3 "" H 2550 4850 50  0000 C CNN
+	1    2550 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X03 P17
+U 1 1 59861D32
+P 10850 1200
+F 0 "P17" H 10850 1400 50  0000 C CNN
+F 1 "DRIVER_X" V 10950 1200 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm_SMD_Pin1Left" H 10850 1200 50  0001 C CNN
+F 3 "" H 10850 1200 50  0000 C CNN
+	1    10850 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X03 P19
+U 1 1 59861DDB
+P 10850 2100
+F 0 "P19" H 10850 2300 50  0000 C CNN
+F 1 "DRIVER_Z" V 10950 2100 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm_SMD_Pin1Left" H 10850 2100 50  0001 C CNN
+F 3 "" H 10850 2100 50  0000 C CNN
+	1    10850 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X03 P18
+U 1 1 59861E33
+P 10850 1650
+F 0 "P18" H 10850 1850 50  0000 C CNN
+F 1 "DRIVER_Y" V 10950 1650 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm_SMD_Pin1Left" H 10850 1650 50  0001 C CNN
+F 3 "" H 10850 1650 50  0000 C CNN
+	1    10850 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 2300 9100 2600
+Wire Wire Line
+	9100 2700 9100 2900
+Wire Wire Line
+	9100 1950 9100 2000
+Wire Notes Line
+	750  700  4500 700 
+Wire Notes Line
+	4500 700  4500 3700
+Wire Notes Line
+	4500 3700 750  3700
+Wire Notes Line
+	750  3700 750  700 
+Wire Wire Line
+	3500 4600 3500 4800
+Wire Wire Line
+	3500 4900 3500 5250
+Wire Wire Line
+	3500 5550 3500 5600
+Wire Wire Line
+	3350 5150 3500 5150
+Connection ~ 3500 5150
+Wire Wire Line
+	4600 5450 4600 5600
+Wire Wire Line
+	4600 4600 4600 4650
+Wire Wire Line
+	4600 4950 4600 5350
+Wire Wire Line
+	4600 5150 4450 5150
+Connection ~ 4600 5150
+Wire Notes Line
+	5550 6900 5550 7700
+Wire Notes Line
+	5550 7700 6900 7700
+Wire Notes Line
+	6900 7700 6900 6900
+Wire Notes Line
+	6900 6900 5550 6900
+Wire Wire Line
+	3350 2650 3350 2700
+Wire Wire Line
+	3550 2650 3550 2700
+Connection ~ 3450 2650
+Wire Wire Line
+	2850 2700 2850 2650
+Wire Wire Line
+	2950 2650 2950 2700
+Connection ~ 2950 2650
+Wire Wire Line
+	2650 3200 2650 3250
+Wire Wire Line
+	2650 3250 3650 3250
+Wire Wire Line
+	2850 3250 2850 3200
+Wire Wire Line
+	2750 3200 2750 3250
+Connection ~ 2750 3250
+Wire Wire Line
+	3150 3250 3150 3200
+Wire Wire Line
+	3350 3250 3350 3200
+Wire Wire Line
+	3250 3200 3250 3250
+Connection ~ 3250 3250
+Wire Wire Line
+	1150 1900 1100 1900
+Wire Wire Line
+	1100 1900 1100 2450
+Wire Wire Line
+	1100 2400 1150 2400
+Wire Wire Line
+	1150 2300 1100 2300
+Connection ~ 1100 2300
+Wire Wire Line
+	1150 2200 1100 2200
+Connection ~ 1100 2200
+Wire Wire Line
+	1150 2100 1100 2100
+Connection ~ 1100 2100
+Wire Wire Line
+	1150 2000 1100 2000
+Connection ~ 1100 2000
+Connection ~ 1100 2400
+Wire Wire Line
+	1150 1500 1100 1500
+Wire Wire Line
+	1100 1600 1150 1600
+Wire Wire Line
+	1150 1700 1100 1700
+Wire Wire Line
+	1100 1800 1150 1800
+Wire Wire Line
+	2250 1300 2250 1250
+Wire Wire Line
+	2250 1250 3100 1250
+Wire Wire Line
+	2450 1250 2450 1300
+Connection ~ 2350 1250
+Wire Wire Line
+	2050 1800 2050 1850
+Wire Wire Line
+	2050 1850 3100 1850
+Wire Wire Line
+	2250 1850 2250 1800
+Connection ~ 2150 1850
+Wire Wire Line
+	2550 1850 2550 1800
+Wire Wire Line
+	2750 1850 2750 1800
+Connection ~ 2650 1850
+Wire Wire Line
+	3550 1300 3550 1250
+Wire Wire Line
+	3550 1250 4400 1250
+Wire Wire Line
+	3750 1250 3750 1300
+Connection ~ 3650 1250
+Wire Wire Line
+	4050 1250 4050 1300
+Wire Wire Line
+	4250 1250 4250 1300
+Connection ~ 4150 1250
+Wire Wire Line
+	3350 1800 3350 1850
+Wire Wire Line
+	3350 1850 4400 1850
+Wire Wire Line
+	3550 1850 3550 1800
+Connection ~ 3450 1850
+Wire Wire Line
+	3850 1850 3850 1800
+Wire Wire Line
+	4050 1850 4050 1800
+Connection ~ 3950 1850
+Wire Wire Line
+	2750 1250 2750 1300
+Wire Wire Line
+	2950 1250 2950 1300
+Connection ~ 2850 1250
+Wire Wire Line
+	3350 5100 3350 5150
+Wire Wire Line
+	4450 5150 4450 5100
+Connection ~ 2950 1250
+Wire Wire Line
+	2850 1300 2850 1250
+Connection ~ 4250 1250
+Wire Wire Line
+	4150 1300 4150 1250
+Connection ~ 3550 2650
+Wire Wire Line
+	3450 2650 3450 2700
+Wire Wire Line
+	2650 2600 2650 2700
+Wire Wire Line
+	2750 2600 2750 2700
+Wire Wire Line
+	3150 2600 3150 2700
+Wire Wire Line
+	3250 2600 3250 2700
+Connection ~ 3350 2650
+Wire Wire Line
+	3050 2650 3050 2700
+Connection ~ 3050 2650
+Connection ~ 2850 3250
+Connection ~ 3150 3250
+Wire Wire Line
+	3650 3250 3650 2650
+Connection ~ 3650 2650
+Connection ~ 3350 3250
+Wire Wire Line
+	3650 2650 2850 2650
+Wire Wire Line
+	2950 3300 2950 3200
+Wire Wire Line
+	3050 3300 3050 3200
+Wire Wire Line
+	3450 3200 3450 3300
+Wire Wire Line
+	3550 3200 3550 3300
+Wire Wire Line
+	3350 1100 3350 1300
+Wire Wire Line
+	3450 1200 3450 1300
+Wire Wire Line
+	3850 1300 3850 1200
+Wire Wire Line
+	3950 1200 3950 1300
+Connection ~ 4050 1250
+Connection ~ 3750 1250
+Wire Wire Line
+	3650 1800 3650 1900
+Wire Wire Line
+	3750 1800 3750 1900
+Wire Wire Line
+	4150 1800 4150 1900
+Wire Wire Line
+	4250 1800 4250 1900
+Wire Wire Line
+	4400 1850 4400 1250
+Connection ~ 4050 1850
+Connection ~ 3550 1850
+Connection ~ 3850 1850
+Wire Wire Line
+	3650 1300 3650 1250
+Wire Wire Line
+	3450 1800 3450 1850
+Wire Wire Line
+	3950 1800 3950 1850
+Connection ~ 2750 1250
+Connection ~ 2450 1250
+Wire Wire Line
+	3100 1850 3100 1250
+Connection ~ 2750 1850
+Connection ~ 2250 1850
+Connection ~ 2550 1850
+Wire Wire Line
+	2150 1800 2150 1850
+Wire Wire Line
+	2650 1800 2650 1850
+Wire Wire Line
+	2350 1300 2350 1250
+Wire Wire Line
+	2350 1800 2350 1900
+Wire Wire Line
+	2450 1800 2450 1900
+Wire Wire Line
+	2850 1800 2850 1900
+Wire Wire Line
+	2950 1800 2950 1900
+Wire Wire Line
+	2650 800  2650 1300
+Wire Wire Line
+	2550 1300 2550 1200
+Wire Wire Line
+	2150 1200 2150 1300
+Wire Wire Line
+	2050 1300 2050 1200
+Wire Wire Line
+	1650 1500 1700 1500
+Wire Wire Line
+	1650 1600 1700 1600
+Wire Wire Line
+	1650 1700 1700 1700
+Wire Wire Line
+	1700 1800 1650 1800
+Wire Wire Line
+	1650 1900 1700 1900
+Wire Wire Line
+	1700 2000 1650 2000
+Wire Wire Line
+	1700 2100 1650 2100
+Wire Wire Line
+	1700 2200 1650 2200
+Wire Wire Line
+	1700 2300 1650 2300
+Wire Wire Line
+	1650 2400 1700 2400
+Wire Wire Line
+	9100 2600 9050 2600
+Wire Wire Line
+	9050 2700 9100 2700
+Wire Wire Line
+	1300 5000 1300 4950
+Wire Wire Line
+	1300 4950 2350 4950
+Wire Wire Line
+	1300 4850 2350 4850
+Wire Wire Line
+	1300 4750 2350 4750
+Wire Wire Line
+	10050 3100 10650 3100
+Wire Wire Line
+	10450 3100 10450 3200
+Connection ~ 10450 3100
+Wire Wire Line
+	10500 1100 10650 1100
+Wire Wire Line
+	10650 1200 10500 1200
+Wire Wire Line
+	10500 1550 10650 1550
+Wire Wire Line
+	10650 1650 10500 1650
+Wire Wire Line
+	10050 3500 10650 3500
+Wire Wire Line
+	10450 3600 10450 3500
+Connection ~ 10450 3500
+Wire Wire Line
+	10500 2000 10650 2000
+Wire Wire Line
+	10650 2100 10500 2100
+Wire Wire Line
+	10050 3700 10650 3700
+Wire Wire Line
+	10450 3800 10450 3700
+Connection ~ 10450 3700
+Wire Wire Line
+	10050 3800 10150 3800
+$Comp
+L CONN_01X02 P5
+U 1 1 59867AC2
+P 3750 4850
+F 0 "P5" H 3750 5000 50  0000 C CNN
+F 1 "EMERGENCY_STOP_SWITCH" V 3850 4800 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x01_Pitch2.54mm_SMD" H 3750 4850 50  0001 C CNN
+F 3 "" H 3750 4850 50  0000 C CNN
+	1    3750 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X02 P7
+U 1 1 59867B63
+P 4850 5400
+F 0 "P7" H 4850 5550 50  0000 C CNN
+F 1 "Z_PROBE_LIMIT_SWITCH" V 4950 5500 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x01_Pitch2.54mm_SMD" H 4850 5400 50  0001 C CNN
+F 3 "" H 4850 5400 50  0000 C CNN
+	1    4850 5400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3500 4800 3550 4800
+Wire Wire Line
+	3550 4900 3500 4900
+Wire Wire Line
+	4600 5350 4650 5350
+Wire Wire Line
+	4650 5450 4600 5450
+$Comp
+L GND #PWR09
+U 1 1 5986A242
+P 5050 2800
+F 0 "#PWR09" H 5050 2550 50  0001 C CNN
+F 1 "GND" H 5050 2650 50  0000 C CNN
+F 2 "" H 5050 2800 50  0000 C CNN
+F 3 "" H 5050 2800 50  0000 C CNN
+	1    5050 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X02 P8
+U 1 1 5986A437
+P 5900 1400
+F 0 "P8" H 5900 1550 50  0000 C CNN
+F 1 "X_SENSORS" V 6000 1400 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm_SMD_Pin1Left" H 5900 1400 50  0001 C CNN
+F 3 "" H 5900 1400 50  0000 C CNN
+	1    5900 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 1450 5700 1450
+Wire Wire Line
+	5650 1350 5700 1350
+$Comp
+L CONN_01X03 P10
+U 1 1 5986B68B
+P 6950 1350
+F 0 "P10" H 6950 1550 50  0000 C CNN
+F 1 "Y_SENSORS" V 7050 1350 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm_SMD_Pin1Left" H 6950 1350 50  0001 C CNN
+F 3 "" H 6950 1350 50  0000 C CNN
+	1    6950 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X05 P12
+U 1 1 5986B691
+P 6950 2650
+F 0 "P12" H 6950 2950 50  0000 C CNN
+F 1 "SENSORS-" V 7050 2650 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x05_Pitch2.54mm_SMD_Pin1Left" H 6950 2650 50  0001 C CNN
+F 3 "" H 6950 2650 50  0000 C CNN
+	1    6950 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X05 P11
+U 1 1 5986B697
+P 6950 1950
+F 0 "P11" H 6950 2250 50  0000 C CNN
+F 1 "SENSORS+" V 7050 1950 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x05_Pitch2.54mm_SMD_Pin1Left" H 6950 1950 50  0001 C CNN
+F 3 "" H 6950 1950 50  0000 C CNN
+	1    6950 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 1350 6750 1350
+$Comp
+L CONN_01X02 P15
+U 1 1 5986B7FE
+P 8050 1400
+F 0 "P15" H 8050 1550 50  0000 C CNN
+F 1 "Z_SENSORS" V 8150 1400 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm_SMD_Pin1Left" H 8050 1400 50  0001 C CNN
+F 3 "" H 8050 1400 50  0000 C CNN
+	1    8050 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 1950 6750 1950
+Wire Wire Line
+	7800 1450 7850 1450
+Wire Wire Line
+	7800 1350 7850 1350
+Connection ~ 9100 2450
+$Comp
+L CONN_01X04 P14
+U 1 1 59870276
+P 7400 5050
+F 0 "P14" H 7400 5350 50  0000 C CNN
+F 1 "SPINDLE" V 7500 5050 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm_SMD_Pin1Left" H 7400 5050 50  0001 C CNN
+F 3 "" H 7400 5050 50  0000 C CNN
+	1    7400 5050
+	1    0    0    -1  
+$EndComp
+Text GLabel 7000 4350 0    47   Output ~ 0
+SPINDLE_RPM_FEEDBACK
+Wire Wire Line
+	7000 5100 7200 5100
+Wire Wire Line
+	7000 4350 7200 4350
+Text GLabel 7000 5000 0    47   Input ~ 0
+SPINDLE_ENABLE
+Wire Wire Line
+	7000 5200 7200 5200
+Text GLabel 1700 2400 2    47   Output ~ 0
+SPINDLE_ENABLE
+$Comp
+L PWR_FLAG #FLG010
+U 1 1 5987144B
+P 1400 4650
+F 0 "#FLG010" H 1400 4745 50  0001 C CNN
+F 1 "PWR_FLAG" H 1400 4830 50  0000 C CNN
+F 2 "" H 1400 4650 50  0000 C CNN
+F 3 "" H 1400 4650 50  0000 C CNN
+	1    1400 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L PWR_FLAG #FLG011
+U 1 1 59871491
+P 1850 4650
+F 0 "#FLG011" H 1850 4745 50  0001 C CNN
+F 1 "PWR_FLAG" H 1850 4830 50  0000 C CNN
+F 2 "" H 1850 4650 50  0000 C CNN
+F 3 "" H 1850 4650 50  0000 C CNN
+	1    1850 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 4650 1400 4750
+Connection ~ 1400 4750
+Wire Wire Line
+	1850 4650 1850 4850
+Connection ~ 1850 4850
+$Comp
+L PWR_FLAG #FLG012
+U 1 1 59871E82
+P 2250 4650
+F 0 "#FLG012" H 2250 4745 50  0001 C CNN
+F 1 "PWR_FLAG" H 2250 4830 50  0000 C CNN
+F 2 "" H 2250 4650 50  0000 C CNN
+F 3 "" H 2250 4650 50  0000 C CNN
+	1    2250 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2250 4650 2250 4950
+Connection ~ 2250 4950
+Text Notes 8800 850  0    60   ~ 12
+Drivers\n
+Text Notes 850  4200 0    60   ~ 12
+Power Supply
+Text Notes 3200 4200 0    60   ~ 12
+CNC Switches
+Text Notes 5000 850  0    60   ~ 12
+Sensors
+Wire Wire Line
+	2650 800  2700 800 
+Text GLabel 1700 2300 2    47   Output ~ 0
+SPINDLE_DIR
+Text GLabel 1700 2200 2    47   Output ~ 0
+SPINDLE_RPM
+Text GLabel 7000 5100 0    47   Input ~ 0
+SPINDLE_DIR
+Text GLabel 7000 5200 0    47   Input ~ 0
+SPINDLE_RPM
+Wire Wire Line
+	7000 5000 7200 5000
+Wire Wire Line
+	7200 4900 7000 4900
+Wire Notes Line
+	5650 4050 5650 5700
+Wire Notes Line
+	5650 5700 8050 5700
+Wire Notes Line
+	8050 5700 8050 4050
+Wire Notes Line
+	8050 4050 5650 4050
+Wire Notes Line
+	3100 4050 3100 5900
+Wire Notes Line
+	3100 5900 5250 5900
+Wire Notes Line
+	5250 5900 5250 4050
+Wire Notes Line
+	5250 4050 3100 4050
+Wire Notes Line
+	750  4050 2750 4050
+Wire Notes Line
+	2750 4050 2750 5250
+Wire Notes Line
+	2750 5250 750  5250
+Wire Notes Line
+	750  5250 750  4050
+Wire Notes Line
+	4900 700  4900 3100
+Wire Notes Line
+	4900 3100 8400 3100
+Wire Notes Line
+	8400 3100 8400 700 
+Wire Notes Line
+	8400 700  4900 700 
+Wire Notes Line
+	8700 700  8700 5100
+Wire Notes Line
+	8700 5100 11100 5100
+Wire Notes Line
+	11100 5100 11100 700 
+Wire Notes Line
+	11100 700  8700 700 
+Text Notes 5750 4250 0    60   ~ 12
+Spindle
+Wire Wire Line
+	3350 1100 3300 1100
+Wire Wire Line
+	5700 1900 5650 1900
+Wire Wire Line
+	6700 1850 6750 1850
+Wire Wire Line
+	6700 1750 6750 1750
+Text GLabel 6700 2750 0    47   Input ~ 0
+SENSORS-
+Text GLabel 5150 2700 2    47   Output ~ 0
+SENSORS-
+Wire Wire Line
+	5050 2800 5050 2700
+Wire Wire Line
+	5050 2700 5150 2700
+$Comp
+L GND #PWR013
+U 1 1 59877F6A
+P 8850 4850
+F 0 "#PWR013" H 8850 4600 50  0001 C CNN
+F 1 "GND" H 8850 4700 50  0000 C CNN
+F 2 "" H 8850 4850 50  0000 C CNN
+F 3 "" H 8850 4850 50  0000 C CNN
+	1    8850 4850
+	1    0    0    -1  
+$EndComp
+Text GLabel 8950 4750 2    47   Output ~ 0
+DRIVER_SIGNALS-
+Wire Wire Line
+	8850 4850 8850 4750
+Wire Wire Line
+	8850 4750 8950 4750
+Text GLabel 6700 1850 0    47   Input ~ 0
+SENSORS+
+Text GLabel 6700 2650 0    47   Input ~ 0
+SENSORS-
+Text GLabel 6700 1950 0    47   Input ~ 0
+SENSORS+
+Text GLabel 6700 2050 0    47   Input ~ 0
+SENSORS+
+Text GLabel 6700 2150 0    47   Input ~ 0
+SENSORS+
+Text GLabel 6700 2850 0    47   Input ~ 0
+SENSORS-
+Text GLabel 6700 2450 0    47   Input ~ 0
+SENSORS-
+Text GLabel 6700 2550 0    47   Input ~ 0
+SENSORS-
+Text GLabel 6700 1750 0    47   Input ~ 0
+SENSORS+
+Wire Wire Line
+	6700 1250 6750 1250
+Wire Wire Line
+	6750 1450 6700 1450
+Text GLabel 10050 3600 0    47   Input ~ 0
+PC+
+Text GLabel 10050 3800 0    47   Input ~ 0
+PC+
+Wire Wire Line
+	10050 3200 10150 3200
+Wire Wire Line
+	10050 3600 10150 3600
+Wire Wire Line
+	9100 2450 9250 2450
+$Comp
+L GND #PWR014
+U 1 1 5987BCE6
+P 5850 5500
+F 0 "#PWR014" H 5850 5250 50  0001 C CNN
+F 1 "GND" H 5850 5350 50  0000 C CNN
+F 2 "" H 5850 5500 50  0000 C CNN
+F 3 "" H 5850 5500 50  0000 C CNN
+	1    5850 5500
+	1    0    0    -1  
+$EndComp
+Text GLabel 5950 5400 2    47   Output ~ 0
+SPINDLE_SIGNALS-
+Wire Wire Line
+	5850 5500 5850 5400
+Wire Wire Line
+	5850 5400 5950 5400
+Text GLabel 7000 4900 0    47   Input ~ 0
+SPINDLE_SIGNALS-
+$Comp
+L CONN_01X01 P9
+U 1 1 5987E242
+P 5900 1900
+F 0 "P9" H 5900 2050 50  0000 C CNN
+F 1 "X_HOME" V 6000 1900 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 5900 1900 50  0001 C CNN
+F 3 "" H 5900 1900 50  0000 C CNN
+	1    5900 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 2150 6750 2150
+Wire Wire Line
+	6700 2050 6750 2050
+Wire Wire Line
+	6700 2650 6750 2650
+Wire Wire Line
+	6700 2550 6750 2550
+Wire Wire Line
+	6700 2450 6750 2450
+Wire Wire Line
+	6700 2850 6750 2850
+Wire Wire Line
+	6700 2750 6750 2750
+$Comp
+L CONN_01X02 P22
+U 1 1 5987F581
+P 10850 3550
+F 0 "P22" H 10850 3700 50  0000 C CNN
+F 1 "Y/Z_ALARM" V 10950 3550 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm_SMD_Pin1Left" H 10850 3550 50  0001 C CNN
+F 3 "" H 10850 3550 50  0000 C CNN
+	1    10850 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X01 P21
+U 1 1 5987F652
+P 10850 3100
+F 0 "P21" H 10850 3200 50  0000 C CNN
+F 1 "X_ALARM" V 10950 3100 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 10850 3100 50  0001 C CNN
+F 3 "" H 10850 3100 50  0000 C CNN
+	1    10850 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10650 3700 10650 3600
+Wire Wire Line
+	10650 2200 10500 2200
+Wire Wire Line
+	10500 1750 10650 1750
+Wire Wire Line
+	10650 1300 10500 1300
+Text GLabel 9250 2450 2    47   Output ~ 0
+DRIVER_ENABLE
+Text GLabel 10550 2650 0    47   Input ~ 0
+DRIVER_ENABLE
+Text GLabel 10550 2550 0    47   Input ~ 0
+DRIVER_ENABLE
+Text GLabel 10550 2450 0    47   Input ~ 0
+DRIVER_ENABLE
+Text GLabel 10500 1750 0    47   Input ~ 0
+DRIVER_SIGNALS-
+Text GLabel 10500 1300 0    47   Input ~ 0
+DRIVER_SIGNALS-
+Text GLabel 10500 2200 0    47   Input ~ 0
+DRIVER_SIGNALS-
+Text GLabel 10500 1100 0    47   Input ~ 0
+X_DIR
+Text GLabel 10500 1200 0    47   Input ~ 0
+X_STEP
+Text GLabel 10500 1650 0    47   Input ~ 0
+Y_DIR
+Text GLabel 10500 1550 0    47   Input ~ 0
+Y_STEP
+Text GLabel 10500 2100 0    47   Input ~ 0
+Z_DIR
+Text GLabel 10500 2000 0    47   Input ~ 0
+Z_STEP
+$Comp
+L CONN_01X03 P20
+U 1 1 598812F4
+P 10850 2550
+F 0 "P20" H 10850 2750 50  0000 C CNN
+F 1 "DRIVER_ENABLE" V 10950 2550 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm_SMD_Pin1Left" H 10850 2550 50  0001 C CNN
+F 3 "" H 10850 2550 50  0000 C CNN
+	1    10850 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10550 2450 10650 2450
+Wire Wire Line
+	10650 2550 10550 2550
+Wire Wire Line
+	10550 2650 10650 2650
+$Comp
+L CONN_01X01 P13
+U 1 1 59882112
+P 7400 4350
+F 0 "P13" H 7400 4450 50  0000 C CNN
+F 1 "SPINCLE_FEEDBACK" V 7500 4350 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 7400 4350 50  0001 C CNN
+F 3 "" H 7400 4350 50  0000 C CNN
+	1    7400 4350
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
