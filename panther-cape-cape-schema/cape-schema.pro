@@ -1,4 +1,4 @@
-update=Sam 05 Aug 2017 20:15:58 CEST
+update=Sam 19 Aug 2017 19:03:32 CEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -65,6 +65,6 @@ PlotDirectoryName=
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
+SpiceAjustPassiveValues=0
 LabSize=60
+ERC_TestSimilarLabels=1
