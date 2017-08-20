@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name conn20-small-drills)(type KiCad)(uri ${KIPRJMOD}/conn20-small-drills.pretty)(options "")(descr ""))
+)
