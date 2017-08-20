@@ -350,7 +350,7 @@ net spindle_index_enable  encoder.0.index-enable <=> motion.spindle-index-enable
 net encoder_raw_velocity  encoder.0.velocity => scale.0.in
 
 # Attach the pid to the scale, motion, and sum
-net pid_feedback          pid.0.feedback <= motion.spindle-speed-in <= scale.0.out
+net pid_feedback          pid.0.feedback <= motion.spindle-speed-in  <= scale.0.out
 net pid_command           pid.0.command  <= motion.spindle-speed-out => sum2.0.in0
 net pid_output            pid.0.output   => sum2.0.in1
 
