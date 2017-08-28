@@ -269,15 +269,15 @@ net Zmax bb_gpio.p9.in-25 => axis.2.pos-lim-sw-in axis.2.home-sw-in
 # ######################################################################
 # Z Probe
 # ######################################################################
-setp        bb_gpio.p8.in-26-invert TRUE
+setp        bb_gpio.p8.in-26.invert TRUE
 net  Zprobe bb_gpio.p8.in-26        => motion.probe-input
 
 # ######################################################################
 # Stepper Driver Alarms
 # ######################################################################
-setp        bb_gpio.p8.in-15-invert TRUE
-setp        bb_gpio.p9.in-42-invert TRUE
-setp        bb_gpio.p8.in-18-invert TRUE
+setp        bb_gpio.p8.in-15.invert TRUE
+setp        bb_gpio.p9.in-42.invert TRUE
+setp        bb_gpio.p8.in-18.invert TRUE
 net  Xalarm bb_gpio.p8.in-15        => axis.0.amp-fault-in
 net  Yalarm bb_gpio.p9.in-42        => axis.1.amp-fault-in
 net  Zalarm bb_gpio.p8.in-18        => axis.2.amp-fault-in
