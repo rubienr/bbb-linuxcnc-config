@@ -26,7 +26,7 @@ loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AX
 # load low-level drivers
 loadrt hal_bb_gpio output_pins=916,914,819,813 input_pins=911,913,915,817,923,925,927,926,924,826,912,815,942,818,922,921
 loadrt [PRUCONF](DRIVER) prucode=$(HAL_RTMOD_DIR)/[PRUCONF](PRUBIN) [PRUCONF](CONFIG) halname=hpg
-#loadrt pid count=2
+#loadrt pid names=spindle
 loadrt limit1 count=2
 
 
@@ -290,7 +290,7 @@ net  Zalarm bb_gpio.p8.in-18        => axis.2.amp-fault-in
 # http://linuxcnc.org/docs/html/examples/spindle.html
 #loadrt pwmgen                               output_type=0
 #addf pwmgen.update                          servo-thread
-#addf pwmgen.make-pulses                     base-thread
+#addf pwmgen.make-pulses                     servo-thread
 #net  SpindleSpeed  motion.spindle-speed-out => pwmgen.0.value
 #net  SpindleEnable motion.spindle-on        => pwmgen.0.enable bb_gpio.p8.out-13
 #net  SpindlePwm    pwmgen.0.pwm             => bb_gpio.p9.out-14
@@ -306,13 +306,13 @@ net SpindleDirection motion.spindle-forward => bb_gpio.p8.out-19
 #http://wiki.linuxcnc.org/cgi-bin/wiki.pl?Closed_Loop_Spindle_Speed_Control
 # Initialize the encoder (spindle)
 loadrt encoder num_chan=1
-addf encoder.update-counters base-thread
+addf encoder.update-counters servo-thread
 addf encoder.capture-position servo-thread
 setp encoder.0.position-scale 1
 setp encoder.0.counter-mode 1
 
 # Initialize the PID 
-loadrt pid num_chan=1
+loadrt pid count=1
 addf pid.0.do-pid-calcs servo-thread
 setp pid.0.Pgain 0
 setp pid.0.Igain 1
@@ -322,7 +322,7 @@ setp pid.0.maxoutput 4000
 # Initialize the pwmgen
 loadrt pwmgen output_type=0
 addf pwmgen.update servo-thread
-addf pwmgen.make-pulses base-thread
+addf pwmgen.make-pulses servo-thread
 setp pwmgen.0.pwm-freq 1000.0
 setp pwmgen.0.scale 4000
 setp pwmgen.0.dither-pwm true
