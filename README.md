@@ -17,6 +17,8 @@ This rules fail to compile on bbb:
 
 * `make objects/emc/task/emctask.o`
 * `make objects/machinetalk/lib/mk_service.o`
+* `make objects/emc/task/emctaskmain.o`
+* `make objects/emc/task/taskmodule.o`
 
 The basic steps in a nutshell: 
 
