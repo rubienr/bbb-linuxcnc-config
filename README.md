@@ -19,6 +19,10 @@ This rules fail to compile on bbb:
 * `make objects/machinetalk/lib/mk_service.o`
 * `make objects/emc/task/emctaskmain.o`
 * `make objects/emc/task/taskmodule.o`
+* `objects/emc/task/taskclass.o`
+* `make and so on and so forth...`
+
+
 
 The basic steps in a nutshell: 
 
