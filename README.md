@@ -11,6 +11,9 @@ machinekit@beaglebone:~$ machinekit <repository-clone>/machinekit/configs/ARM.Be
 Since the compiling process requires more memory as provided by the BBB, it cannot be completed using the BBB only.
 In our case we mount the build folder from the BBB via **sshfs** to a **changeroot** on a diffrerent machine.
 
+This files will fail to compile on bbb:
+* emc/task/emctask.cc
+
 The basic steps in a nutshell: 
 
 1. compile on BBB as far as possible ([Machinekit Developer Howto](http://www.machinekit.io/docs/developing/machinekit-developing/#install-development-packages))
