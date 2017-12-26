@@ -90,3 +90,6 @@ sudo dtc -O dtb -o /lib/firmware/panther-00A0.dtbo -b 0 -@ /home/machinekit/mach
 
 # Tested with 
 * **Debian GNU/Linux 8** - Machinekit Debian Image 2017-02-12 Linux beaglebone **3.8.13-xenomai-r78** #1 Sat Sep 26 17:07:01 UTC 2015 armv7l GNU/Linux
+
+# References
+[start/stop, resume/step halui diagram](https://forum.linuxcnc.org/media/kunena/attachments/16717/Run_StepPause_ResumeLogicDiagram.pdf)
