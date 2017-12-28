@@ -39,7 +39,7 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 
 ### Damping Configuration
 | Axis | Config. Notes | 1st Resonance Amp1 | 1st Resonance Amp2 | 2nd Resonance Amp1 | 2nd Resonance Amp2 | 3rd Resonance Amp1 | 3rd Resonance Amp2 |
-|
+| ---- | ------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | X    | A             | x               | x                | x               | x                | x                | x           |
 | Y    | A             | x               | x                | x               | x                | x                | x           |
 | Z    | A             | 5003               | 888                | 1460               | 632                | 128                | 128           |
