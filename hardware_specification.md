@@ -26,9 +26,9 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 ### Signal  Configuration
 | Axis | Config ID   | Config. Notes | Alarm Signal | Active Edge | Direction Def. |
 | ---- | ----------- | ------------- | ------------ | ----------- | -------------- |
-| X    | ID-DR-SIG-X1 | A            | enabled      | enabled     | enabled        |
-| Y    | ID-DR-SIG-Y1 | A            | enabled      | enabled     | enabled        |
-| Z    | ID-DR-SIG-Z1 | A            | enabled      | enabled     | enabled        |
+| X    | ID-DR-SIG-X1 | A            | low          | *rising*    | low            |
+| Y    | ID-DR-SIG-Y1 | A            | low          | *rising*    | low            |
+| Z    | ID-DR-SIG-Z1 | A            | low          | *rising*    | low            |
 
 ## Feature Configuration 
 | Axis | Config ID   | Config. Notes | Phase Error Detection | Sensorless Stall Detection | Pulse Smoother | ENA Reset | High Active ENA |
@@ -50,7 +50,7 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 ### Damping Configuration
 | Axis | Config ID   | Config Notes | 1st Resonance Amp1 | 1st Resonance Amp2 | 2nd Resonance Amp1 | 2nd Resonance Amp2 | 3rd Resonance Amp1 | 3rd Resonance Amp2 |
 | ---- | ----------- | ------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| X    | ID-DR-DC-X1 | A             | x               | x                | x               | x                | x                | x           |
+| X    | ID-DR-DC-X1 | A             | 7725  | 829  | 1460  | 1006 | 123 | 121 |
 | Y    | ID-DR-DC-Y1 | A             | 11000 | 857  | 10000 | 900  | 122 | 119 |
 | Z    | ID-DR-DC-Z1 | A             | 5003  | 888  | 1460  | 632  | 128 | 128 |
 
