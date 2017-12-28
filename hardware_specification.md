@@ -59,13 +59,17 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 | X    | ID-DR-DC-X1 | A             | 7725  | 829  | 1460  | 1006 | 123 | 121 |
 | Y    | ID-DR-DC-Y1 | A             | 11000 | 857  | 10000 | 900  | 122 | 119 |
 | Z    | ID-DR-DC-Z1 | A             | 5003  | 888  | 1460  | 632  | 128 | 128 |
+| X    | ID-DR-DC-X2 | D             | 0     | 0    | 0     | 0    | 128 | 128 |
+| Y    | ID-DR-DC-Y2 | D             | 0     | 0    | 0     | 0    | 128 | 128 |
+| Z    | ID-DR-DC-Z2 | D             | 0     | 0    | 0     | 0    | 128 | 128 |
 
 ### Configuration Notes
 | Config. Note | Notes                                                                                                            |
 | ------------ | ---------------------------------------------------------------------------------------------------------------- |
-| A            | Initial Configuration                                                                                            |
+| A            | Initial Configuration using power supply as described in ID-PWR-24.                                                                                          |
 | B            | Faced issue with sporadic lost steps when Pulse Smoother was enabled (input pulse ripple filter), thus disabled. |                                                              
 | C            | Replaced rather weak transformer. The higher voltage decreases the coil saturation time, thus increases the stepper speed. |
+| D            | With power supply as described in ID-PWR-48, the stepper resonance issue has almost disappeared. Thus default anti-resonance values as stated in the driver documentation are fine. |
 
 ## Total Configuration
 | Motor Config Set | Power Supply | Driver Config Set                       | Notes | 
