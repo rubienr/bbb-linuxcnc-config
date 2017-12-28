@@ -17,18 +17,11 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 
 ## Stepper driver (Leadshine AM882HN)
 ### Electrical Configuration
-| Axis                        | X             | Y             | Z             |
-| --------------------------- | ------------- | ------------- | ------------- |
-| Config. Notes               | A,B           | A,B           | A,B           |
-| Alarm Signal                | enabled       | enabled       | enabled       |
-| Active Edge                 | enabled       | enabled       | enabled       |
-| Direction Def.              | enabled       | enabled       | enabled       |
-| Phase Error Detection       | enabled       | enabled       | enabled       |
-| Sensorless Stall Detection  | enabled       | enabled       | enabled       |
-| Pulse Smoother              | **disabled**  | **disabled**  | **disabled**  | 
-| ENA Reset                   | enabled       | enabled       | enabled       |
-| High Active ENA             | enabled       | enabled       | enabled       |
-
+| Axis | Config. Notes | Config ID | Alarm Signal | Active Edge | Direction Def. | Phase Error Detection | Sensorless Stall Detection | Pulse Smoother | ENA Reset | High Active ENA |
+| ---- | ------------- |---------- | ------------ | ----------- | -------------- | --------------------- | -------------------------- | -------------- | --------- | --------------- |
+| X    | A             |           | enabled      | enabled     | enabled        | enabled               | enabled                    | **disabled**   | enabled   | enabled         |
+| Y    | A             |           | enabled      | enabled     | enabled        | enabled               | enabled                    | **disabled**   | enabled   | enabled         |
+| Z    | A             |           | enabled      | enabled     | enabled        | enabled               | enabled                    | **disabled**   | enabled   | enabled         |
 ### Current Controller
 
 | Axis | Config. Notes | Kp | Ki |
@@ -47,8 +40,8 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 ### Signal Configuration
 
 ### Configuration Notes
-| Config Note | Notes                                                                                                            |
-| ----------- | ---------------------------------------------------------------------------------------------------------------- |
+| Config. Note | Notes                                                                                                            |
+| ------------ | ---------------------------------------------------------------------------------------------------------------- |
 | A           | Initial Configuration                                                                                            |
 | B           | Faced issue with sporadic lost steps when Pulse Smoother was enabled (input pulse ripple filter), thus disabled. |                                                              
 
