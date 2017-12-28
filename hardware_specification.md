@@ -60,7 +60,7 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 | A           | Initial Configuration                                                                                            |
 | B           | Faced issue with sporadic lost steps when Pulse Smoother was enabled (input pulse ripple filter), thus disabled. |                                                              
 
-## Configuration
+## Total Configuration
 | Motor Config Set | Driver Config Set                                                                        | Notes | 
 | ---------------- | ---------------------------------------------------------------------------------------- | ----- |
 | ID-M[XYZ]1       | ID-DR-EL-[XYZ]1, ID-DR-SIG-[XYZ]1, ID-DR-FE-[XYZ]1, ID-DR-CC-[XYZ]1, ID-DR-DC-[XYZ]1     | Initial configuration but faded issue with lost steps. See also note A |
@@ -68,6 +68,7 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 
 
 # Notes
+* TODO: add link to coil current saturation time diagram: inductance vs voltage vs saturation time
 
 # References
 * [8.2A Leadshine AM882HN stepper driver](http://www.leadshine.com/UploadFile/Down/AM882m.pdf)
