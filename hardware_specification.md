@@ -17,9 +17,17 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 
 ## Stepper driver (Leadshine AM882HN)
 ### Electrical Configuration
-| Axis | Config. Notes | Peak Current [A] | Idle Current [%] | Idle Timeout [ms] | Electrical Damping | 
-| ---  | ------------- | ---------------- | ---------------- | ----------------- | ------------------ |
-| X    | A             | 3.2              | 50               | 2000              | 1000               |
+| Axis                        | X        | Y        | Z        |
+| --------------------------- | -------- | -------- | -------- |
+| Config. Notes               | A        | A        | A        |
+| Alarm Signal                | enabled  | enabled  | enabled  |
+| Active Edge                 | enabled  | enabled  | enabled  |
+| Direction Def.              | enabled  | enabled  | enabled  |
+| Phase Error Detection       | enabled  | enabled  | enabled  |
+| Sensorless Stall Detection  | enabled  | enabled  | enabled  |
+| Pulse Smoother              | disabled | disabled | disabled | 
+| ENA Reset                   | enabled  | enabled  | enabled  |
+| High Active ENA             | enabled  | enabled  | enabled  |
 
 ### Damping Configuration
 
@@ -28,7 +36,7 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 ### Configuration Notes
 | Config Note | Notes                                                                                           |
 | ----------- | ----------------------------------------------------------------------------------------------- |
-| A           |                                                                                                 |
+| A           | Initial Configuration                                                                           |
 
 ## Configuration
 
