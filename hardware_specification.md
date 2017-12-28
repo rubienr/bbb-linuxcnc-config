@@ -9,8 +9,10 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 
 # Hardware Configuration
 ## Power Supply (Stepper/Driver)
-* 48V, 23A
-* TDK Lamda, HWS1000-48
+| Config ID | Config Notes | Type                  | Supply Voltage [V] | Max. Current [A] | Max. Power [W] |
+| --------- | ------------ | --------------------- | ------------------ | ---------------- | -------------- |
+| ID-PWR-24  | C            | transformer, torus    | 24                 | 16               | 380            |
+| ID-PWR-48  | C            | TDK Lamda, HWS1000-48 | 48                 | 23               | 1000           |
 
 ## Motor Specification
 | Axis        | Config ID | Motor                 | Deree/Step [°] | Current [A] | Voltage [V] | Inductance [mH] | Resistance [Ohm] |
@@ -61,15 +63,15 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 ### Configuration Notes
 | Config. Note | Notes                                                                                                            |
 | ------------ | ---------------------------------------------------------------------------------------------------------------- |
-| A           | Initial Configuration                                                                                            |
-| B           | Faced issue with sporadic lost steps when Pulse Smoother was enabled (input pulse ripple filter), thus disabled. |                                                              
+| A            | Initial Configuration                                                                                            |
+| B            | Faced issue with sporadic lost steps when Pulse Smoother was enabled (input pulse ripple filter), thus disabled. |                                                              
+| C            | Replaced rather weak transformer. The higher voltage decreases the coil saturation time, thus increases the stepper speed. |
 
 ## Total Configuration
-| Motor Config Set | Driver Config Set                                                                        | Notes | 
-| ---------------- | ---------------------------------------------------------------------------------------- | ----- |
-| ID-M[XYZ]1       | ID-DR-EL-[XYZ]1, ID-DR-SIG-[XYZ]1, ID-DR-FE-[XYZ]1, ID-DR-CC-[XYZ]1, ID-DR-DC-[XYZ]1     | Initial configuration but faded issue with lost steps. See also note A |
-| ID-M[XYZ]1       | ID-DR-EL-[XYZ]1, ID-DR-SIG-[XYZ]1, ID-DR-FE-[XYZ]**2**, ID-DR-CC-[XYZ]1, ID-DR-DC-[XYZ]1 | Performance normal; not loosing steps     |
-
+| Motor Config Set | Power Supply | Driver Config Set                       | Notes | 
+| ---------- | --------- | -------------------------------------------------| ----- |
+| ID-M[XYZ]1 | ID-PWR-48 | ID-DR-{EL|SIG|FE|CC|DC}-[XYZ]1                   | Initial configuration but faded issue with lost steps. See also note A |
+| ID-M[XYZ]1 | ID-PWR-48 | ID-DR-{EL|SIG|CC|DC}-[XYZ]1, ID-DR-FE-[XYZ]**2** | Performance normal; not loosing steps |
 
 # Notes
 * TODO: add link to coil current saturation time diagram: inductance vs voltage vs saturation time
