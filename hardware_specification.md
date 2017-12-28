@@ -32,8 +32,9 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 ### Current Controller
 
 | Axis | Config. Notes | Kp | Ki |
-| X    | A             | | |
-| X    | A             | | |
+| ---- | ------------- | -- | -- |
+| X    | A             | x  | x  |
+| X    | A             | x  | x  |
 | Z    | A             | 6500 | 1000 |
 
 ### Damping Configuration
