@@ -8,6 +8,10 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 * Software: [Machinekit](https://github.com/rubienr/machinekit) (former LinuxCNC)
 
 # Hardware Configuration
+## Power Supply (Stepper/Driver)
+* 48V, 23A
+* TDK Lamda, HWS1000-48
+
 ## Motor Specification
 | Axis        | Config ID | Motor                 | Deree/Step [°] | Current [A] | Voltage [V] | Inductance [mH] | Resistance [Ohm] |
 | ----------- | --------- | --------------------- | -------------- | ----------- | ----------- | --------------- | ---------------- |
