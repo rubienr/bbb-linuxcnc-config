@@ -4,7 +4,7 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 * 3-Axis CNC
 * 1.8°, 3A stepper
 * [8.2A Leadshine AM882HN stepper driver](http://www.leadshine.com/UploadFile/Down/AM882m.pdf)
-* [Beable Bone Black](https://beagleboard.org/black)
+* [Beagle Bone Black](https://beagleboard.org/black)
 * Software: [Machinekit](https://github.com/rubienr/machinekit) (former LinuxCNC)
 
 # Hardware Configuration
@@ -83,6 +83,6 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 # References
 * [Stepper Information: Inductance/Voltage/Current/Saturation delay ...](http://linuxcnc.org/docs/html/integrator/steppers.html)
 * [8.2A Leadshine AM882HN stepper driver](http://www.leadshine.com/UploadFile/Down/AM882m.pdf)
-* [Beable Bone Blac](https://beagleboard.org/black)
+* [Beagle Bone Black](https://beagleboard.org/black)
 * [BBB: Connecting Battery](https://www.element14.com/community/community/designcenter/single-board-computers/next-gen_beaglebone/blog/2013/08/10/bbb--rechargeable-on-board-battery-system)
 * [Machinecit source repository](https://github.com/rubienr/machinekit)
