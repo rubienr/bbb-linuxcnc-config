@@ -17,26 +17,27 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 
 ## Stepper driver (Leadshine AM882HN)
 ### Electrical Configuration
-| Axis                        | X        | Y        | Z        |
-| --------------------------- | -------- | -------- | -------- |
-| Config. Notes               | A        | A        | A        |
-| Alarm Signal                | enabled  | enabled  | enabled  |
-| Active Edge                 | enabled  | enabled  | enabled  |
-| Direction Def.              | enabled  | enabled  | enabled  |
-| Phase Error Detection       | enabled  | enabled  | enabled  |
-| Sensorless Stall Detection  | enabled  | enabled  | enabled  |
-| Pulse Smoother              | disabled | disabled | disabled | 
-| ENA Reset                   | enabled  | enabled  | enabled  |
-| High Active ENA             | enabled  | enabled  | enabled  |
+| Axis                        | X             | Y             | Z             |
+| --------------------------- | ------------- | ------------- | ------------- |
+| Config. Notes               | A,B           | A,B           | A,B           |
+| Alarm Signal                | enabled       | enabled       | enabled       |
+| Active Edge                 | enabled       | enabled       | enabled       |
+| Direction Def.              | enabled       | enabled       | enabled       |
+| Phase Error Detection       | enabled       | enabled       | enabled       |
+| Sensorless Stall Detection  | enabled       | enabled       | enabled       |
+| Pulse Smoother              | **disabled**  | **disabled**  | **disabled**  | 
+| ENA Reset                   | enabled       | enabled       | enabled       |
+| High Active ENA             | enabled       | enabled       | enabled       |
 
 ### Damping Configuration
 
 ### Signal Configuration
 
 ### Configuration Notes
-| Config Note | Notes                                                                                           |
-| ----------- | ----------------------------------------------------------------------------------------------- |
-| A           | Initial Configuration                                                                           |
+| Config Note | Notes                                                                                                            |
+| ----------- | ---------------------------------------------------------------------------------------------------------------- |
+| A           | Initial Configuration                                                                                            |
+| B           | Faced issue with sporadic lost steps when Pulse Smoother was enabled (input pulse ripple filter), thus disabled. |                                                              
 
 ## Configuration
 
