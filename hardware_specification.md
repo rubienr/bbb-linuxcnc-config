@@ -29,7 +29,19 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 | ENA Reset                   | enabled       | enabled       | enabled       |
 | High Active ENA             | enabled       | enabled       | enabled       |
 
+### Current Controller
+
+| Axis | Config. Notes | Kp | Ki |
+| X    | A             | | |
+| X    | A             | | |
+| Z    | A             | 6500 | 1000 |
+
 ### Damping Configuration
+| Axis | Config. Notes | 1st Resonance Amp1 | 1st Resonance Amp2 | 2nd Resonance Amp1 | 2nd Resonance Amp2 | 3rd Resonance Amp1 | 3rd Resonance Amp2 |
+|
+| X    | A             | x               | x                | x               | x                | x                | x           |
+| Y    | A             | x               | x                | x               | x                | x                | x           |
+| Z    | A             | 5003               | 888                | 1460               | 632                | 128                | 128           |
 
 ### Signal Configuration
 
