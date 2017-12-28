@@ -19,9 +19,9 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 ### Electrical Configuration
 | Axis | Config ID   | Config Notes | Peak Current [A] | Idle Current [%] | Idle Timeout [ms] | Electrical Damping | 
 | ---  | ----------- |------------- | ---------------- | ---------------- | ----------------- | ------------------ |
-| X    | ID-DR-EL-X1 | A            | 3.2              | 50               | 2000              | 1000               |
-| Y    | ID-DR-EL-Y1 | A            | 3.2              | 50               | 2000              | 1000               |
-| Z    | ID-DR-EL-Z1 | A            | 3.2              | 50               | 2000              | 1000               |
+| X    | ID-DR-EL-X1 | A            | 3.3              | 50               | 2000              | 1000               |
+| Y    | ID-DR-EL-Y1 | A            | 3.3              | 50               | 2000              | 1000               |
+| Z    | ID-DR-EL-Z1 | A            | 3.5              | 50               | 2000              | 1000               |
 
 ### Signal  Configuration
 | Axis | Config ID   | Config. Notes | Alarm Signal | Active Edge | Direction Def. |
@@ -44,15 +44,15 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 | Axis | Config ID   | Config Notes | Kp   | Ki   |
 | ---- | ----------- | ------------ | ---- | ---- |
 | X    | ID-DR-CC-X1 | A            | x    | x    |
-| X    | ID-DR-CC-Y1 | A            | x    | x    |
+| X    | ID-DR-CC-Y1 | A            | 6500 | 1000 |
 | Z    | ID-DR-CC-Z1 | A            | 6500 | 1000 |
 
 ### Damping Configuration
 | Axis | Config ID   | Config Notes | 1st Resonance Amp1 | 1st Resonance Amp2 | 2nd Resonance Amp1 | 2nd Resonance Amp2 | 3rd Resonance Amp1 | 3rd Resonance Amp2 |
 | ---- | ----------- | ------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | X    | ID-DR-DC-X1 | A             | x               | x                | x               | x                | x                | x           |
-| Y    | ID-DR-DC-Y1 | A             | x               | x                | x               | x                | x                | x           |
-| Z    | ID-DR-DC-Z1 | A             | 5003               | 888                | 1460               | 632                | 128                | 128           |
+| Y    | ID-DR-DC-Y1 | A             | 11000 | 857  | 10000 | 900  | 122 | 119 |
+| Z    | ID-DR-DC-Z1 | A             | 5003  | 888  | 1460  | 632  | 128 | 128 |
 
 ### Configuration Notes
 | Config. Note | Notes                                                                                                            |
