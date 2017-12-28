@@ -16,6 +16,12 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 | Z           | ID-MZ1    | Vexta C1824-9212H     | 1.8            | 3.27        | 3.66        |                 |                  |
 
 ## Stepper driver (Leadshine AM882HN)
+### Electrical Configuration
+| Axis | Config ID   | Config Notes | Peak Current [A] | Idle Current [%] | Idle Timeout [ms] | Electrical Damping | 
+| ---  | ----------- |------------- | ---------------- | ---------------- | ----------------- | ------------------ |
+| X    | ID-DR-EL-X1 | A            | 3.2              | 50               | 2000              | 1000               |
+| Y    | ID-DR-EL-Y1 | A            | 3.2              | 50               | 2000              | 1000               |
+| Z    | ID-DR-EL-Z1 | A            | 3.2              | 50               | 2000              | 1000               |
 
 ### Signal  Configuration
 | Axis | Config ID   | Config. Notes | Alarm Signal | Active Edge | Direction Def. |
@@ -27,9 +33,12 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 ## Feature Configuration 
 | Axis | Config ID   | Config. Notes | Phase Error Detection | Sensorless Stall Detection | Pulse Smoother | ENA Reset | High Active ENA |
 | ---- | ----------- | ------------- | --------------------- | -------------------------- | -------------- | --------- | --------------- |
-| X    | ID-DR-FE-X1 | A             | enabled               | enabled                    | **disabled**   | enabled   | enabled         |
-| Y    | ID-DR-FE-Y1 | A             | enabled               | enabled                    | **disabled**   | enabled   | enabled         |
-| Z    | ID-DR-FE-Z1 | A             | enabled               | enabled                    | **disabled**   | enabled   | enabled         |
+| X    | ID-DR-FE-X1 | A, B          | enabled               | enabled                    | enabled        | enabled   | enabled         |
+| Y    | ID-DR-FE-Y1 | A, B          | enabled               | enabled                    | enabled        | enabled   | enabled         |  
+| Z    | ID-DR-FE-Z1 | A, B          | enabled               | enabled                    | enabled        | enabled   | enabled         |
+| X    | ID-DR-FE-X2 | A             | enabled               | enabled                    | **disabled**   | enabled   | enabled         |
+| Y    | ID-DR-FE-Y2 | A             | enabled               | enabled                    | **disabled**   | enabled   | enabled         |
+| Z    | ID-DR-FE-Z2 | A             | enabled               | enabled                    | **disabled**   | enabled   | enabled         |
 
 ### Current Controller
 | Axis | Config ID   | Config Notes | Kp   | Ki   |
@@ -52,9 +61,10 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 | B           | Faced issue with sporadic lost steps when Pulse Smoother was enabled (input pulse ripple filter), thus disabled. |                                                              
 
 ## Configuration
-| Motor Config Set | Driver Config Set                                                  | Notes | 
-| ---------------- | ------------------------------------------------------------------ | ----- |
-| ID-M[XYZ]1       | ID-DR-SIG-[XYZ]1,ID-DR-FE-[XYZ]1, ID-DR-CC-[XYZ]1, ID-DR-DC-[XYZ]1 | x     |
+| Motor Config Set | Driver Config Set                                                                        | Notes | 
+| ---------------- | ---------------------------------------------------------------------------------------- | ----- |
+| ID-M[XYZ]1       | ID-DR-EL-[XYZ]1, ID-DR-SIG-[XYZ]1, ID-DR-FE-[XYZ]1, ID-DR-CC-[XYZ]1, ID-DR-DC-[XYZ]1     | Initial configuration but faded issue with lost steps. See also note A |
+| ID-M[XYZ]1       | ID-DR-EL-[XYZ]1, ID-DR-SIG-[XYZ]1, ID-DR-FE-[XYZ]**2**, ID-DR-CC-[XYZ]1, ID-DR-DC-[XYZ]1 | Performance normal; not loosing steps     |
 
 
 # Notes
