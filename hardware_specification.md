@@ -9,14 +9,26 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 
 # Hardware Configuration
 ## Motor Specification
-| Axis        | Motor             | Deree/Step [°] | Current [A] | Voltage [V] | Inductance [mH] | Resistance [Ohm] |
-| ----------- | ----------------- | -------------- | ----------- | ----------- | --------------- | ---------------- |
-| X           | StepSyn           | 1.8            | 3           |             |                 |                  |
-| Y           | StepSyn           | 1.8            | 3           |             |                 |                  |
-| Z           | Vexta C1824-9212H | 1.8            | 3.27        | 3.66        |                 |                  |
+| Axis        | Motor                 | Deree/Step [°] | Current [A] | Voltage [V] | Inductance [mH] | Resistance [Ohm] |
+| ----------- | --------------------- | -------------- | ----------- | ----------- | --------------- | ---------------- |
+| X           | StepSyn 103H7126-0703 | 1.8            | 3           |             |                 |                  |
+| Y           | StepSyn 103H7126-0703 | 1.8            | 3           |             |                 |                  |
+| Z           | Vexta C1824-9212H     | 1.8            | 3.27        | 3.66        |                 |                  |
 
-## Stepper driver
+## Stepper driver (Leadshine AM882HN)
+### Electrical Configuration
+| Axis | Config. Notes | Peak Current [A] | Idle Current [%] | Idle Timeout [ms] | Electrical Damping | 
+| ---  | ------------- | ---------------- | ---------------- | ----------------- | ------------------ |
+| X    | A             | 3.2              | 50               | 2000              | 1000               |
 
+### Damping Configuration
+
+### Signal Configuration
+
+### Configuration Notes
+| Config Note | Notes                                                                                           |
+| ----------- | ----------------------------------------------------------------------------------------------- |
+| A           |                                                                                                 |
 
 ## Configuration
 
