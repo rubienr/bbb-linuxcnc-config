@@ -74,13 +74,14 @@ This page breafly introcudes the hardware configuration of the CNC milling machi
 ## Total Configuration
 | Motor Config Set | Power Supply | Driver Config Set                       | Notes | 
 | ---------- | --------- | -------------------------------------------------| ----- |
-| ID-M[XYZ]1 | ID-PWR-48 | ID-DR-{EL,SIG,FE,CC,DC}-[XYZ]1                   | Initial configuration but faded issue with lost steps. See also note A |
-| ID-M[XYZ]1 | ID-PWR-48 | ID-DR-{EL,SIG,CC,DC}-[XYZ]1, ID-DR-FE-[XYZ]**2** | Performance normal; not loosing steps |
+| ID-M[XYZ]1 | ID-PWR-48 | ID-DR-{EL,SIG,FE,CC,DC}-[XYZ]1                   | Initial configuration but issue with loosing steps. See also configuraton note A |
+| ID-M[XYZ]1 | ID-PWR-48 | ID-DR-{EL,SIG,CC,DC}-[XYZ]1, ID-DR-FE-[XYZ]**2** | Normal Performance, not loosing steps. |
 
 # Notes
-* TODO: add link to coil current saturation time diagram: inductance vs voltage vs saturation time
+* For proper step speed limits consider reading the Stepper Information reference.
 
 # References
+* [Stepper Information: Inductance/Voltage/Current/Saturation delay ...](http://linuxcnc.org/docs/html/integrator/steppers.html)
 * [8.2A Leadshine AM882HN stepper driver](http://www.leadshine.com/UploadFile/Down/AM882m.pdf)
 * [Beable Bone Blac](https://beagleboard.org/black)
 * [BBB: Connecting Battery](https://www.element14.com/community/community/designcenter/single-board-computers/next-gen_beaglebone/blog/2013/08/10/bbb--rechargeable-on-board-battery-system)
