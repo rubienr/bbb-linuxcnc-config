@@ -2,14 +2,27 @@
 A Linuxcnc configuration using the Panther cape (necitec). Since the configuration relys on a new machinekit version, this notes also leave some hints on how to install a debian image and compile [Machinekit](http://www.machinekit.io/) on the BBB.
 
 * Usage 
+
 Checkout the reposigory and start machinekit with the correct arguments, i.e.:
-````
+
+```
 machinekit@beaglebone:~$ machinekit <repository-clone>/machinekit/configs/ARM.BeagleBone.Panther/Panther-3-axis.ini
-````
+```
 
 # Compile Machinekit (optional)
 Since the compiling process requires more memory as provided by the BBB, it cannot be completed using the BBB only.
 In our case we mount the build folder from the BBB via **sshfs** to a **changeroot** on a diffrerent machine.
+
+This rules fail to compile on bbb:
+
+* `make objects/emc/task/emctask.o`
+* `make objects/machinetalk/lib/mk_service.o`
+* `make objects/emc/task/emctaskmain.o`
+* `make objects/emc/task/taskmodule.o`
+* `objects/emc/task/taskclass.o`
+* `make and so on and so forth...`
+
+
 
 The basic steps in a nutshell: 
 
@@ -77,3 +90,6 @@ sudo dtc -O dtb -o /lib/firmware/panther-00A0.dtbo -b 0 -@ /home/machinekit/mach
 
 # Tested with 
 * **Debian GNU/Linux 8** - Machinekit Debian Image 2017-02-12 Linux beaglebone **3.8.13-xenomai-r78** #1 Sat Sep 26 17:07:01 UTC 2015 armv7l GNU/Linux
+
+# References
+[start/stop, resume/step halui diagram](https://forum.linuxcnc.org/media/kunena/attachments/16717/Run_StepPause_ResumeLogicDiagram.pdf)
