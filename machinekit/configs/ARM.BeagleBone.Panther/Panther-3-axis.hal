@@ -357,3 +357,132 @@ net pid_output            pid.0.output   => sum2.0.in1
 # Attach the pwmgen to the sum and the parallel port
 net pwmgen_value          pwmgen.0.value <= sum2.0.out
 net pwmgen_out            pwmgen.0.pwm   => bb_gpio.p9.out-14
+
+
+# ######################################################################
+# Jog dial WHB04B-6
+# ######################################################################
+
+# Connect emergency stop signals
+net pendant.estop.activate      whb.halui.estop.activate halui.estop.activate
+net pendant.estop.is-activated  halui.estop.is-activated whb.halui.estop.is-activated
+net pendant.estop.reset         whb.halui.estop.reset    halui.estop.reset
+#net  pendant.machine.is-on     halui.machine.is-on      whb.halui.machine.is-on
+#net  pendant.machine.on        whb.halui.machine.on     halui.machine.on
+#net  pendant.machine.off       whb.halui.machine.off    halui.machine.off
+
+
+# Connect program related signals
+net pendant.program.is-idle    whb.halui.program.is-idle    halui.program.is-idle
+net pendant.program.is-paused  whb.halui.program.is-paused  halui.program.is-paused
+net pendant.program.is-running whb.halui.program.is-running halui.program.is-running
+net pendant.program.resume     whb.halui.program.resume     halui.program.resume
+net pendant.program.pause      whb.halui.program.pause      halui.program.pause
+net pendant.program.run        whb.halui.program.run        halui.program.run
+net pendant.program.stop       whb.halui.program.stop       halui.program.stop
+net pendant.mode.is-auto       halui.mode.is-auto           whb.halui.mode.is-auto
+net pendant.mode.auto          whb.halui.mode.auto          halui.mode.auto
+
+# Connect "selected axis" signals    
+net   pendant.X.select whb.halui.joint.x.select halui.joint.0.select
+net   pendant.Y.select whb.halui.joint.y.select halui.joint.1.select
+net   pendant.Z.select whb.halui.joint.z.select halui.joint.2.select
+# net pendant.A.select whb.halui.joint.a.select halui.joint.3.select
+# net pendant.B.select whb.halui.joint.b.select halui.joint.4.select
+# net pendant.C.select whb.halui.joint.c.select halui.joint.5.select
+
+# Connect "jog increment" signals (step mode). 
+# Optionally use "whb.halui.jog.increment halui.jog.selected.increment".
+#net   pendant.X.jog.increment       whb.halui.jog.x.increment       halui.jog.0.increment
+#net   pendant.Y.jog.increment       whb.halui.jog.y.increment       halui.jog.1.increment
+#net   pendant.Z.jog.increment       whb.halui.jog.z.increment       halui.jog.2.increment
+# net  pendant.A.jog.increment       whb.halui.jog.a.increment       halui.jog.3.increment
+# net  pendant.B.jog.increment       whb.halui.jog.b.increment       halui.jog.4.increment
+# net  pendant.C.jog.increment       whb.halui.jog.c.increment       halui.jog.5.increment
+#net   pendant.X.jog.increment.plus  whb.halui.jog.x.increment-plus  halui.jog.0.increment-plus
+#net   pendant.Y.jog.increment.plus  whb.halui.jog.y.increment-plus  halui.jog.1.increment-plus
+#net   pendant.Z.jog.increment.plus  whb.halui.jog.z.increment-plus  halui.jog.2.increment-plus
+# net  pendant.A.jog.increment.plus  whb.halui.jog.a.increment-plus  halui.jog.3.increment-plus
+# net  pendant.B.jog.increment.plus  whb.halui.jog.b.increment-plus  halui.jog.4.increment-plus
+# net  pendant.C.jog.increment.plus  whb.halui.jog.c.increment-plus  halui.jog.5.increment-plus
+#net   pendant.X.jog.increment.minus whb.halui.jog.x.increment-minus halui.jog.0.increment-minus
+#net   pendant.Y.jog.increment.minus whb.halui.jog.y.increment-minus halui.jog.1.increment-minus
+#net   pendant.Z.jog.increment.minus whb.halui.jog.z.increment-minus halui.jog.2.increment-minus
+# net  pendant.A.jog.increment.minus whb.halui.jog.a.increment-minus halui.jog.3.increment-minus
+# net  pendant.B.jog.increment.minus whb.halui.jog.b.increment-minus halui.jog.4.increment-minus
+# net  pendant.C.jog.increment.minus whb.halui.jog.c.increment-minus halui.jog.5.increment-minus
+
+# Connect "jog speed" signals (MPG mode)
+#net   pendant.X.jog.speed.plus  whb.halui.jog.x.speed-plus  halui.jog.0.plus
+#net   pendant.Y.jog.speed.plus  whb.halui.jog.y.speed-plus  halui.jog.1.plus
+#net   pendant.Z.jog.speed.plus  whb.halui.jog.z.speed-plus  halui.jog.2.plus
+# net  pendant.A.jog.speed.plus  whb.halui.jog.a.speed-plus  halui.jog.3.plus
+# net  pendant.B.jog.speed.plus  whb.halui.jog.b.speed-plus  halui.jog.4.plus
+# net  pendant.C.jog.speed.plus  whb.halui.jog.c.speed-plus  halui.jog.5.plus
+#net   pendant.X.jog.speed.minus whb.halui.jog.x.speed-minus halui.jog.0.minus
+#net   pendant.Y.jog.speed.minus whb.halui.jog.y.speed-minus halui.jog.1.minus
+#net   pendant.Z.jog.speed.minus whb.halui.jog.z.speed-minus halui.jog.2.minus
+# net  pendant.A.jog.speed.minus whb.halui.jog.a.speed-minus halui.jog.3.minus
+# net  pendant.B.jog.speed.minus whb.halui.jog.b.speed-minus halui.jog.4.minus
+# net  pendant.C.jog.speed.minus whb.halui.jog.c.speed-minus halui.jog.5.minus
+
+net pendant.max-velocity.value  halui.max-velocity.value whb.halui.max-velocity.value
+net pendant.home.all            whb.halui.home-all          halui.home-all
+
+# Connect jog signals for step and continuous mode.
+net pendant.jog.selected.increment       whb.halui.jog.selected.increment       halui.jog.selected.increment
+net pendant.jog.selected.increment-plus  whb.halui.jog.selected.increment-plus  halui.jog.selected.increment-plus
+net pendant.jog.selected.increment-minus whb.halui.jog.selected.increment-minus halui.jog.selected.increment-minus
+net pendant.jog.selected.plus            whb.halui.jog.selected.plus            halui.jog.selected.plus
+net pendant.jog.selected.minus           whb.halui.jog.selected.minus           halui.jog.selected.minus
+net pendant.jog-speed                    whb.halui.jog-speed                    halui.jog-speed
+
+# Connect macro buttons to mdi commands.
+net pendant.macro.11 whb.button.macro-11 halui.mdi-command-11
+net pendant.macro.12 whb.button.macro-12 halui.mdi-command-12
+net pendant.macro.13 whb.button.macro-13 halui.mdi-command-13
+net pendant.macro.1  whb.button.macro-1  halui.mdi-command-01
+net pendant.macro.2  whb.button.macro-2  halui.mdi-command-02
+net pendant.macro.3  whb.button.macro-3  halui.mdi-command-03
+net pendant.macro.4  whb.button.macro-4  halui.mdi-command-04
+net pendant.macro.5  whb.button.macro-5  halui.mdi-command-05
+net pendant.macro.6  whb.button.macro-6  halui.mdi-command-06
+net pendant.macro.7  whb.button.macro-7  halui.mdi-command-07
+net pendant.macro.8  whb.button.macro-8  halui.mdi-command-08
+net pendant.macro.9  whb.button.macro-9  halui.mdi-command-09
+net pendant.macro.10 whb.button.macro-10 halui.mdi-command-10
+net pendant.macro.14 whb.button.macro-14 halui.mdi-command-14
+net pendant.macro.15 whb.button.macro-15 halui.mdi-command-15
+net pendant.macro.16 whb.button.macro-16 halui.mdi-command-16
+
+# Connect buttons to halui
+net pendant.button.reset           whb.button.reset           
+# toggles whb.halui.estop.{activate, reset} which are connected to halui.estop.{activate, reset} via whb.halui.estop.{activate, reset}
+net pendant.button.stop            whb.button.stop            
+# already linked to halui.program.stop via whb.program.stop
+net pendant.button.start-pause     whb.button.start-pause     
+# toggles whb.halui.program{run, pause, resume} which are connected to halui.program.{run, pause, resume} via whb.halui.program.{run, pause, resume}
+net pendant.button.feed-plus       whb.button.feed-plus       
+#halui.TODO
+net pendant.button.feed-minus      whb.button.feed-minus      
+#halui.TODO
+net pendant.button.spindle-plus    whb.button.spindle-plus    
+#halui.TODO
+net pendant.button.spindle-minus   whb.button.spindle-minus   
+#halui.TODO
+net pendant.button.m-home          whb.button.m-home          
+# already liked to halui.home-all via whb.halui.home-all
+net pendant.button.safe-z          whb.button.safe-z          halui.joint.2.home
+net pendant.button.w-home          whb.button.w-home          
+#halui.TODO
+net pendant.button.s-on-off        whb.button.s-on-off        
+# toggles halui.spindle.{start, stop} according to halui.spindle.is-on via whb.halui.spindle.{start, stop}
+net pendant.button.fn              whb.button.fn              
+# unused, just exposes pendant interna
+net pendant.button.probe-z         whb.button.probe-z         
+#halui.TODO, eventually mdi-command
+net pendant.button.mode-continuous whb.button.mode-continuous 
+# unused, just exposes pendant interna
+net pendant.button.mode-step       whb.button.mode-step       
+# unused, just exposes pendant interna
+
