@@ -1,0 +1,8 @@
+o<y-probe> sub
+
+  G91
+  G38.2 Y-10 F15
+  (DEBUG, touched at Y#5062)
+  G90
+
+o<y-probe> endsub

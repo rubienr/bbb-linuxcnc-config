@@ -1,0 +1,8 @@
+o<x-probe> sub
+
+  G91
+  G38.2 X-10 F15
+  (DEBUG, touched off at X#5061)
+  G90
+
+o<x-probe> endsub
