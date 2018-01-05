@@ -1,0 +1,12 @@
+o<go-workpiece-home> sub
+
+  #<x_whome>=#1                                    ( X-axis home position in selected coordinate system )
+  #<y_whome>=#2                                    ( Y-axis home position in selected coordinate system )
+  #<z_whome>=#3                                    ( Z-axis home position in selected coordinate system )
+  
+  G90
+  G0 X#<x_whome> Y#<y_whome>
+  G4 P0.01
+  G0 Z#<z_whome>
+
+o<go-workpiece-home> endsub

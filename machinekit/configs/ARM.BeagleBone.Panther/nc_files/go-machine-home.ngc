@@ -1,0 +1,12 @@
+o<go-machine-home> sub
+
+  #<x_home>=#1                                    ( X-axis home position in machine coordinate )
+  #<y_home>=#2                                    ( Y-axis home position in machine coordinate )
+  #<z_home>=#3                                    ( Z-axis home position in machine coordinate )
+  
+  G90
+  G53 G0 Z#<z_home>
+  G4  P0.01
+  G53 G0 X#<x_home> Y#<y_home>
+
+o<go-machine-home> endsub

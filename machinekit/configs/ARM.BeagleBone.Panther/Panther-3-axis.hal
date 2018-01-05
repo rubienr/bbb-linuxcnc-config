@@ -230,9 +230,6 @@ setp hpg.stepgen.02.stepinvert 1
 # ######################################################################
 # Standard outputs
 # ######################################################################
-#net out0 motion.digital-out-00 => bb_gpio.p8.out-13
-#net out1 motion.digital-out-01 => bb_gpio.p8.out-19
-#net out2 motion.digital-out-02 => bb_gpio.p9.out-14
 net  out3 motion.digital-out-03 => bb_gpio.p9.out-16
 
 # ######################################################################
@@ -288,16 +285,29 @@ net  Zalarm bb_gpio.p8.in-18        => axis.2.amp-fault-in
 # ######################################################################
 # http://linuxcnc.org/docs/2.7/html/man/man9/motion.9.html
 # http://linuxcnc.org/docs/html/examples/spindle.html
-#loadrt pwmgen                               output_type=0
-#addf pwmgen.update                          servo-thread
-#addf pwmgen.make-pulses                     servo-thread
-#net  SpindleSpeed  motion.spindle-speed-out => pwmgen.0.value
-#net  SpindleEnable motion.spindle-on        => pwmgen.0.enable bb_gpio.p8.out-13
-#net  SpindlePwm    pwmgen.0.pwm             => bb_gpio.p9.out-14
+#loadrt pwmgen              output_type=0
+#addf pwmgen.update         servo-thread
+#addf pwmgen.make-pulses    servo-thread
+# Create spindle related signals
+net spindle.is-on            halui.spindle.is-on         bb_gpio.p8.out-13
+net spindle.start            halui.spindle.start
+net spindle.stop             halui.spindle.stop
+# invert forward/reverse output, since our hardware reqires it that way
+net spindle.runs-forward     halui.spindle.runs-backward bb_gpio.p8.out-19
+net spindle.forward          halui.spindle.forward
+net spindle.increase         halui.spindle.increase
+net spindle.decrease         halui.spindle.decrease
+net spindle.spindle-override.value    halui.spindle-override.value
+net spindle.spindle-override.increase halui.spindle-override.increase
+net spindle.spindle-override.decrease halui.spindle-override.decrease
+net spindle.rpm-out                                      bb_gpio.p9.out-14
+net spindle.rpm-in           bb_gpio.p9.in-12
+
+
 ## spindle top speed in RPM
 #setp pwmgen.0.scale                         10000
 # spindle direction 
-net SpindleDirection motion.spindle-forward => bb_gpio.p8.out-19
+net spindle.forward motion.spindle-forward
 
 
 # ######################################################################
@@ -342,7 +352,7 @@ addf sum2.0 servo-thread
 net spindle_enable motion.spindle-on => pwmgen.0.enable => pid.0.enable
 
 # Attach the encoder to the port pin
-net SpindleFeedback       bb_gpio.p9.in-12 => encoder.0.phase-A => encoder.0.phase-Z
+net SpindleFeedback encoder.0.phase-A => encoder.0.phase-Z
 
 # Attach the encoder to the motion and the scale
 net spindle_rev_count     encoder.0.position => motion.spindle-revs
@@ -356,7 +366,7 @@ net pid_output            pid.0.output   => sum2.0.in1
 
 # Attach the pwmgen to the sum and the parallel port
 net pwmgen_value          pwmgen.0.value <= sum2.0.out
-net pwmgen_out            pwmgen.0.pwm   => bb_gpio.p9.out-14
+net spindle.rpm-out       pwmgen.0.pwm
 
 
 # ######################################################################
@@ -364,136 +374,111 @@ net pwmgen_out            pwmgen.0.pwm   => bb_gpio.p9.out-14
 # ######################################################################
 
 # Connect emergency stop signals
-#net pendant.estop.activate      whb.halui.estop.activate halui.estop.activate
-#net pendant.estop.is-activated  halui.estop.is-activated whb.halui.estop.is-activated
-#net pendant.estop.reset         whb.halui.estop.reset    halui.estop.reset
-net  pendant.machine.is-on     halui.machine.is-on      whb.halui.machine.is-on
-net  pendant.machine.on        whb.halui.machine.on     halui.machine.on
-net  pendant.machine.off       whb.halui.machine.off    halui.machine.off
-
+net  pdnt.machine.is-on      halui.machine.is-on      whb.halui.machine.is-on
+net  pdnt.machine.on         whb.halui.machine.on     halui.machine.on
+net  pdnt.machine.off        whb.halui.machine.off    halui.machine.off
 
 # Connect program related signals
-net pendant.program.is-idle    whb.halui.program.is-idle    halui.program.is-idle
-net pendant.program.is-paused  whb.halui.program.is-paused  halui.program.is-paused
-net pendant.program.is-running whb.halui.program.is-running halui.program.is-running
-net pendant.program.resume     whb.halui.program.resume     halui.program.resume
-net pendant.program.pause      whb.halui.program.pause      halui.program.pause
-net pendant.program.run        whb.halui.program.run        halui.program.run
-net pendant.program.stop       whb.halui.program.stop       halui.program.stop
-net pendant.mode.is-auto       halui.mode.is-auto           whb.halui.mode.is-auto
-net pendant.mode.auto          whb.halui.mode.auto          halui.mode.auto
+net pdnt.program.is-idle    whb.halui.program.is-idle    halui.program.is-idle
+net pdnt.program.is-paused  whb.halui.program.is-paused  halui.program.is-paused
+net pdnt.program.is-running whb.halui.program.is-running halui.program.is-running
+net pdnt.program.resume     whb.halui.program.resume     halui.program.resume
+net pdnt.program.pause      whb.halui.program.pause      halui.program.pause
+net pdnt.program.run        whb.halui.program.run        halui.program.run
+net pdnt.program.stop       whb.halui.program.stop       halui.program.stop
 
 # Connect "selected axis" signals    
-net   pendant.X.select whb.halui.joint.x.select halui.joint.0.select
-net   pendant.Y.select whb.halui.joint.y.select halui.joint.1.select
-net   pendant.Z.select whb.halui.joint.z.select halui.joint.2.select
-# net pendant.A.select whb.halui.joint.a.select halui.joint.3.select
-# net pendant.B.select whb.halui.joint.b.select halui.joint.4.select
-# net pendant.C.select whb.halui.joint.c.select halui.joint.5.select
+net   pdnt.joint.X.select whb.halui.joint.x.select halui.joint.0.select
+net   pdnt.joint.Y.select whb.halui.joint.y.select halui.joint.1.select
+net   pdnt.joint.Z.select whb.halui.joint.z.select halui.joint.2.select
+# net pdnt.joint.A.select whb.halui.joint.a.select halui.joint.3.select
+# net pdnt.joint.B.select whb.halui.joint.b.select halui.joint.4.select
+# net pdnt.joint.C.select whb.halui.joint.c.select halui.joint.5.select
 
-# Connect "jog increment" signals (step mode). 
-# Optionally use "whb.halui.jog.increment halui.jog.selected.increment".
-#net   pendant.X.jog.increment       whb.halui.jog.x.increment       halui.jog.0.increment
-#net   pendant.Y.jog.increment       whb.halui.jog.y.increment       halui.jog.1.increment
-#net   pendant.Z.jog.increment       whb.halui.jog.z.increment       halui.jog.2.increment
-# net  pendant.A.jog.increment       whb.halui.jog.a.increment       halui.jog.3.increment
-# net  pendant.B.jog.increment       whb.halui.jog.b.increment       halui.jog.4.increment
-# net  pendant.C.jog.increment       whb.halui.jog.c.increment       halui.jog.5.increment
-#net   pendant.X.jog.increment.plus  whb.halui.jog.x.increment-plus  halui.jog.0.increment-plus
-#net   pendant.Y.jog.increment.plus  whb.halui.jog.y.increment-plus  halui.jog.1.increment-plus
-#net   pendant.Z.jog.increment.plus  whb.halui.jog.z.increment-plus  halui.jog.2.increment-plus
-# net  pendant.A.jog.increment.plus  whb.halui.jog.a.increment-plus  halui.jog.3.increment-plus
-# net  pendant.B.jog.increment.plus  whb.halui.jog.b.increment-plus  halui.jog.4.increment-plus
-# net  pendant.C.jog.increment.plus  whb.halui.jog.c.increment-plus  halui.jog.5.increment-plus
-#net   pendant.X.jog.increment.minus whb.halui.jog.x.increment-minus halui.jog.0.increment-minus
-#net   pendant.Y.jog.increment.minus whb.halui.jog.y.increment-minus halui.jog.1.increment-minus
-#net   pendant.Z.jog.increment.minus whb.halui.jog.z.increment-minus halui.jog.2.increment-minus
-# net  pendant.A.jog.increment.minus whb.halui.jog.a.increment-minus halui.jog.3.increment-minus
-# net  pendant.B.jog.increment.minus whb.halui.jog.b.increment-minus halui.jog.4.increment-minus
-# net  pendant.C.jog.increment.minus whb.halui.jog.c.increment-minus halui.jog.5.increment-minus
-
-# Connect "jog speed" signals (MPG mode)
-#net   pendant.X.jog.speed.plus  whb.halui.jog.x.speed-plus  halui.jog.0.plus
-#net   pendant.Y.jog.speed.plus  whb.halui.jog.y.speed-plus  halui.jog.1.plus
-#net   pendant.Z.jog.speed.plus  whb.halui.jog.z.speed-plus  halui.jog.2.plus
-# net  pendant.A.jog.speed.plus  whb.halui.jog.a.speed-plus  halui.jog.3.plus
-# net  pendant.B.jog.speed.plus  whb.halui.jog.b.speed-plus  halui.jog.4.plus
-# net  pendant.C.jog.speed.plus  whb.halui.jog.c.speed-plus  halui.jog.5.plus
-#net   pendant.X.jog.speed.minus whb.halui.jog.x.speed-minus halui.jog.0.minus
-#net   pendant.Y.jog.speed.minus whb.halui.jog.y.speed-minus halui.jog.1.minus
-#net   pendant.Z.jog.speed.minus whb.halui.jog.z.speed-minus halui.jog.2.minus
-# net  pendant.A.jog.speed.minus whb.halui.jog.a.speed-minus halui.jog.3.minus
-# net  pendant.B.jog.speed.minus whb.halui.jog.b.speed-minus halui.jog.4.minus
-# net  pendant.C.jog.speed.minus whb.halui.jog.c.speed-minus halui.jog.5.minus
-
-net pendant.max-velocity.value  halui.max-velocity.value whb.halui.max-velocity.value
+# TODO
+net pdnt.max-velocity.value  halui.max-velocity.value whb.halui.max-velocity.value
 
 # Connect jog signals for step and continuous mode.
-net pendant.jog.selected.increment       whb.halui.jog.selected.increment       halui.jog.selected.increment
-net pendant.jog.selected.increment-plus  whb.halui.jog.selected.increment-plus  halui.jog.selected.increment-plus
-net pendant.jog.selected.increment-minus whb.halui.jog.selected.increment-minus halui.jog.selected.increment-minus
-net pendant.jog.selected.plus            whb.halui.jog.selected.plus            halui.jog.selected.plus
-net pendant.jog.selected.minus           whb.halui.jog.selected.minus           halui.jog.selected.minus
-net pendant.jog-speed                    whb.halui.jog-speed                    halui.jog-speed
+net pdnt.jog.selected.increment       whb.halui.jog.selected.increment       halui.jog.selected.increment
+net pdnt.jog.selected.increment-plus  whb.halui.jog.selected.increment-plus  halui.jog.selected.increment-plus
+net pdnt.jog.selected.increment-minus whb.halui.jog.selected.increment-minus halui.jog.selected.increment-minus
+net pdnt.jog.selected.plus            whb.halui.jog.selected.plus            halui.jog.selected.plus
+net pdnt.jog.selected.minus           whb.halui.jog.selected.minus           halui.jog.selected.minus
+net pdnt.jog-speed                    whb.halui.jog-speed                    halui.jog-speed
 
 # Connect macro buttons to mdi commands.
-#net pendant.macro.11 whb.button.macro-11 halui.mdi-command-11
-#net pendant.macro.12 whb.button.macro-12 halui.mdi-command-12
-#net pendant.macro.13 whb.button.macro-13 halui.mdi-command-13
-#net pendant.macro.1  whb.button.macro-1  halui.mdi-command-01
-#net pendant.macro.2  whb.button.macro-2  halui.mdi-command-02
-#net pendant.macro.3  whb.button.macro-3  halui.mdi-command-03
-#net pendant.macro.4  whb.button.macro-4  halui.mdi-command-04
-#net pendant.macro.5  whb.button.macro-5  halui.mdi-command-05
-#net pendant.macro.6  whb.button.macro-6  halui.mdi-command-06
-#net pendant.macro.7  whb.button.macro-7  halui.mdi-command-07
-#net pendant.macro.8  whb.button.macro-8  halui.mdi-command-08
-#net pendant.macro.9  whb.button.macro-9  halui.mdi-command-09
-net  pendant.home-all whb.button.macro-10 halui.home-all
-#net pendant.macro.14 whb.button.macro-14 halui.mdi-command-14
-#net pendant.macro.15 whb.button.macro-15 halui.mdi-command-15
-#net pendant.macro.16 whb.button.macro-16 halui.mdi-command-16
+#net pdnt.macro.11 whb.button.macro-11 halui.mdi-command-11
+#net pdnt.macro.12 whb.button.macro-12 halui.mdi-command-12
+#net pdnt.macro.13 whb.button.macro-13 halui.mdi-command-13
+#net pdnt.macro.1  whb.button.macro-1  halui.mdi-command-01
+#net pdnt.macro.2  whb.button.macro-2  halui.mdi-command-02
+#net pdnt.macro.3  whb.button.macro-3
+#net pdnt.macro.4  whb.button.macro-4
+#net pdnt.macro.5  whb.button.macro-5  halui.mdi-command-05
+#net pdnt.macro.6  whb.button.macro-6  halui.mdi-command-06
+#net pdnt.macro.7  whb.button.macro-7  halui.mdi-command-07
+#net pdnt.macro.8  whb.button.macro-8  halui.mdi-command-08
+#net pdnt.macro.9  whb.button.macro-9  halui.mdi-command-09
+net  pdnt.home-all whb.button.macro-10 halui.home-all
+#net pdnt.macro.14 whb.button.macro-14 halui.mdi-command-14
+#net pdnt.macro.15 whb.button.macro-15 halui.mdi-command-15
+#net pdnt.macro.16 whb.button.macro-16 halui.mdi-command-16
 
-# Connect buttons to halui
-# toggles whb.halui.estop.{activate, reset} which are connected to halui.estop.{activate, reset} via whb.halui.estop.{activate, reset}
-net pendant.button.reset           whb.button.reset           
-
+# Connect reset, stop, start/pause/resume buttons to halui
+# toggles whb.halui.estop.{activate, reset} which are
+# already connected to halui.estop.{activate, reset} via whb.halui.estop.{activate, reset}
+net pdnt.button.reset           whb.button.reset
 # already linked to halui.program.stop via whb.program.stop
-net pendant.button.stop            whb.button.stop            
+net pdnt.button.stop            whb.button.stop
+# toggles whb.halui.program{run, pause, resume} which are 
+# already connected to halui.program.{run, pause, resume} via whb.halui.program.{run, pause, resume}
+net pdnt.button.start-pause     whb.button.start-pause     
 
-# toggles whb.halui.program{run, pause, resume} which are connected to halui.program.{run, pause, resume} via whb.halui.program.{run, pause, resume}
-net pendant.button.start-pause     whb.button.start-pause     
-
-#halui.TODO
-net pendant.button.feed-plus       whb.button.feed-plus       
-#halui.TODO
-net pendant.button.feed-minus      whb.button.feed-minus      
-#halui.TODO
-net pendant.button.spindle-plus    whb.button.spindle-plus    
-#halui.TODO
-net pendant.button.spindle-minus   whb.button.spindle-minus   
-
-# move Z, then X,Y to already homed position
-net pendant.button.m-home          whb.button.m-home          halui.mdi-command-01
-# move Z to already homed position
-net pendant.button.safe-z          whb.button.safe-z          halui.mdi-command-00
-
-# move to G54 touched-off position
-net pendant.button.w-home          whb.button.w-home          halui.mdi-command-05
-
-# toggles halui.spindle.{start, stop} according to halui.spindle.is-on via whb.halui.spindle.{start, stop}
-net pendant.button.s-on-off        whb.button.s-on-off        
+# Connect special positions signals
+net pdnt.button.m-home          whb.button.m-home          halui.mdi-command-01
+net pdnt.button.safe-z          whb.button.safe-z          halui.mdi-command-00
+net pdnt.button.w-home          whb.button.w-home          halui.mdi-command-05
+net pdnt.button.s-on-off        whb.button.s-on-off
 
 # unused, just exposes pendant interna
-net pendant.button.fn              whb.button.fn
+net pdnt.button.fn              whb.button.fn
 
 #halui.TODO, eventually mdi-command
-net pendant.button.probe-z         whb.button.probe-z         halui.mdi-command-02         
+net pdnt.button.probe-z         whb.button.probe-z         halui.mdi-command-02
 
 # unused, just exposes pendant interna
-net pendant.button.mode-continuous whb.button.mode-continuous 
+net pdnt.button.mode-continuous whb.button.mode-continuous
 
 # unused, just exposes pendant interna
-net pendant.button.mode-step       whb.button.mode-step       
+net pdnt.button.mode-step       whb.button.mode-step
 
+# Connect spindle related signals
+net spindle.is-on                     whb.halui.spindle.is-on
+net spindle.start                     whb.halui.spindle.start
+net spindle.stop                      whb.halui.spindle.stop
+net pdnt.button.spindle-plus          whb.button.spindle-plus
+net pdnt.button.spindle-minus         whb.button.spindle-minus
+net spindle.increase                  whb.halui.spindle.increase
+net spindle.decrease                  whb.halui.spindle.decrease
+# min/max override depends on [DISPLAY]MIN_SPINDLE_OVERRIDE and [DISPLAY]MAX_SPINDLE_OVERRIDE
+net spindle.spindle-override.value    whb.halui.spindle-override.value
+net spindle.spindle-override.increase whb.halui.spindle-override.increase
+net spindle.spindle-override.decrease whb.halui.spindle-override.decrease
 
+# Connect machine mode related signals
+net pdnt.halui.mode.auto      whb.halui.mode.auto   halui.mode.auto
+net pdnt.halui.mode.joint     whb.halui.mode.joint  halui.mode.joint
+net pdnt.halui.mode.manual    whb.halui.mode.manual halui.mode.manual
+net pdnt.halui.mode.mdi       whb.halui.mode.mdi    halui.mode.mdi
+net pdnt.halui.mode.is-auto   halui.mode.is-auto    whb.halui.mode.is-auto
+net pdnt.halui.mode.is-joint  halui.mode.is-joint   whb.halui.mode.is-joint
+net pdnt.halui.mode.is-manual halui.mode.is-manual  whb.halui.mode.is-manual
+net pdnt.halui.mode.is-mdi    halui.mode.is-mdi     whb.halui.mode.is-mdi
+
+# Connect feed rate related signals
+net pdnt.halui.feed-override.value    halui.feed-override.value        whb.halui.feed-override.value
+# min/max override depends on [DISPLAY]MIN_FEED_OVERRIDE and [DISPLAY]MAX_FEED_OVERRIDE
+net pdnt.halui.feed-override.increase whb.halui.feed-override.increase halui.feed-override.increase
+net pdnt.halui.feed-override.decrease whb.halui.feed-override.decrease halui.feed-override.decrease
+net pdnt.button.feed-plus             whb.button.feed-plus
+net pdnt.button.feed-minus            whb.button.feed-minus
