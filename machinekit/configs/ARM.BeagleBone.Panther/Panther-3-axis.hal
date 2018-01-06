@@ -42,13 +42,21 @@ addf  hpg.capture-position                 servo-thread
 addf  bb_gpio.read                         servo-thread
 addf  motion-command-handler               servo-thread
 addf  motion-controller                    servo-thread
-#addf pid.0.do-pid-calcs                  servo-thread
-#addf pid.1.do-pid-calcs                  servo-thread
+#addf pid.0.do-pid-calcs                   servo-thread
+#addf pid.1.do-pid-calcs                   servo-thread
 addf  limit1.0                             servo-thread
 addf  limit1.1                             servo-thread
 addf  hpg.update                           servo-thread
 addf  bb_gpio.write                        servo-thread
 
+
+# ######################################################################
+# Encoders
+# ######################################################################
+
+#loadrt encoder names=encoder.spindle,encoder.jog
+#addf encoder.capture-position servo-thread
+#addf encoder.update-counters  servo-thread
 
 # ######################################################################
 # Axis-of-motion Specific Configs (not the GUI)
@@ -313,60 +321,60 @@ net spindle.forward motion.spindle-forward
 # ######################################################################
 #   closed spindle control loop
 # ######################################################################
-#http://wiki.linuxcnc.org/cgi-bin/wiki.pl?Closed_Loop_Spindle_Speed_Control
-# Initialize the encoder (spindle)
-loadrt encoder num_chan=1
-addf encoder.update-counters servo-thread
-addf encoder.capture-position servo-thread
-setp encoder.0.position-scale 1
-setp encoder.0.counter-mode 1
-
-# Initialize the PID 
-loadrt pid count=1
-addf pid.0.do-pid-calcs servo-thread
-setp pid.0.Pgain 0
-setp pid.0.Igain 1
-setp pid.0.Dgain 1
-setp pid.0.maxoutput 4000
-
-# Initialize the pwmgen
-loadrt pwmgen output_type=0
-addf pwmgen.update servo-thread
-addf pwmgen.make-pulses servo-thread
-setp pwmgen.0.pwm-freq 1000.0
-setp pwmgen.0.scale 4000
-setp pwmgen.0.dither-pwm true
-
-# Initialize the scale
-# This is used to scale the encoder pulse to RPM
-# 3 ppr so it is scaled by 60/3=20
-loadrt scale count=1
-addf scale.0 servo-thread
-setp scale.0.gain 20
-
-# Initialize the sum2
-loadrt sum2 count=1
-addf sum2.0 servo-thread
-
-# Attach the motion.spindle-on to enable the pwmgen and the pid
-net spindle_enable motion.spindle-on => pwmgen.0.enable => pid.0.enable
-
-# Attach the encoder to the port pin
-net SpindleFeedback encoder.0.phase-A => encoder.0.phase-Z
-
-# Attach the encoder to the motion and the scale
-net spindle_rev_count     encoder.0.position => motion.spindle-revs
-net spindle_index_enable  encoder.0.index-enable <=> motion.spindle-index-enable
-net encoder_raw_velocity  encoder.0.velocity => scale.0.in
-
-# Attach the pid to the scale, motion, and sum
-net pid_feedback          pid.0.feedback <= motion.spindle-speed-in  <= scale.0.out
-net pid_command           pid.0.command  <= motion.spindle-speed-out => sum2.0.in0
-net pid_output            pid.0.output   => sum2.0.in1
-
-# Attach the pwmgen to the sum and the parallel port
-net pwmgen_value          pwmgen.0.value <= sum2.0.out
-net spindle.rpm-out       pwmgen.0.pwm
+###http://wiki.linuxcnc.org/cgi-bin/wiki.pl?Closed_Loop_Spindle_Speed_Control
+### Initialize the encoder (spindle)
+##loadrt encoder num_chan=1
+##addf encoder.update-counters servo-thread
+##addf encoder.capture-position servo-thread
+##setp encoder.0.position-scale 1
+##setp encoder.0.counter-mode 1
+##
+### Initialize the PID 
+##loadrt pid count=1
+##addf pid.0.do-pid-calcs servo-thread
+##setp pid.0.Pgain 0
+##setp pid.0.Igain 1
+##setp pid.0.Dgain 1
+##setp pid.0.maxoutput 4000
+##
+### Initialize the pwmgen
+##loadrt pwmgen output_type=0
+##addf pwmgen.update servo-thread
+##addf pwmgen.make-pulses servo-thread
+##setp pwmgen.0.pwm-freq 1000.0
+##setp pwmgen.0.scale 4000
+##setp pwmgen.0.dither-pwm true
+##
+### Initialize the scale
+### This is used to scale the encoder pulse to RPM
+### 3 ppr so it is scaled by 60/3=20
+##loadrt scale count=1
+##addf scale.0 servo-thread
+##setp scale.0.gain 20
+##
+### Initialize the sum2
+##loadrt sum2 count=1
+##addf sum2.0 servo-thread
+##
+### Attach the motion.spindle-on to enable the pwmgen and the pid
+##net spindle_enable motion.spindle-on => pwmgen.0.enable => pid.0.enable
+##
+### Attach the encoder to the port pin
+##net SpindleFeedback encoder.0.phase-A => encoder.0.phase-Z
+##
+### Attach the encoder to the motion and the scale
+##net spindle_rev_count     encoder.0.position => motion.spindle-revs
+##net spindle_index_enable  encoder.0.index-enable <=> motion.spindle-index-enable
+##net encoder_raw_velocity  encoder.0.velocity => scale.0.in
+##
+### Attach the pid to the scale, motion, and sum
+##net pid_feedback          pid.0.feedback <= motion.spindle-speed-in  <= scale.0.out
+##net pid_command           pid.0.command  <= motion.spindle-speed-out => sum2.0.in0
+##net pid_output            pid.0.output   => sum2.0.in1
+##
+### Attach the pwmgen to the sum and the parallel port
+##net pwmgen_value          pwmgen.0.value <= sum2.0.out
+##net spindle.rpm-out       pwmgen.0.pwm
 
 
 # ######################################################################
@@ -395,16 +403,43 @@ net   pdnt.joint.Z.select whb.halui.joint.z.select halui.joint.2.select
 # net pdnt.joint.B.select whb.halui.joint.b.select halui.joint.4.select
 # net pdnt.joint.C.select whb.halui.joint.c.select halui.joint.5.select
 
-# TODO
-net pdnt.max-velocity.value  halui.max-velocity.value whb.halui.max-velocity.value
-
 # Connect jog signals for step and continuous mode.
-net pdnt.jog.selected.increment       whb.halui.jog.selected.increment       halui.jog.selected.increment
-net pdnt.jog.selected.increment-plus  whb.halui.jog.selected.increment-plus  halui.jog.selected.increment-plus
-net pdnt.jog.selected.increment-minus whb.halui.jog.selected.increment-minus halui.jog.selected.increment-minus
-net pdnt.jog.selected.plus            whb.halui.jog.selected.plus            halui.jog.selected.plus
-net pdnt.jog.selected.minus           whb.halui.jog.selected.minus           halui.jog.selected.minus
-net pdnt.jog-speed                    whb.halui.jog-speed                    halui.jog-speed
+net  pdnt.stepgen.00.maxvel         hpg.stepgen.00.maxvel         whb.stepgen.00.maxvel
+net  pdnt.stepgen.01.maxvel         hpg.stepgen.01.maxvel         whb.stepgen.01.maxvel
+net  pdnt.stepgen.02.maxvel         hpg.stepgen.02.maxvel         whb.stepgen.02.maxvel
+#net pdnt.stepgen.03.maxvel         hpg.stepgen.03.maxvel         whb.stepgen.03.maxvel
+#net pdnt.stepgen.04.maxvel         hpg.stepgen.04.maxvel         whb.stepgen.04.maxvel
+#net pdnt.stepgen.05.maxvel         hpg.stepgen.05.maxvel         whb.stepgen.05.maxvel
+net  pdnt.stepgen.00.position-scale hpg.stepgen.00.position-scale whb.stepgen.00.position-scale
+net  pdnt.stepgen.01.position-scale hpg.stepgen.01.position-scale whb.stepgen.01.position-scale
+net  pdnt.stepgen.02.position-scale hpg.stepgen.02.position-scale whb.stepgen.02.position-scale
+#net pdnt.stepgen.03.position-scale hpg.stepgen.03.position-scale whb.stepgen.03.position-scale
+#net pdnt.stepgen.04.position-scale hpg.stepgen.04.position-scale whb.stepgen.04.position-scale
+#net pdnt.stepgen.05.position-scale hpg.stepgen.05.position-scale whb.stepgen.05.position-scale
+net  pdnt.axis.0.jog-counts         whb.axis.0.jog-counts         axis.0.jog-counts
+net  pdnt.axis.1.jog-counts         whb.axis.1.jog-counts         axis.1.jog-counts
+net  pdnt.axis.2.jog-counts         whb.axis.2.jog-counts         axis.2.jog-counts
+#net pdnt.axis.3.jog-counts         whb.axis.3.jog-counts         axis.3.jog-counts
+#net pdnt.axis.4.jog-counts         whb.axis.4.jog-counts         axis.4.jog-counts
+#net pdnt.axis.5.jog-counts         whb.axis.5.jog-counts         axis.5.jog-counts
+net  pdnt.axis.0.jog-enable         whb.axis.0.jog-enable         axis.0.jog-enable
+net  pdnt.axis.1.jog-enable         whb.axis.1.jog-enable         axis.1.jog-enable
+net  pdnt.axis.2.jog-enable         whb.axis.2.jog-enable         axis.2.jog-enable
+#net pdnt.axis.3.jog-enable         whb.axis.3.jog-enable         axis.3.jog-enable
+#net pdnt.axis.4.jog-enable         whb.axis.4.jog-enable         axis.4.jog-enable
+#net pdnt.axis.5.jog-enable         whb.axis.5.jog-enable         axis.5.jog-enable
+net  pdnt.axis.0.jog-scale          whb.axis.0.jog-scale          axis.0.jog-scale
+net  pdnt.axis.1.jog-scale          whb.axis.1.jog-scale          axis.1.jog-scale
+net  pdnt.axis.2.jog-scale          whb.axis.2.jog-scale          axis.2.jog-scale
+#net pdnt.axis.3.jog-scale          whb.axis.3.jog-scale          axis.3.jog-scale
+#net pdnt.axis.4.jog-scale          whb.axis.4.jog-scale          axis.4.jog-scale
+#net pdnt.axis.5.jog-scale          whb.axis.5.jog-scale          axis.5.jog-scale
+net  pdnt.axis.0.jog-vel-mode       whb.axis.0.jog-vel-mode       axis.0.jog-vel-mode
+net  pdnt.axis.1.jog-vel-mode       whb.axis.1.jog-vel-mode       axis.1.jog-vel-mode
+net  pdnt.axis.2.jog-vel-mode       whb.axis.2.jog-vel-mode       axis.2.jog-vel-mode
+#net pdnt.axis.3.jog-vel-mode       whb.axis.3.jog-vel-mode       axis.3.jog-vel-mode
+#net pdnt.axis.4.jog-vel-mode       whb.axis.4.jog-vel-mode       axis.4.jog-vel-mode
+#net pdnt.axis.5.jog-vel-mode       whb.axis.5.jog-vel-mode       axis.5.jog-vel-mode
 
 # Connect macro buttons to mdi commands.
 #net pdnt.macro.11 whb.button.macro-11 halui.mdi-command-11
