@@ -54,7 +54,7 @@ addf  bb_gpio.write                        servo-thread
 # Encoders
 # ######################################################################
 
-#loadrt encoder names=encoder.spindle,encoder.jog
+#loadrt encoder names=encoder.spindle
 #addf encoder.capture-position servo-thread
 #addf encoder.update-counters  servo-thread
 
@@ -297,84 +297,84 @@ net  Zalarm bb_gpio.p8.in-18        => axis.2.amp-fault-in
 #addf pwmgen.update         servo-thread
 #addf pwmgen.make-pulses    servo-thread
 # Create spindle related signals
-net spindle.is-on            halui.spindle.is-on         bb_gpio.p8.out-13
-net spindle.start            halui.spindle.start
-net spindle.stop             halui.spindle.stop
-# invert forward/reverse output, since our hardware reqires it that way
-net spindle.runs-forward     halui.spindle.runs-backward bb_gpio.p8.out-19
-net spindle.forward          halui.spindle.forward
-net spindle.increase         halui.spindle.increase
-net spindle.decrease         halui.spindle.decrease
-net spindle.spindle-override.value    halui.spindle-override.value
-net spindle.spindle-override.increase halui.spindle-override.increase
-net spindle.spindle-override.decrease halui.spindle-override.decrease
-net spindle.rpm-out                                      bb_gpio.p9.out-14
-net spindle.rpm-in           bb_gpio.p9.in-12
+net  spindle.is-on            motion.spindle-on         bb_gpio.p8.out-13
+net  spindle.start            halui.spindle.start         
+net  spindle.stop             halui.spindle.stop
+
+net  spindle.runs-forward     motion.spindle-forward     
+net  spindle.runs-reverse     motion.spindle-reverse bb_gpio.p8.out-19
+net  spindle.speed-out        motion.spindle-speed-out 
+
+net  spindle.increase         halui.spindle.increase
+net  spindle.decrease         halui.spindle.decrease
+net  spindle.spindle-override.value                       halui.spindle-override.value
+net  spindle.spindle-override.increase                    halui.spindle-override.increase
+net  spindle.spindle-override.decrease                    halui.spindle-override.decrease
+net  spindle.rpm-out                                      bb_gpio.p9.out-14
+net  spindle.rpm-in           bb_gpio.p9.in-12
 
 
 ## spindle top speed in RPM
 #setp pwmgen.0.scale                         10000
-# spindle direction 
-net spindle.forward motion.spindle-forward
 
 
-# ######################################################################
-#   closed spindle control loop
-# ######################################################################
-###http://wiki.linuxcnc.org/cgi-bin/wiki.pl?Closed_Loop_Spindle_Speed_Control
-### Initialize the encoder (spindle)
+## ######################################################################
+##   closed spindle control loop
+## ######################################################################
+##http://wiki.linuxcnc.org/cgi-bin/wiki.pl?Closed_Loop_Spindle_Speed_Control
+## Initialize the encoder (spindle)
 ##loadrt encoder num_chan=1
-##addf encoder.update-counters servo-thread
-##addf encoder.capture-position servo-thread
-##setp encoder.0.position-scale 1
-##setp encoder.0.counter-mode 1
-##
-### Initialize the PID 
-##loadrt pid count=1
-##addf pid.0.do-pid-calcs servo-thread
-##setp pid.0.Pgain 0
-##setp pid.0.Igain 1
-##setp pid.0.Dgain 1
-##setp pid.0.maxoutput 4000
-##
-### Initialize the pwmgen
+#addf  encoder.update-counters  servo-thread
+#addf  encoder.capture-position servo-thread
+#setp  encoder.spindle.position-scale 1
+#setp  encoder.spindle.counter-mode   1
+#
+## Initialize the PID 
+#loadrt pid count=1
+#addf   pid.0.do-pid-calcs servo-thread
+#setp   pid.0.Pgain        0
+#setp   pid.0.Igain        1
+#setp   pid.0.Dgain        1
+#setp   pid.0.maxoutput    4000
+#
+## Initialize the pwmgen
 ##loadrt pwmgen output_type=0
-##addf pwmgen.update servo-thread
-##addf pwmgen.make-pulses servo-thread
-##setp pwmgen.0.pwm-freq 1000.0
-##setp pwmgen.0.scale 4000
-##setp pwmgen.0.dither-pwm true
-##
-### Initialize the scale
-### This is used to scale the encoder pulse to RPM
-### 3 ppr so it is scaled by 60/3=20
-##loadrt scale count=1
-##addf scale.0 servo-thread
-##setp scale.0.gain 20
-##
-### Initialize the sum2
-##loadrt sum2 count=1
-##addf sum2.0 servo-thread
-##
-### Attach the motion.spindle-on to enable the pwmgen and the pid
-##net spindle_enable motion.spindle-on => pwmgen.0.enable => pid.0.enable
-##
-### Attach the encoder to the port pin
-##net SpindleFeedback encoder.0.phase-A => encoder.0.phase-Z
-##
-### Attach the encoder to the motion and the scale
-##net spindle_rev_count     encoder.0.position => motion.spindle-revs
-##net spindle_index_enable  encoder.0.index-enable <=> motion.spindle-index-enable
-##net encoder_raw_velocity  encoder.0.velocity => scale.0.in
-##
-### Attach the pid to the scale, motion, and sum
-##net pid_feedback          pid.0.feedback <= motion.spindle-speed-in  <= scale.0.out
-##net pid_command           pid.0.command  <= motion.spindle-speed-out => sum2.0.in0
-##net pid_output            pid.0.output   => sum2.0.in1
-##
-### Attach the pwmgen to the sum and the parallel port
-##net pwmgen_value          pwmgen.0.value <= sum2.0.out
-##net spindle.rpm-out       pwmgen.0.pwm
+##addf   pwmgen.update       servo-thread
+##addf   pwmgen.make-pulses  servo-thread
+#setp   pwmgen.0.pwm-freq   1000.0
+#setp   pwmgen.0.scale      4000
+#setp   pwmgen.0.dither-pwm true
+#
+## Initialize the scale
+## This is used to scale the encoder pulse to RPM
+## 3 ppr so it is scaled by 60/3=20
+#loadrt scale count=1
+#addf   scale.0      servo-thread
+#setp   scale.0.gain 20
+#
+## Initialize the sum2
+#loadrt sum2 count=1
+#addf   sum2.0 servo-thread
+#
+## Attach the motion.spindle-on to enable the pwmgen and the pid
+#net spindle_enable motion.spindle-on => pwmgen.0.enable => pid.0.enable
+#
+## Attach the encoder to the port pin
+#net SpindleFeedback encoder.spindle.phase-A => encoder.spindle.phase-Z
+#
+## Attach the encoder to the motion and the scale
+#net  spindle_rev_count     encoder.spindle.position => motion.spindle-revs
+#net  spindle_index_enable  encoder.spindle.index-enable <=> motion.spindle-index-enable
+#net  encoder_raw_velocity  encoder.spindle.velocity => scale.0.in
+#
+## Attach the pid to the scale, motion, and sum
+#net  pid_feedback          pid.0.feedback <= motion.spindle-speed-in  <= scale.0.out
+#net  pid_command           pid.0.command  <= motion.spindle-speed-out => sum2.0.in0
+#net  pid_output            pid.0.output   => sum2.0.in1
+#
+## Attach the pwmgen to the sum and the parallel port
+#net  pwmgen_value          pwmgen.0.value <= sum2.0.out
+#net  spindle.rpm-out       pwmgen.0.pwm
 
 
 # ######################################################################
@@ -382,28 +382,28 @@ net spindle.forward motion.spindle-forward
 # ######################################################################
 
 # Connect emergency stop signals
-net  pdnt.machine.is-on      halui.machine.is-on      whb.halui.machine.is-on
-net  pdnt.machine.on         whb.halui.machine.on     halui.machine.on
-net  pdnt.machine.off        whb.halui.machine.off    halui.machine.off
+net  pdnt.machine.is-on      halui.machine.is-on          whb.halui.machine.is-on
+net  pdnt.machine.on         whb.halui.machine.on         halui.machine.on
+net  pdnt.machine.off        whb.halui.machine.off        halui.machine.off
 
 # Connect program related signals
-net pdnt.program.is-idle    whb.halui.program.is-idle    halui.program.is-idle
-net pdnt.program.is-paused  whb.halui.program.is-paused  halui.program.is-paused
-net pdnt.program.is-running whb.halui.program.is-running halui.program.is-running
-net pdnt.program.resume     whb.halui.program.resume     halui.program.resume
-net pdnt.program.pause      whb.halui.program.pause      halui.program.pause
-net pdnt.program.run        whb.halui.program.run        halui.program.run
-net pdnt.program.stop       whb.halui.program.stop       halui.program.stop
+net  pdnt.program.is-idle    whb.halui.program.is-idle    halui.program.is-idle
+net  pdnt.program.is-paused  whb.halui.program.is-paused  halui.program.is-paused
+net  pdnt.program.is-running whb.halui.program.is-running halui.program.is-running
+net  pdnt.program.resume     whb.halui.program.resume     halui.program.resume
+net  pdnt.program.pause      whb.halui.program.pause      halui.program.pause
+net  pdnt.program.run        whb.halui.program.run        halui.program.run
+net  pdnt.program.stop       whb.halui.program.stop       halui.program.stop
 
 # Connect "selected axis" signals    
-net   pdnt.joint.X.select whb.halui.joint.x.select halui.joint.0.select
-net   pdnt.joint.Y.select whb.halui.joint.y.select halui.joint.1.select
-net   pdnt.joint.Z.select whb.halui.joint.z.select halui.joint.2.select
-# net pdnt.joint.A.select whb.halui.joint.a.select halui.joint.3.select
-# net pdnt.joint.B.select whb.halui.joint.b.select halui.joint.4.select
-# net pdnt.joint.C.select whb.halui.joint.c.select halui.joint.5.select
+net  pdnt.joint.X.select     whb.halui.joint.x.select     halui.joint.0.select
+net  pdnt.joint.Y.select     whb.halui.joint.y.select     halui.joint.1.select
+net  pdnt.joint.Z.select     whb.halui.joint.z.select     halui.joint.2.select
+#net pdnt.joint.A.select     whb.halui.joint.a.select     halui.joint.3.select
+#net pdnt.joint.B.select     whb.halui.joint.b.select     halui.joint.4.select
+#net pdnt.joint.C.select     whb.halui.joint.c.select     halui.joint.5.select
 
-# Connect jog signals for step and continuous mode.
+# Connect jog signals for step and continuous mode
 net  pdnt.stepgen.00.maxvel         hpg.stepgen.00.maxvel         whb.stepgen.00.maxvel
 net  pdnt.stepgen.01.maxvel         hpg.stepgen.01.maxvel         whb.stepgen.01.maxvel
 net  pdnt.stepgen.02.maxvel         hpg.stepgen.02.maxvel         whb.stepgen.02.maxvel
@@ -441,79 +441,79 @@ net  pdnt.axis.2.jog-vel-mode       whb.axis.2.jog-vel-mode       axis.2.jog-vel
 #net pdnt.axis.4.jog-vel-mode       whb.axis.4.jog-vel-mode       axis.4.jog-vel-mode
 #net pdnt.axis.5.jog-vel-mode       whb.axis.5.jog-vel-mode       axis.5.jog-vel-mode
 
-# Connect macro buttons to mdi commands.
-#net pdnt.macro.11 whb.button.macro-11 halui.mdi-command-11
-#net pdnt.macro.12 whb.button.macro-12 halui.mdi-command-12
-#net pdnt.macro.13 whb.button.macro-13 halui.mdi-command-13
-#net pdnt.macro.1  whb.button.macro-1  halui.mdi-command-01
-#net pdnt.macro.2  whb.button.macro-2  halui.mdi-command-02
-#net pdnt.macro.3  whb.button.macro-3
-#net pdnt.macro.4  whb.button.macro-4
-#net pdnt.macro.5  whb.button.macro-5  halui.mdi-command-05
-#net pdnt.macro.6  whb.button.macro-6  halui.mdi-command-06
-#net pdnt.macro.7  whb.button.macro-7  halui.mdi-command-07
-#net pdnt.macro.8  whb.button.macro-8  halui.mdi-command-08
-#net pdnt.macro.9  whb.button.macro-9  halui.mdi-command-09
-net  pdnt.home-all whb.button.macro-10 halui.home-all
-#net pdnt.macro.14 whb.button.macro-14 halui.mdi-command-14
-#net pdnt.macro.15 whb.button.macro-15 halui.mdi-command-15
-#net pdnt.macro.16 whb.button.macro-16 halui.mdi-command-16
+# Connect macro buttons to mdi commands
+#net pdnt.macro.11                  whb.button.macro-11           halui.mdi-command-11
+#net pdnt.macro.12                  whb.button.macro-12           halui.mdi-command-12
+#net pdnt.macro.13                  whb.button.macro-13           halui.mdi-command-13
+#net pdnt.macro.1                   whb.button.macro-1            halui.mdi-command-01
+#net pdnt.macro.2                   whb.button.macro-2            halui.mdi-command-02
+#net pdnt.macro.3                   whb.button.macro-3
+#net pdnt.macro.4                   whb.button.macro-4
+#net pdnt.macro.5                   whb.button.macro-5            halui.mdi-command-05
+#net pdnt.macro.6                   whb.button.macro-6            halui.mdi-command-06
+#net pdnt.macro.7                   whb.button.macro-7            halui.mdi-command-07
+#net pdnt.macro.8                   whb.button.macro-8            halui.mdi-command-08
+#net pdnt.macro.9                   whb.button.macro-9            halui.mdi-command-09
+net  pdnt.home-all                  whb.button.macro-10           halui.home-all
+#net pdnt.macro.14                  whb.button.macro-14           halui.mdi-command-14
+#net pdnt.macro.15                  whb.button.macro-15           halui.mdi-command-15
+#net pdnt.macro.16                  whb.button.macro-16           halui.mdi-command-16
 
 # Connect reset, stop, start/pause/resume buttons to halui
 # toggles whb.halui.estop.{activate, reset} which are
 # already connected to halui.estop.{activate, reset} via whb.halui.estop.{activate, reset}
-net pdnt.button.reset           whb.button.reset
+net  pdnt.button.reset              whb.button.reset
 # already linked to halui.program.stop via whb.program.stop
-net pdnt.button.stop            whb.button.stop
+net  pdnt.button.stop               whb.button.stop
 # toggles whb.halui.program{run, pause, resume} which are 
 # already connected to halui.program.{run, pause, resume} via whb.halui.program.{run, pause, resume}
-net pdnt.button.start-pause     whb.button.start-pause     
+net  pdnt.button.start-pause        whb.button.start-pause     
 
 # Connect special positions signals
-net pdnt.button.m-home          whb.button.m-home          halui.mdi-command-01
-net pdnt.button.safe-z          whb.button.safe-z          halui.mdi-command-00
-net pdnt.button.w-home          whb.button.w-home          halui.mdi-command-05
-net pdnt.button.s-on-off        whb.button.s-on-off
+net  pdnt.button.m-home             whb.button.m-home            halui.mdi-command-01
+net  pdnt.button.safe-z             whb.button.safe-z            halui.mdi-command-00
+net  pdnt.button.w-home             whb.button.w-home            halui.mdi-command-05
+net  pdnt.button.s-on-off           whb.button.s-on-off
 
 # unused, just exposes pendant interna
-net pdnt.button.fn              whb.button.fn
+net pdnt.button.fn                  whb.button.fn
 
 #halui.TODO, eventually mdi-command
-net pdnt.button.probe-z         whb.button.probe-z         halui.mdi-command-02
+net  pdnt.button.probe-z            whb.button.probe-z           halui.mdi-command-02
 
 # unused, just exposes pendant interna
-net pdnt.button.mode-continuous whb.button.mode-continuous
+net  pdnt.button.mode-continuous    whb.button.mode-continuous
 
 # unused, just exposes pendant interna
-net pdnt.button.mode-step       whb.button.mode-step
+net  pdnt.button.mode-step          whb.button.mode-step
 
 # Connect spindle related signals
-net spindle.is-on                     whb.halui.spindle.is-on
-net spindle.start                     whb.halui.spindle.start
-net spindle.stop                      whb.halui.spindle.stop
-net pdnt.button.spindle-plus          whb.button.spindle-plus
-net pdnt.button.spindle-minus         whb.button.spindle-minus
-net spindle.increase                  whb.halui.spindle.increase
-net spindle.decrease                  whb.halui.spindle.decrease
+net  spindle.is-on                     whb.halui.spindle.is-on
+net  spindle.start                     whb.halui.spindle.start
+net  spindle.stop                      whb.halui.spindle.stop
+net  pdnt.button.spindle-plus          whb.button.spindle-plus
+net  pdnt.button.spindle-minus         whb.button.spindle-minus
+net  spindle.increase                  whb.halui.spindle.increase
+net  spindle.decrease                  whb.halui.spindle.decrease
 # min/max override depends on [DISPLAY]MIN_SPINDLE_OVERRIDE and [DISPLAY]MAX_SPINDLE_OVERRIDE
-net spindle.spindle-override.value    whb.halui.spindle-override.value
-net spindle.spindle-override.increase whb.halui.spindle-override.increase
-net spindle.spindle-override.decrease whb.halui.spindle-override.decrease
+net  spindle.spindle-override.value    whb.halui.spindle-override.value
+net  spindle.spindle-override.increase whb.halui.spindle-override.increase
+net  spindle.spindle-override.decrease whb.halui.spindle-override.decrease
 
 # Connect machine mode related signals
-net pdnt.halui.mode.auto      whb.halui.mode.auto   halui.mode.auto
-net pdnt.halui.mode.joint     whb.halui.mode.joint  halui.mode.joint
-net pdnt.halui.mode.manual    whb.halui.mode.manual halui.mode.manual
-net pdnt.halui.mode.mdi       whb.halui.mode.mdi    halui.mode.mdi
-net pdnt.halui.mode.is-auto   halui.mode.is-auto    whb.halui.mode.is-auto
-net pdnt.halui.mode.is-joint  halui.mode.is-joint   whb.halui.mode.is-joint
-net pdnt.halui.mode.is-manual halui.mode.is-manual  whb.halui.mode.is-manual
-net pdnt.halui.mode.is-mdi    halui.mode.is-mdi     whb.halui.mode.is-mdi
+net  pdnt.halui.mode.auto           whb.halui.mode.auto           halui.mode.auto
+net  pdnt.halui.mode.joint          whb.halui.mode.joint          halui.mode.joint
+net  pdnt.halui.mode.manual         whb.halui.mode.manual         halui.mode.manual
+net  pdnt.halui.mode.mdi            whb.halui.mode.mdi            halui.mode.mdi
+net  pdnt.halui.mode.is-auto        halui.mode.is-auto            whb.halui.mode.is-auto
+net  pdnt.halui.mode.is-joint       halui.mode.is-joint           whb.halui.mode.is-joint
+net  pdnt.halui.mode.is-manual      halui.mode.is-manual          whb.halui.mode.is-manual
+net  pdnt.halui.mode.is-mdi         halui.mode.is-mdi             whb.halui.mode.is-mdi
 
 # Connect feed rate related signals
 net pdnt.halui.feed-override.value    halui.feed-override.value        whb.halui.feed-override.value
 # min/max override depends on [DISPLAY]MIN_FEED_OVERRIDE and [DISPLAY]MAX_FEED_OVERRIDE
-net pdnt.halui.feed-override.increase whb.halui.feed-override.increase halui.feed-override.increase
-net pdnt.halui.feed-override.decrease whb.halui.feed-override.decrease halui.feed-override.decrease
-net pdnt.button.feed-plus             whb.button.feed-plus
-net pdnt.button.feed-minus            whb.button.feed-minus
+net  pdnt.halui.feed-override.increase whb.halui.feed-override.increase halui.feed-override.increase
+net  pdnt.halui.feed-override.decrease whb.halui.feed-override.decrease halui.feed-override.decrease
+net  pdnt.button.feed-plus             whb.button.feed-plus
+net  pdnt.button.feed-minus            whb.button.feed-minus
