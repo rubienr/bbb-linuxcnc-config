@@ -1,1 +1,1 @@
-/home/machinekit/git/machinekit/configs/sim/axis/xhc-hb04/xhc-whb04b-6.tcl
+/home/machinekit/git/machinekit/configs/sim/axis/xhc-whb04b-6/xhc-whb04b-6.tcl

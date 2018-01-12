@@ -85,10 +85,10 @@ while read PIN DIR JUNK ; do
         esac
 
 done <<- EOF
-	30	in	# p9.11		gpio0.30	Home_X
-	31	in	# p9.13		gpio0.31	Home_Y
-	48	in	# p9.15		gpio1.16	Home_Z
-	27	in	# P8.17		gpio0.27	Home_A
+	30	in	# p9.11		gpio0.30
+	31	in	# p9.13		gpio0.31
+	48	in	# p9.15		gpio1.16
+	27	in	# P8.17		gpio0.27
 	49	in	# P9.23		gpio1.17
 	117	in	# P9.25		gpio3.21
 	115	in	# P9.27		gpio3.19
@@ -103,19 +103,19 @@ done <<- EOF
 	2	in	# P9.22		gpio0.2
 	3	in	# P9.21		gpio0.3
 
-	69	out	# P8.9		gpio2.5		X_Step
-	66	out	# P8.7		gpio2.2		X_Dir
-	67	out	# P8.8		gpio2.3		Y_Step
-	68	out	# P8.10		gpio2.4		Y_Dir
-	44	out	# P8.12		gpio1.12	Z_Step
-	45	out	# P8.11		gpio1.13	Z_Dir
-	26	out	# P8.14		gpio0.26	A_Step
-	46	out	# P8.16		gpio1.14	A_Dir
+	69	out	# P8.9		gpio2.5
+	66	out	# P8.7		gpio2.2
+	67	out	# P8.8		gpio2.3
+	68	out	# P8.10		gpio2.4
+	44	out	# P8.12		gpio1.12
+	45	out	# P8.11		gpio1.13
+	26	out	# P8.14		gpio0.26
+	46	out	# P8.16		gpio1.14
 
-	23	out	# P8.13		gpio0.23	PWM1B
-	22	out	# P8.19		gpio0.22	PWM1A
-	50	out	# P9.14		gpio1.18	PWM2A
-	51	out	# P9.16		gpio1.19	PWM2B
+	23	out	# P8.13		gpio0.23
+	22	out	# P8.19		gpio0.22
+	50	out	# P9.14		gpio1.18
+	51	out	# P9.16		gpio1.19
 	5	out	# p9.17		gpio0.5
 	4	out	# p9.18		gpio0.4
 EOF
