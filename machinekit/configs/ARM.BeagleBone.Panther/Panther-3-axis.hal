@@ -101,7 +101,7 @@ setp hpg.stepgen.00.steppin          0x65
 # P8.7 
 setp hpg.stepgen.00.dirpin           0x62
 
-setp hpg.stepgen.00.stepinvert 1
+#setp hpg.stepgen.00.stepinvert 1
 
 # ######################################################################
 # Y [1] Axis
@@ -141,7 +141,7 @@ setp hpg.stepgen.01.steppin          0x63
 # P8.10
 setp hpg.stepgen.01.dirpin           0x64
 
-setp hpg.stepgen.01.stepinvert 1
+#setp hpg.stepgen.01.stepinvert 1
 
 # ######################################################################
 # Z [2] Axis
@@ -181,7 +181,7 @@ setp hpg.stepgen.02.steppin          0x4C
 # P8.11
 setp hpg.stepgen.02.dirpin           0x4D
 
-setp hpg.stepgen.02.stepinvert 1
+#setp hpg.stepgen.02.stepinvert 1
 
 # ######################################################################
 # A [3] Axis
@@ -450,9 +450,9 @@ net  scale.axis.2.jog-scale              scale.axis.2.out              axis.2.jo
 net  pdnt.axis.0.jog-counts              whb.axis.0.jog-counts         ilowpass.jog.0.in
 net  pdnt.axis.1.jog-counts              whb.axis.1.jog-counts         ilowpass.jog.1.in
 net  pdnt.axis.2.jog-counts              whb.axis.2.jog-counts         ilowpass.jog.2.in
-net  pndnt.ilowpass.jog.0.jog-counts     ilowpass.jog.0.out            axis.0.jog-counts
-net  pndnt.ilowpass.jog.1.jog-counts     ilowpass.jog.1.out            axis.1.jog-counts
-net  pndnt.ilowpass.jog.2.jog-counts     ilowpass.jog.2.out            axis.2.jog-counts
+net  pdnt.ilowpass.jog.0.jog-counts     ilowpass.jog.0.out            axis.0.jog-counts
+net  pdnt.ilowpass.jog.1.jog-counts     ilowpass.jog.1.out            axis.1.jog-counts
+net  pdnt.ilowpass.jog.2.jog-counts     ilowpass.jog.2.out            axis.2.jog-counts
 
 #net  pdnt.axis.0.jog-counts              whb.axis.0.jog-counts         axis.0.jog-counts
 #net  pdnt.axis.1.jog-counts              whb.axis.1.jog-counts         axis.1.jog-counts
@@ -558,3 +558,17 @@ net  pdnt.halui.feed-override.increase   whb.halui.feed-override.increase halui.
 net  pdnt.halui.feed-override.decrease   whb.halui.feed-override.decrease halui.feed-override.decrease
 net  pdnt.button.feed-plus               whb.button.feed-plus
 net  pdnt.button.feed-minus              whb.button.feed-minus
+
+# Connect axis position related signals
+net  pdnt.halui.axis.0.pos-feedback      halui.axis.0.pos-feedback        whb.halui.axis.0.pos-feedback
+net  pdnt.halui.axis.1.pos-feedback      halui.axis.1.pos-feedback        whb.halui.axis.1.pos-feedback
+net  pdnt.halui.axis.2.pos-feedback      halui.axis.2.pos-feedback        whb.halui.axis.2.pos-feedback
+net  pdnt.halui.axis.3.pos-feedback      halui.axis.3.pos-feedback        whb.halui.axis.3.pos-feedback
+net  pdnt.halui.axis.4.pos-feedback      halui.axis.4.pos-feedback        whb.halui.axis.4.pos-feedback
+net  pdnt.halui.axis.5.pos-feedback      halui.axis.5.pos-feedback        whb.halui.axis.5.pos-feedback
+net  pdnt.halui.axis.0.pos-relative      halui.axis.0.pos-relative        whb.halui.axis.0.pos-relative
+net  pdnt.halui.axis.1.pos-relative      halui.axis.1.pos-relative        whb.halui.axis.1.pos-relative
+net  pdnt.halui.axis.2.pos-relative      halui.axis.2.pos-relative        whb.halui.axis.2.pos-relative
+net  pdnt.halui.axis.3.pos-relative      halui.axis.3.pos-relative        whb.halui.axis.3.pos-relative
+net  pdnt.halui.axis.4.pos-relative      halui.axis.4.pos-relative        whb.halui.axis.4.pos-relative
+net  pdnt.halui.axis.5.pos-relative      halui.axis.5.pos-relative        whb.halui.axis.5.pos-relative
