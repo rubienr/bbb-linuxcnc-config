@@ -183,9 +183,11 @@ net  pdnt.halui.mode.is-manual           halui.mode.is-manual               whb.
 net  pdnt.halui.mode.is-mdi              halui.mode.is-mdi                  whb.halui.mode.is-mdi
 
 # Connect feed rate related signals
-net  pdnt.halui.feed-override.scale      whb.halui.feed-override.scale      halui.feed-override.scale
-net  pdnt.halui.feed-override.direct-val whb.halui.feed-override.direct-val halui.feed-override.direct-value  
-net  pdnt.halui.feed-override.counts     whb.halui.feed-override.counts     halui.feed-override.counts
+net  pdnt.halui.feed-override.scale        whb.halui.feed-override.scale        halui.feed-override.scale
+net  pdnt.halui.feed-override.direct-val   whb.halui.feed-override.direct-val   halui.feed-override.direct-value
+net  pdnt.halui.feed-override.counts       whb.halui.feed-override.counts       halui.feed-override.counts
+#net  pdnt.halui.feed-override.count-enable whb.halui.feed-override.count-enable halui.feed-override.count-enable
+#net  pdnt.halui.feed-override.value        halui.feed-override.value            whb.halui.feed-override.value
 
 # min/max override depends on [DISPLAY]MIN_FEED_OVERRIDE and [DISPLAY]MAX_FEED_OVERRIDE
 net  pdnt.halui.feed-override.increase   whb.halui.feed-override.increase   halui.feed-override.increase
@@ -193,6 +195,7 @@ net  pdnt.halui.feed-override.decrease   whb.halui.feed-override.decrease   halu
 net  pdnt.button.feed-plus               whb.button.feed-plus
 net  pdnt.button.feed-minus              whb.button.feed-minus
 
+# For printing the speed F:xxxx on display, the motion.current-vel velocity is used.
 net  pdnt.motion.current-vel             motion.current-vel                 whb.motion.current-vel
 
 # Connect axis position related signals
