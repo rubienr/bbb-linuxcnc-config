@@ -160,8 +160,9 @@ net  pdnt.button.mode-step               whb.button.mode-step
 
 # Connect spindle related signals
 net  spindle.is-on                       whb.halui.spindle.is-on
-net  spindle.start                       whb.halui.spindle.start
 net  spindle.stop                        whb.halui.spindle.stop
+net  spindle.forward                     whb.halui.spindle.forward
+net  spindle.reverse                     whb.halui.spindle.reverse
 net  pdnt.button.spindle-plus            whb.button.spindle-plus
 net  pdnt.button.spindle-minus           whb.button.spindle-minus
 net  spindle.increase                    whb.halui.spindle.increase
@@ -186,8 +187,10 @@ net  pdnt.halui.mode.is-mdi              halui.mode.is-mdi                  whb.
 net  pdnt.halui.feed-override.scale        whb.halui.feed-override.scale        halui.feed-override.scale
 net  pdnt.halui.feed-override.direct-val   whb.halui.feed-override.direct-val   halui.feed-override.direct-value
 net  pdnt.halui.feed-override.counts       whb.halui.feed-override.counts       halui.feed-override.counts
-#net  pdnt.halui.feed-override.count-enable whb.halui.feed-override.count-enable halui.feed-override.count-enable
-#net  pdnt.halui.feed-override.value        halui.feed-override.value            whb.halui.feed-override.value
+#net pdnt.halui.feed-override.count-enable whb.halui.feed-override.count-enable halui.feed-override.count-enable
+#net pdnt.halui.feed-override.value        halui.feed-override.value            whb.halui.feed-override.value
+setp                                       whb.halui.feed-override.min-value    [DISPLAY]MIN_FEED_OVERRIDE
+setp                                       whb.halui.feed-override.max-value    [DISPLAY]MAX_FEED_OVERRIDE
 
 # min/max override depends on [DISPLAY]MIN_FEED_OVERRIDE and [DISPLAY]MAX_FEED_OVERRIDE
 net  pdnt.halui.feed-override.increase   whb.halui.feed-override.increase   halui.feed-override.increase

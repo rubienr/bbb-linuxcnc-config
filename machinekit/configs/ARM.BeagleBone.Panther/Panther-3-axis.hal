@@ -309,6 +309,8 @@ net  Zalarm bb_gpio.p8.in-18        => axis.2.amp-fault-in
 net  spindle.is-on            motion.spindle-on         bb_gpio.p8.out-13
 net  spindle.start            halui.spindle.start         
 net  spindle.stop             halui.spindle.stop
+net  spindle.forward          halui.spindle.forward
+net  spindle.reverse          halui.spindle.reverse
 
 net  spindle.runs-forward     motion.spindle-forward     
 net  spindle.runs-reverse     motion.spindle-reverse bb_gpio.p8.out-19
