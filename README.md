@@ -88,6 +88,11 @@ sudo dtc -O dtb -o /lib/firmware/panther-00A0.dtbo -b 0 -@ /home/machinekit/mach
 
 [Compilation HowTo](https://learn.adafruit.com/introduction-to-the-beaglebone-black-device-tree/compiling-an-overlay)
 
+# Create/Install BBB-Machinekit Image
+* install and setup [machinekit-deban-stretch](https://machinekoder.com/machinekit-debian-stretch-beaglebone-black/) image
+* setup [lightdm/xfce](https://xpressubuntu.wordpress.com/2014/02/22/how-to-install-a-minimal-ubuntu-desktop/)
+* setup [autologin](https://unix.stackexchange.com/questions/302400/auto-login-on-xfce-in-jessie)
+
 # Tested with 
 * **Debian GNU/Linux 8** - Machinekit Debian Image 2017-02-12 Linux beaglebone **3.8.13-xenomai-r78** #1 Sat Sep 26 17:07:01 UTC 2015 armv7l GNU/Linux
 
