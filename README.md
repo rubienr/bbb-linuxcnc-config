@@ -84,6 +84,9 @@ The basic steps in a nutshell:
 
 # optional: compile source
 sudo dtc -O dtb -o /lib/firmware/panther-00A0.dtbo -b 0 -@ /home/machinekit/machinekit/configs/ARM.BeagleBone.Panther/panther-00A0.dts
+
+# add the overlay to /boot/uEnv.txt
+uboot_overlay_addr4=/lib/firmware/bone_eqep2b-00A0.dtbo
 ````
 
 [Compilation HowTo](https://learn.adafruit.com/introduction-to-the-beaglebone-black-device-tree/compiling-an-overlay)
