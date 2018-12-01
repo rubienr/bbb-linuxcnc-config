@@ -10,8 +10,8 @@ machinekit@beaglebone:~$ machinekit <repository-clone>/machinekit/configs/ARM.Be
 ```
 
 # Compile Machinekit (optional)
-Since the compiling process requires more memory as provided by the BBB, it cannot be completed using the BBB only.
-In our case we mount the build folder from the BBB via **sshfs** to a **changeroot** on a diffrerent machine.
+Since the compiling process requires more RAM memory as provided by the BBB, it cannot be completed using the BBB only.
+In this case we mount the build folder from the BBB via **sshfs** to a **changeroot** on a diffrerent machine.
 
 This rules fail to compile on bbb:
 
@@ -22,7 +22,7 @@ This rules fail to compile on bbb:
 * `objects/emc/task/taskclass.o`
 * `make and so on and so forth...`
 
-
+Note: An alternative is to swap on MicroSD (if available), which works fine.
 
 The basic steps in a nutshell: 
 
