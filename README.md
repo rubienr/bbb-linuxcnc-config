@@ -10,8 +10,8 @@ machinekit@beaglebone:~$ machinekit <repository-clone>/machinekit/configs/ARM.Be
 ```
 
 # Compile Machinekit (optional)
-Since the compiling process requires more memory as provided by the BBB, it cannot be completed using the BBB only.
-In our case we mount the build folder from the BBB via **sshfs** to a **changeroot** on a diffrerent machine.
+Since the compiling process requires more RAM memory as provided by the BBB, it cannot be completed using the BBB only.
+In this case we mount the build folder from the BBB via **sshfs** to a **changeroot** on a diffrerent machine.
 
 This rules fail to compile on bbb:
 
@@ -22,7 +22,7 @@ This rules fail to compile on bbb:
 * `objects/emc/task/taskclass.o`
 * `make and so on and so forth...`
 
-
+Note: An alternative is to swap on MicroSD (if available), which works fine.
 
 The basic steps in a nutshell: 
 
@@ -84,9 +84,17 @@ The basic steps in a nutshell:
 
 # optional: compile source
 sudo dtc -O dtb -o /lib/firmware/panther-00A0.dtbo -b 0 -@ /home/machinekit/machinekit/configs/ARM.BeagleBone.Panther/panther-00A0.dts
+
+# add the overlay to /boot/uEnv.txt
+uboot_overlay_addr4=/lib/firmware/bone_eqep2b-00A0.dtbo
 ````
 
 [Compilation HowTo](https://learn.adafruit.com/introduction-to-the-beaglebone-black-device-tree/compiling-an-overlay)
+
+# Create/Install BBB-Machinekit Image
+* install and setup [machinekit-deban-stretch](https://machinekoder.com/machinekit-debian-stretch-beaglebone-black/) image
+* setup [lightdm/xfce](https://xpressubuntu.wordpress.com/2014/02/22/how-to-install-a-minimal-ubuntu-desktop/)
+* setup [autologin](https://unix.stackexchange.com/questions/302400/auto-login-on-xfce-in-jessie)
 
 # Tested with 
 * **Debian GNU/Linux 8** - Machinekit Debian Image 2017-02-12 Linux beaglebone **3.8.13-xenomai-r78** #1 Sat Sep 26 17:07:01 UTC 2015 armv7l GNU/Linux
