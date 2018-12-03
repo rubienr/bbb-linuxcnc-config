@@ -1,15 +1,68 @@
-# bbb-linuxcnc-config
-A Linuxcnc configuration using the Panther cape (necitec). Since the configuration relys on a new machinekit version, this notes also leave some hints on how to install a debian image and compile [Machinekit](http://www.machinekit.io/) on the BBB.
+# Introduction
+A Linuxcnc configuration using the Panther cape (Necitec).
+Since this configuration relys on a new(er than Necitec's supported)
+Machinekit/Debian version,
+this notes also leave some hints on how to install the Debian image and
+compile [Machinekit](http://www.machinekit.io/) on the BBB.
 
-* Usage 
-
-Checkout the reposigory and start machinekit with the correct arguments, i.e.:
+Usage: Checkout the reposigory and start machinekit with the correct arguments, i.e.:
 
 ```
 machinekit@beaglebone:~$ machinekit <repository-clone>/machinekit/configs/ARM.BeagleBone.Panther/Panther-3-axis.ini
 ```
 
-# Compile Machinekit (optional)
+# Create Debian Image
+1. For creating a bare debian image [follow this steps](https://machinekoder.com/machinekit-debian-stretch-beaglebone-black/).
+
+1. Flash the eMMC contents back to the micro-SD card Insert a micro-SD into your BBB and run:
+```
+sudo /opt/scripts/tools/eMMC/beaglebone-black-make-microSD-flasher-from-eMMC.sh
+```
+
+1. Use/modify this [uEnv.txt](./machinekit/configs/ARM.BeagleBone.Panther/debian/uEnv.txt) template.
+
+1. install and setup [machinekit-deban-stretch](https://machinekoder.com/machinekit-debian-stretch-beaglebone-black/) image
+
+1. setup [lightdm/xfce](https://xpressubuntu.wordpress.com/2014/02/22/how-to-install-a-minimal-ubuntu-desktop/)
+
+1. setup [autologin](https://unix.stackexchange.com/questions/302400/auto-login-on-xfce-in-jessie)
+
+1. Setup the [Necitec](https://www.necitec.de/index.php/de/) Panther cape:
+The Panther overlay must be copied from the necitec provided image to
+our debian image on the BBB, otherwise **[this](https://github.com/rubienr/bbb-linuxcnc-config/blob/master/machinekit/configs/ARM.BeagleBone.Panther/setup.bridge.sh#L42)**
+will fail.
+Optional use [this files](https://github.com/rubienr/bbb-linuxcnc-config/tree/master/panther/),
+or the [compile and install](https://github.com/rubienr/bbb-linuxcnc-config/tree/master/panther/) script.
+
+Manula way:
+```
+# optionally compile the source
+sudo dtc -O dtb -o /lib/firmware/panther-00A0.dtbo -b 0 -@ /home/machinekit/machinekit/configs/ARM.BeagleBone.Panther/panther-00A0.dts
+
+# copy the compiled file to the debian
+/lib/firmware/panther-00A0.dtbo 
+
+# optionally add the overlay to /boot/uEnv.txt
+uboot_overlay_addr4=/lib/firmware/panther-00A0.dtbo
+```
+
+## References
+[Compilation HowTo](https://learn.adafruit.com/introduction-to-the-beaglebone-black-device-tree/compiling-an-overlay)
+
+
+# Compile Machinekit
+## Using BBB and swap Device
+1. compile on BBB as far as possible ([Machinekit Developer Howto](http://www.machinekit.io/docs/developing/machinekit-developing/#install-development-packages))
+
+    1. install prerequisites
+
+    1. configure 
+
+    1. make
+
+    1. run machinekit
+
+## Using BBB Without swap Device
 Since the compiling process requires more RAM memory as provided by the BBB, it cannot be completed using the BBB only.
 In this case we mount the build folder from the BBB via **sshfs** to a **changeroot** on a diffrerent machine.
 
@@ -72,32 +125,8 @@ The basic steps in a nutshell:
 
 1. Return to your BBB and proceed further as described in the [Machinekit Developer Howto](http://www.machinekit.io/docs/developing/machinekit-developing/#install-development-packages).
 
-# Hints
-## In case of the [Necitec's](https://www.necitec.de/index.php/de/) Panther cape
-* The Panther overlay must be copied from the necitec provided image to our debian image on the BBB, otherwise **[this](https://github.com/rubienr/bbb-linuxcnc-config/blob/master/machinekit/configs/ARM.BeagleBone.Panther/setup.bridge.sh#L37)** will fail (optional use [these files](https://github.com/rubienr/bbb-linuxcnc-config/tree/master/panther)).
-````
-# compiled -> copy to debian image onto BBB
-/lib/firmware/panther-00A0.dtbo 
-
-# source
-/home/machinekit/machinekit/configs/ARM.BeagleBone.Panther/panther-00A0.dts 
-
-# optional: compile source
-sudo dtc -O dtb -o /lib/firmware/panther-00A0.dtbo -b 0 -@ /home/machinekit/machinekit/configs/ARM.BeagleBone.Panther/panther-00A0.dts
-
-# add the overlay to /boot/uEnv.txt
-uboot_overlay_addr4=/lib/firmware/bone_eqep2b-00A0.dtbo
-````
-
-[Compilation HowTo](https://learn.adafruit.com/introduction-to-the-beaglebone-black-device-tree/compiling-an-overlay)
-
-# Create/Install BBB-Machinekit Image
-* install and setup [machinekit-deban-stretch](https://machinekoder.com/machinekit-debian-stretch-beaglebone-black/) image
-* setup [lightdm/xfce](https://xpressubuntu.wordpress.com/2014/02/22/how-to-install-a-minimal-ubuntu-desktop/)
-* setup [autologin](https://unix.stackexchange.com/questions/302400/auto-login-on-xfce-in-jessie)
-
 # Tested with 
-* **Debian GNU/Linux 8** - Machinekit Debian Image 2017-02-12 Linux beaglebone **3.8.13-xenomai-r78** #1 Sat Sep 26 17:07:01 UTC 2015 armv7l GNU/Linux
+* Linux beaglebone 4.4.113-ti-rt-r149 #1 SMP PREEMPT RT Fri Apr 6 22:49:25 UTC 2018 armv7l GNU/Linux
 
-# References
+# Other References
 [start/stop, resume/step halui diagram](https://forum.linuxcnc.org/media/kunena/attachments/16717/Run_StepPause_ResumeLogicDiagram.pdf)
