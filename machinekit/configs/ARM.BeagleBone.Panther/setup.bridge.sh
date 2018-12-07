@@ -39,7 +39,7 @@ function try_load_overlays()
   local slots=/sys/devices/platform/bone_capemgr/slots
 
   # Make sure required device tree overlay(s) are loaded
-  for dtbo in panther cape-bone-iio ; do
+  for dtbo in necitec-panther cape-bone-iio ; do
 
     if grep -q $dtbo $slots ; then
       echo $dtbo overlay found
