@@ -1,20 +1,4 @@
 #!/bin/bash
-# Copyright 2013
-# Charles Steinkuehler <charles@steinkuehler.net>
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 function dtbo_err ()
 {
@@ -34,7 +18,7 @@ function dir_err () {
   exit 1
 }
 
-function try_load_overlays()
+function try_load_overlays_using_capemanager()
 {
   local slots=/sys/devices/platform/bone_capemgr/slots
 
@@ -51,7 +35,7 @@ function try_load_overlays()
   done;
 }
 
-function assert_sys_files_exist()
+function assert_sys_files_exist_using_capemanager_new_layout()
 {
   # see bbb debian migration: https://elinux.org/Beagleboard:BeagleBone_Debian_Image_Migration
 
@@ -73,7 +57,7 @@ function assert_sys_files_exist()
 # modules (there is probably a better way to do this)
 # 
 # Any GPIO pins driven by the PRU need to have their direction set properly
-# here.  The PRU does not do any setup of the GPIO, it just yanks on the
+# here. The PRU does not do any setup of the GPIO, it just yanks on the
 # pins and assumes you have the output enables configured already
 # 
 # Direct PRU inputs and outputs do not need to be configured here, the pin
@@ -81,9 +65,9 @@ function assert_sys_files_exist()
 # the setup needed.
 # 
 # Any GPIO pins driven by the hal_bb_gpio driver do not need to be
-# configured here.  The hal_bb_gpio module handles setting the output
-# enable bits properly.  These pins _can_ however be set here without
-# causing problems.  You may wish to do this for documentation or to make
+# configured here. The hal_bb_gpio module handles setting the output
+# enable bits properly. These pins _can_ however be set here without
+# causing problems. You may wish to do this for documentation or to make
 # sure the pin starts with a known value as soon as possible.
 
 function gonfigure_gpio_pins()
@@ -92,8 +76,8 @@ function gonfigure_gpio_pins()
     case "$pin_number" in
       ""|\#*)
         continue ;;
-      *)
 
+      *)
         local gpio_pin=/sys/class/gpio/gpio$pin_number
         if [ -r $gpio_pin ] ; then
           continue
@@ -147,8 +131,22 @@ EOF
 
 function main()
 {
-  #try_load_overlays
-  #assert_sys_files_exist
+  ###
+  # if capes are loaded at runtime
+  # that way the pinmuxer seems to not set up the pull-up/downs as
+  # requested by the device tree overlay. some gpio work as expected 
+  # (pull-up), some have no pull-up activated.
+  #
+  # try_load_overlays_using_capemanager
+  # assert_sys_files_exist_using_capemanager_and_new_layout
+
+  ###
+  # if capes are loaded at boot time
+  #
+  # TODO: implement the assert
+  #
+  # assert_sys_files_exist_using_capemanager_and_boot_layout
+
   gonfigure_gpio_pins
 }
 main $@
