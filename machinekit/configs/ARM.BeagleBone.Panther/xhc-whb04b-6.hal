@@ -171,7 +171,7 @@ net  spindle.decrease                    whb.halui.spindle.decrease
 net  spindle.spindle-override.value      whb.halui.spindle-override.value
 net  spindle.spindle-override.increase   whb.halui.spindle-override.increase
 net  spindle.spindle-override.decrease   whb.halui.spindle-override.decrease
-net  spindle.velocity.abs-rpm                                               whb.motion.spindle-speed-abs
+net  spindle.velocity.abs-rpm            whb.motion.spindle-speed-abs
 
 # Connect machine mode related signals
 net  pdnt.halui.mode.auto                whb.halui.mode.auto                halui.mode.auto

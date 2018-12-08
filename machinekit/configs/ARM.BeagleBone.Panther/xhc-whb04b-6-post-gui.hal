@@ -5,4 +5,13 @@
 # ######################################################################
 # Signals configuration
 # ######################################################################
-net  pdnt.machine.on                          axisui.notifications-clear
+net pdnt.machine.on                    axisui.notifications-clear
+
+# ######################################################################
+# Huanyang VFD Inverter configuration
+# http://linuxcnc.org/docs/html/man/man1/hy_vfd.1.html
+# ######################################################################
+
+net hyspindle.at-speed                    pyvcp.spindle-at-speed
+net hyspindle.speed                       pyvcp.spindle-speed
+net hyspindle.comm-ok                     pyvcp.comm-ok

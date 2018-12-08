@@ -1,0 +1,8 @@
+# ######################################################################
+# Huanyang VFD Inverter configuration
+# http://linuxcnc.org/docs/html/man/man1/hy_vfd.1.html
+# ######################################################################
+
+net spindle.at-speed                    pyvcp.spindle-at-speed
+net spindle.speed                       pyvcp.spindle-speed
+net spindle.comm-ok                     pyvcp.comm-ok

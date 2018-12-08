@@ -1,0 +1,19 @@
+# ######################################################################
+# Huanyang VFD Inverter configuration
+# http://linuxcnc.org/docs/html/man/man1/hy_vfd.1.html
+# ######################################################################
+
+loadusr -Wn hyvfd hy_vfd --name hyvfd [HY_VFD_CONFIG]COMPONENT_ARGUMENTS
+
+setp hyvfd.enable 1
+
+net hyspindle.run-forward   motion.spindle-forward    =>   hyvfd.spindle-forward
+net hyspindle.run-reverse   motion.spindle-reverse    =>   hyvfd.spindle-reverse
+net hyspindle.on            motion.spindle-on         =>   hyvfd.spindle-on
+net hyspindle.speed-command motion.spindle-speed-out  =>   hyvfd.speed-command
+
+net hyspindle.speed                                        hyvfd.spindle-speed-fb
+net hyspindle.at-speed                                     hyvfd.spindle-at-speed
+net hyspindle.at-speed-tolerance                           hyvfd.spindle-at-speed-tolerance
+net hyspindle.comm-ok                                      hyvfd.hycomm-ok
+net hyspindle.rated-motor-rev                              hyvfd.rated-motor-rev
