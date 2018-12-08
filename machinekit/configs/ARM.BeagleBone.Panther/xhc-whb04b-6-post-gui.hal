@@ -5,4 +5,4 @@
 # ######################################################################
 # Signals configuration
 # ######################################################################
-net  pdnt.machine.on                                                        axisui.notifications-clear
+net  pdnt.machine.on                          axisui.notifications-clear

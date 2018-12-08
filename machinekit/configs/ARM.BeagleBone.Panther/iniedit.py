@@ -26,13 +26,13 @@ class SelectAxisCount:
     def ok(self):
 		selection = self.box.get()
 		if (selection == "1 - axis"):
-			configName = "Panther-1-axis.ini"
+			configName = "panther-1-axis.ini"
 		if (selection == "2 - axis"):
-			configName = "Panther-2-axis.ini"
+			configName = "panther-2-axis.ini"
 		if (selection == "3 - axis"):
-			configName = "Panther-3-axis.ini"
+			configName = "panther-3-axis.ini"
 		if (selection == "4 - axis"):
-			configName = "Panther-4-axis.ini"
+			configName = "panther-4-axis.ini"
 		
 		print "Edit ", configName
 		file = os.getcwd() + "/" + configName

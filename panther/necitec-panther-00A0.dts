@@ -86,7 +86,7 @@
         __overlay__ {
             necitec_panther_pins: pinmux_necitec_panther_pins {
                 pinctrl-single,pins = <
-                    // inputs
+                    // inputs: pull-up, pad mode is gpio
                     0x070 0x37 // PIN 9.11
                     0x074 0x37 // PIN 9.13
                     0x040 0x37 // PIN 9.15
@@ -105,7 +105,7 @@
                     0x150 0x37 // PIN 9.22
                     0x154 0x37 // pIN 9.21
 
-                    // outputs
+                    // outputs: pull-down, pad mode is gpio
                     0x09c 0x07 // PIN 8.9
                     0x090 0x07 // PIN 8.7
                     0x094 0x07 // PIN 8.8

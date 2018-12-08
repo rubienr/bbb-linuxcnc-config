@@ -147,8 +147,8 @@ EOF
 
 function main()
 {
-  try_load_overlays
-  assert_sys_files_exist
+  #try_load_overlays
+  #assert_sys_files_exist
   gonfigure_gpio_pins
 }
 main $@
