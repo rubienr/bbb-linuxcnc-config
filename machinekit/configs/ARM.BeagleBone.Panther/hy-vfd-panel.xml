@@ -4,40 +4,43 @@
         <font>("Helvetica",12)</font>
         <table>
             <tablerow/>
-            <tablespan columns="2" />
-            <tablesticky sticky="nsew" />
-            <label>
-                <text>" "</text>
-                <font>("Helvetica",2)</font>
-            </label>
+                <tablespan columns="2" />
+                <tablesticky sticky="nsew" />
+                <label>
+                    <text>" "</text>
+                    <font>("Helvetica",2)</font>
+                </label>
+                
             <tablerow/>
-            <tablesticky sticky="w" />
-            <label>
-                <text>"Communication:"</text>
-            </label>
-            <tablesticky sticky="e" />
-            <led>
-                <halpin>"comm-ok"</halpin>
-                <size>"10"</size>
-                <on_color>"green"</on_color>
-                <off_color>"red"</off_color>
-            </led>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"Communication:"</text>
+                </label>
+                <tablesticky sticky="e" />
+                <led>
+                    <halpin>"hy-comm-ok"</halpin>
+                    <size>"10"</size>
+                    <on_color>"green"</on_color>
+                    <off_color>"red"</off_color>
+                </led>
+                
             <tablerow/>
-            <tablesticky sticky="w" />
-            <label>
-                <text>"Spindle at speed:"</text>
-            </label>
-            <tablesticky sticky="e" />
-            <led>
-                <halpin>"spindle-at-speed"</halpin>
-                <size>"10"</size>
-                <on_color>"green"</on_color>
-                <off_color>"red"</off_color>
-            </led>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"Spindle at speed:"</text>
+                </label>
+                <tablesticky sticky="e" />
+                <led>
+                    <halpin>"hy-spindle-at-speed"</halpin>
+                    <size>"10"</size>
+                    <on_color>"green"</on_color>
+                    <off_color>"red"</off_color>
+                </led>
+                
             <tablerow/>
-            <label>
-                <text>" "</text>
-            </label>
+                <label>
+                    <text>" "</text>
+                </label>
         </table>
         <table>
             <tablesticky sticky="nsew" />
@@ -51,14 +54,295 @@
             <tablesticky sticky="nsew" />
             <label>
                 <text>" "</text>
-                <font>("Helvetica",2)</font>
             </label>
             <tablerow/>
             <tablesticky sticky="nsew" />
             <bar>
-                <halpin>"spindle-speed"</halpin>
+                <halpin>"hy-spindle-speed"</halpin>
                 <max_>24000</max_>
             </bar>
+        </table>
+        <table>
+            <tablerow/>
+                <tablespan columns="2" />
+                <tablesticky sticky="nsew" />
+                <label>
+                    <text>" "</text>
+                </label>
+
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"Motor max rev [r/m] "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-rated-motor-rev"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"Motor max voltage [V] "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-rated-motor-voltage"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"Motor max current [A] "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-rated-motor-current"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+           
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"SetF "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-setf"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"OutF "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-outf"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+            
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"Rott "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-rott"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"DCV "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-dcv"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"ACV "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-acv"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"CONT "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-cont"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"Tmp "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-tmp"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"cntr "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-cntr"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"cnst "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-cnst"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"cnst-command-rf "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <led>
+                    <halpin>"hy-cnst-command-rf"</halpin>
+                    <size>"10"</size>
+                    <on_color>"green"</on_color>
+                    <off_color>"red"</off_color>
+                </led>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"cnst-run  "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <led>
+                    <halpin>"hy-cnst-run"</halpin>
+                    <size>"10"</size>
+                    <on_color>"green"</on_color>
+                    <off_color>"red"</off_color>
+                </led>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"cnst-running  "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <led>
+                    <halpin>"hy-cnst-running"</halpin>
+                    <size>"10"</size>
+                    <on_color>"green"</on_color>
+                    <off_color>"red"</off_color>
+                </led>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"cnst-running-rf  "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <led>
+                    <halpin>"hy-cnst-running-rf"</halpin>
+                    <size>"10"</size>
+                    <on_color>"green"</on_color>
+                    <off_color>"red"</off_color>
+                </led>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"cnst-jog "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <led>
+                    <halpin>"hy-cnst-jog"</halpin>
+                    <size>"10"</size>
+                    <on_color>"green"</on_color>
+                    <off_color>"red"</off_color>
+                </led>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"cnst-jogging "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <led>
+                    <halpin>"hy-cnst-jogging"</halpin>
+                    <size>"10"</size>
+                    <on_color>"green"</on_color>
+                    <off_color>"red"</off_color>
+                </led>
+
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"hy-cnst-bracking"</text>
+                </label>
+                <tablesticky sticky="e" />
+                <led>
+                    <halpin>"hy-cnst-bracking"</halpin>
+                    <size>"10"</size>
+                    <on_color>"green"</on_color>
+                    <off_color>"red"</off_color>
+                </led>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"cnst-track-start "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <led>
+                    <halpin>"hy-cnst-track-start"</halpin>
+                    <size>"10"</size>
+                    <on_color>"green"</on_color>
+                    <off_color>"red"</off_color>
+                </led>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"frequency-command  "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-frequency-command"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"max-freq "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-max-freq"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"freq-lower-limit "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-freq-lower-limit"</halpin>
+                    <format>"+4.4f"</format>
+                </number>
+                
+            <tablerow/>
+                <label>
+                    <text>" "</text>
+                </label>
         </table>
     </labelframe>
 </pyvcp>
