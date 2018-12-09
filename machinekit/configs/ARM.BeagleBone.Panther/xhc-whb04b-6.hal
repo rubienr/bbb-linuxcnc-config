@@ -165,8 +165,10 @@ net  spindle.forward                     whb.halui.spindle.forward
 net  spindle.reverse                     whb.halui.spindle.reverse
 net  pdnt.button.spindle-plus            whb.button.spindle-plus
 net  pdnt.button.spindle-minus           whb.button.spindle-minus
-net  spindle.increase                    whb.halui.spindle.increase
-net  spindle.decrease                    whb.halui.spindle.decrease
+#net  spindle.increase                    whb.halui.spindle.increase
+#net  spindle.decrease                    whb.halui.spindle.decrease
+net  spindle.increase                    whb.button.macro-3
+net  spindle.decrease                    whb.button.macro-4
 # min/max override depends on [DISPLAY]MIN_SPINDLE_OVERRIDE and [DISPLAY]MAX_SPINDLE_OVERRIDE
 net  spindle.spindle-override.value      whb.halui.spindle-override.value
 net  spindle.spindle-override.increase   whb.halui.spindle-override.increase

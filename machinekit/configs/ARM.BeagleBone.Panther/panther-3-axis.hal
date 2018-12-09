@@ -306,6 +306,7 @@ net  spindle.is-on                      motion.spindle-on
 net  spindle.start                      halui.spindle.start         
 net  spindle.stop                       halui.spindle.stop
 net  spindle.forward                    halui.spindle.forward
+
 net  spindle.reverse                    halui.spindle.reverse
 
 net  spindle.runs-forward               motion.spindle-forward     
@@ -316,3 +317,6 @@ net  spindle.decrease                   halui.spindle.decrease
 net  spindle.spindle-override.value     halui.spindle-override.value
 net  spindle.spindle-override.increase  halui.spindle-override.increase
 net  spindle.spindle-override.decrease  halui.spindle-override.decrease
+
+net  spindle.velocity.abs-rpm           motion.spindle-speed-out-abs
+
