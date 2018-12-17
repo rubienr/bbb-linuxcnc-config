@@ -42,3 +42,6 @@ net hyspindle.cnst-track-start                          hyvfd.CNST-track-start
 net hyspindle.frequency-command                         hyvfd.frequency-command
 net hyspindle.max-freq                                  hyvfd.max-freq
 net hyspindle.freq-lower-limit                          hyvfd.freq-lower-limit
+
+net hyspindle.error-count                               hyvfd.error-count
+net hyspindle.loop-time                                 hyvfd.loop-time

@@ -121,11 +121,12 @@ net  pdnt.axis.2.jog-vel-mode            whb.axis.2.jog-vel-mode            axis
 #net pdnt.macro.3                        whb.button.macro-3
 #net pdnt.macro.4                        whb.button.macro-4
 #net pdnt.macro.5                        whb.button.macro-5                 halui.mdi-command-05
+net  pdnt.home-all                       whb.button.macro-5                 halui.home-all
 #net pdnt.macro.6                        whb.button.macro-6                 halui.mdi-command-06
 #net pdnt.macro.7                        whb.button.macro-7                 halui.mdi-command-07
 #net pdnt.macro.8                        whb.button.macro-8                 halui.mdi-command-08
 #net pdnt.macro.9                        whb.button.macro-9                 halui.mdi-command-09
-net  pdnt.home-all                       whb.button.macro-10                halui.home-all
+#net  pdnt.home-all                       whb.button.macro-10                halui.home-all
 #net pdnt.macro.14                       whb.button.macro-14                halui.mdi-command-14
 #net pdnt.macro.15                       whb.button.macro-15                halui.mdi-command-15
 #net pdnt.macro.16                       whb.button.macro-16                halui.mdi-command-16

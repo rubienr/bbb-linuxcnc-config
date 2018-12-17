@@ -27,6 +27,17 @@
             <tablerow/>
                 <tablesticky sticky="w" />
                 <label>
+                    <text>"Errors Count "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <s32> 
+                    <halpin>"hy-error-count"</halpin>
+                    <format>"9d"</format>
+                </s32>
+                
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
                     <text>"Spindle at speed:"</text>
                 </label>
                 <tablesticky sticky="e" />
@@ -70,92 +81,98 @@
                     <text>" "</text>
                 </label>
 
+           <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"Motor Specs"</text>
+                </label>
+
             <tablerow/>
                 <tablesticky sticky="w" />
                 <label>
-                    <text>"Motor max rev [r/m] "</text>
+                    <text>"Max Rev. [r/m] "</text>
                 </label>
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-rated-motor-rev"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.0f"</format>
                 </number>
                 
             <tablerow/>
                 <tablesticky sticky="w" />
                 <label>
-                    <text>"Motor max voltage [V] "</text>
+                    <text>"Max Voltage [V] "</text>
                 </label>
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-rated-motor-voltage"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.0f"</format>
                 </number>
                 
             <tablerow/>
                 <tablesticky sticky="w" />
                 <label>
-                    <text>"Motor max current [A] "</text>
+                    <text>"Max Current [A] "</text>
                 </label>
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-rated-motor-current"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.1f"</format>
                 </number>
            
             <tablerow/>
                 <tablesticky sticky="w" />
                 <label>
-                    <text>"SetF "</text>
+                    <text>"Set Freq. [Hz] "</text>
                 </label>
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-setf"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.1f"</format>
                 </number>
 
             <tablerow/>
                 <tablesticky sticky="w" />
                 <label>
-                    <text>"OutF "</text>
+                    <text>"Out Freq. [Hz] "</text>
                 </label>
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-outf"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.1f"</format>
                 </number>
             
             <tablerow/>
                 <tablesticky sticky="w" />
                 <label>
-                    <text>"Rott "</text>
+                    <text>"Revolutions [r/m]"</text>
                 </label>
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-rott"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"5d"</format>
                 </number>
 
             <tablerow/>
                 <tablesticky sticky="w" />
                 <label>
-                    <text>"DCV "</text>
+                    <text>"Inverter DC [V] "</text>
                 </label>
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-dcv"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.1f"</format>
                 </number>
 
             <tablerow/>
                 <tablesticky sticky="w" />
                 <label>
-                    <text>"ACV "</text>
+                    <text>"Motor AC [V] "</text>
                 </label>
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-acv"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.1f"</format>
                 </number>
 
             <tablerow/>
@@ -166,7 +183,7 @@
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-cont"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.1f"</format>
                 </number>
                 
             <tablerow/>
@@ -177,30 +194,30 @@
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-tmp"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.1f"</format>
                 </number>
                 
             <tablerow/>
                 <tablesticky sticky="w" />
                 <label>
-                    <text>"cntr "</text>
+                    <text>"Control Req. "</text>
                 </label>
                 <tablesticky sticky="e" />
-                <number> 
+                <s32> 
                     <halpin>"hy-cntr"</halpin>
-                    <format>"+4.4f"</format>
-                </number>
+                    <format>"5d"</format>
+                </s32>
 
             <tablerow/>
                 <tablesticky sticky="w" />
                 <label>
-                    <text>"cnst "</text>
+                    <text>"Control Resp. "</text>
                 </label>
                 <tablesticky sticky="e" />
-                <number> 
+                <s32> 
                     <halpin>"hy-cnst"</halpin>
-                    <format>"+4.4f"</format>
-                </number>
+                    <format>"5d"</format>
+                </s32>
                 
             <tablerow/>
                 <tablesticky sticky="w" />
@@ -314,7 +331,7 @@
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-frequency-command"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.1f"</format>
                 </number>
                 
             <tablerow/>
@@ -325,7 +342,7 @@
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-max-freq"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.1f"</format>
                 </number>
                 
             <tablerow/>
@@ -336,7 +353,20 @@
                 <tablesticky sticky="e" />
                 <number> 
                     <halpin>"hy-freq-lower-limit"</halpin>
-                    <format>"+4.4f"</format>
+                    <format>"4.1f"</format>
+                </number>
+                
+            <tablerow/>
+            
+            <tablerow/>
+                <tablesticky sticky="w" />
+                <label>
+                    <text>"Loop Time "</text>
+                </label>
+                <tablesticky sticky="e" />
+                <number> 
+                    <halpin>"hy-loop-time"</halpin>
+                    <format>"1.3f"</format>
                 </number>
                 
             <tablerow/>
