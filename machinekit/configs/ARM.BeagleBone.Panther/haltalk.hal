@@ -1,6 +1,5 @@
 # ######################################################################
-# WHB04B-6 jog dial configuration
+# Haltalk Server
 # ######################################################################
 
-net pdnt.machine.on                    axisui.notifications-clear
-
+loadusr -W haltalk

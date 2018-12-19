@@ -13,6 +13,7 @@ net hyspindle.rated-motor-current         pyvcp.hy-rated-motor-current
 
 net hyspindle.setf                        pyvcp.hy-setf
 net hyspindle.outf                        pyvcp.hy-outf
+net hyspindle.outa                        pyvcp.hy-outa
 net hyspindle.rott                        pyvcp.hy-rott
 net hyspindle.dcv                         pyvcp.hy-dcv
 net hyspindle.acv                         pyvcp.hy-acv
@@ -28,6 +29,7 @@ net hyspindle.cnst-jog                    pyvcp.hy-cnst-jog
 net hyspindle.cnst-jogging                pyvcp.hy-cnst-jogging
 net hyspindle.cnst-bracking               pyvcp.hy-cnst-bracking
 net hyspindle.cnst-track-start            pyvcp.hy-cnst-track-start
+net hyspindle.speed-command               pyvcp.hy-speed-command
 net hyspindle.frequency-command           pyvcp.hy-frequency-command
 net hyspindle.max-freq                    pyvcp.hy-max-freq
 net hyspindle.freq-lower-limit            pyvcp.hy-freq-lower-limit

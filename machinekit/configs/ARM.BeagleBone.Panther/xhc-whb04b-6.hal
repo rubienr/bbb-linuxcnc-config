@@ -18,10 +18,10 @@ setp   ilowpass.jog.0.gain  0.007
 setp   ilowpass.jog.1.gain  0.007
 setp   ilowpass.jog.2.gain  0.007
 
-#loadrt scale names=scale.axis.0,scale.axis.1,scale.axis.2
-#addf   scale.axis.0         servo-thread
-#addf   scale.axis.1         servo-thread
-#addf   scale.axis.2         servo-thread
+loadrt scale names=scale.axis.0,scale.axis.1,scale.axis.2
+addf   scale.axis.0         servo-thread
+addf   scale.axis.1         servo-thread
+addf   scale.axis.2         servo-thread
 setp   scale.axis.0.gain    0.01 
 setp   scale.axis.1.gain    0.01 
 setp   scale.axis.2.gain    0.01 
@@ -69,8 +69,6 @@ net  pdnt.stepgen.02.position-scale      hpg.stepgen.02.position-scale      whb.
 #net pdnt.stepgen.04.position-scale      hpg.stepgen.04.position-scale      whb.stepgen.04.position-scale
 #net pdnt.stepgen.05.position-scale      hpg.stepgen.05.position-scale      whb.stepgen.05.position-scale
 
-
-
 net  pdnt.axis.0.jog-scale               whb.axis.0.jog-scale               scale.axis.0.in      
 net  pdnt.axis.1.jog-scale               whb.axis.1.jog-scale               scale.axis.1.in      
 net  pdnt.axis.2.jog-scale               whb.axis.2.jog-scale               scale.axis.2.in      
@@ -78,7 +76,6 @@ net  pdnt.axis.2.jog-scale               whb.axis.2.jog-scale               scal
 net  scale.axis.0.jog-scale              scale.axis.0.out                   axis.0.jog-scale
 net  scale.axis.1.jog-scale              scale.axis.1.out                   axis.1.jog-scale
 net  scale.axis.2.jog-scale              scale.axis.2.out                   axis.2.jog-scale
-
 
 net  pdnt.axis.0.jog-counts              whb.axis.0.jog-counts              ilowpass.jog.0.in
 net  pdnt.axis.1.jog-counts              whb.axis.1.jog-counts              ilowpass.jog.1.in

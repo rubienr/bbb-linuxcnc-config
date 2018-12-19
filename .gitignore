@@ -1,5 +1,4 @@
 *.hal.old
 *autosave.halscope
 *.var.bak
-*/pru-stepper.var
 

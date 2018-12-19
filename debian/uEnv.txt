@@ -1,6 +1,8 @@
 #Docs: http://elinux.org/Beagleboard:U-boot_partitioning_layout_2.0
 
-uname_r=4.4.113-ti-rt-r149
+uname_r=4.4.155-ti-rt-r150
+# uname_r=4.9.105-ti-rt-r114
+# uname_r=4.19.5-ti-rt-r3
 #uuid=
 #dtb=
 
@@ -10,14 +12,14 @@ uname_r=4.4.113-ti-rt-r149
 enable_uboot_overlays=1
 ###
 ###Overide capes with eeprom
-#uboot_overlay_addr0=/lib/firmware/<file0>.dtbo
+#uboot_overlay_addr0=/lib/firmware/panther-00A0.dtbo
 #uboot_overlay_addr1=/lib/firmware/<file1>.dtbo
 #uboot_overlay_addr2=/lib/firmware/<file2>.dtbo
 #uboot_overlay_addr3=/lib/firmware/<file3>.dtbo
 ###
 ###Additional custom capes
-#uboot_overlay_addr4=/lib/firmware/<file4>.dtbo
-#uboot_overlay_addr5=/lib/firmware/<file5>.dtbo
+uboot_overlay_addr4=/lib/firmware/necitec-panther-00A0.dtbo
+uboot_overlay_addr5=/lib/firmware/cape-bone-iio-00A0.dtbo
 #uboot_overlay_addr6=/lib/firmware/<file6>.dtbo
 #uboot_overlay_addr7=/lib/firmware/<file7>.dtbo
 ###
@@ -52,7 +54,7 @@ uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo
 #uboot_fdt_buffer=0x60000
 ###U-Boot Overlays###
 
-cmdline=coherent_pool=1M net.ifnames=0 verbose=1 quiet=0 cape_universal=enable
+cmdline=coherent_pool=1M net.ifnames=0 console=tty0 systemd.log_color=true ipv6.disable=1
 
 #In the event of edid real failures, uncomment this next line:
 #cmdline=coherent_pool=1M net.ifnames=0 quiet video=HDMI-A-1:1024x768@60e
@@ -62,6 +64,7 @@ cmdline=coherent_pool=1M net.ifnames=0 verbose=1 quiet=0 cape_universal=enable
 
 ##enable Generic eMMC Flasher:
 ##make sure, these tools are installed: dosfstools rsync
-##cmdline=init=/opt/scripts/tools/eMMC/init-eMMC-flasher-v3.sh
+####cmdline=init=/opt/scripts/tools/eMMC/init-eMMC-flasher-v3.sh
+###cmdline=init=/opt/scripts/tools/eMMC/init-eMMC-flasher-v3.sh
 
 #cmdline=init=/opt/scripts/tools/eMMC/init-eMMC-flasher-v3.sh

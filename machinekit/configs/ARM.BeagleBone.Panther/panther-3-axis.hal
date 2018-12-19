@@ -1,19 +1,18 @@
 # ######################################################################
 #
-# HAL file for BeagleBone + BeBoPr cape with 4 steppers
-#
-# Derived from example hm2-stepper config
+# HAL file for BeagleBone Black with Necitec Cape
 #
 # ######################################################################
-
-# Launch the setup script to make sure hardware setup looks good
-loadusr -w ./setup-gpio.sh
-
 
 # ######################################################################
 # Core EMC/HAL Loads
 # ######################################################################
+# launch the setup script to configure the GPIO pins and directions
+loadusr -w ./setup-gpio.sh
 
+# ######################################################################
+# Core EMC/HAL Loads
+# ######################################################################
 # kinematics
 loadrt trivkins
 
@@ -21,7 +20,6 @@ loadrt trivkins
 # trajectory planner
 loadrt tp
 loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES tp=tp kins=trivkins
-
 
 # load low-level drivers
 loadrt hal_bb_gpio output_pins=916,914,819,813 input_pins=911,913,915,817,923,925,927,926,924,826,912,815,942,818,922,921
@@ -47,30 +45,6 @@ addf  limit1.0                             servo-thread
 addf  limit1.1                             servo-thread
 addf  hpg.update                           servo-thread
 addf  bb_gpio.write                        servo-thread
-
-
-# ######################################################################
-# Other components
-# ######################################################################
-
-#loadrt encoder                  names=encoder.spindle
-#addf   encoder.update-counters        servo-thread
-#addf   encoder.capture-position       servo-thread
-#setp   encoder.spindle.position-scale 1
-#setp   encoder.spindle.counter-mode   1
-
-loadrt scale names=scale.spindle.rps,scale.axis.0,scale.axis.1,scale.axis.2
-addf   scale.spindle.rps             servo-thread
-addf   scale.axis.0                  servo-thread
-addf   scale.axis.1                  servo-thread
-addf   scale.axis.2                  servo-thread
-setp   scale.spindle.rps.gain   60 
-setp   scale.spindle.rps.offset 0
-
-# ######################################################################
-# Axis-of-motion Specific Configs (not the GUI)
-# ######################################################################
-
 
 # ######################################################################
 # X [0] Axis
@@ -292,9 +266,9 @@ net  Zprobe bb_gpio.p8.in-26        => motion.probe-input
 setp        bb_gpio.p8.in-15.invert TRUE
 setp        bb_gpio.p9.in-42.invert TRUE
 setp        bb_gpio.p8.in-18.invert TRUE
-net  Xalarm bb_gpio.p8.in-15        => axis.0.amp-fault-in
-net  Yalarm bb_gpio.p9.in-42        => axis.1.amp-fault-in
-net  Zalarm bb_gpio.p8.in-18        => axis.2.amp-fault-in
+net  Xalarm bb_gpio.p8.in-15              => axis.0.amp-fault-in
+net  Yalarm bb_gpio.p9.in-42              => axis.1.amp-fault-in
+net  Zalarm bb_gpio.p8.in-18              => axis.2.amp-fault-in
 
 # ######################################################################
 # Spindle 
@@ -305,10 +279,9 @@ net  Zalarm bb_gpio.p8.in-18        => axis.2.amp-fault-in
 net  spindle.is-on                      motion.spindle-on
 net  spindle.start                      halui.spindle.start         
 net  spindle.stop                       halui.spindle.stop
+
 net  spindle.forward                    halui.spindle.forward
-
 net  spindle.reverse                    halui.spindle.reverse
-
 net  spindle.runs-forward               motion.spindle-forward     
 net  spindle.runs-reverse               motion.spindle-reverse
 
@@ -319,4 +292,3 @@ net  spindle.spindle-override.increase  halui.spindle-override.increase
 net  spindle.spindle-override.decrease  halui.spindle-override.decrease
 
 net  spindle.velocity.abs-rpm           motion.spindle-speed-out-abs
-
