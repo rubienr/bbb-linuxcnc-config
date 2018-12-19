@@ -1,13 +1,42 @@
-EESchema Schematic File Version 4
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
 LIBS:cape-schema-cache
-EELAYER 29 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "3-Axis CNC Cape Schema for Panther Cape (BBB)"
-Date "2018-12-19"
-Rev "0.17"
+Date "2017-07-29"
+Rev "0.16"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -15,7 +44,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L cape-schema-rescue:CONN_02X10 P6
+L CONN_02X10 P6
 U 1 1 597D5753
 P 3800 1550
 F 0 "P6" H 3800 2100 50  0000 C CNN
@@ -26,7 +55,7 @@ F 3 "" H 3800 600 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:CONN_02X10 P2
+L CONN_02X10 P2
 U 1 1 597D5847
 P 2500 1550
 F 0 "P2" H 2500 2100 50  0000 C CNN
@@ -37,7 +66,7 @@ F 3 "" H 2500 600 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:CONN_02X10 P4
+L CONN_02X10 P4
 U 1 1 597D589B
 P 3100 2950
 F 0 "P4" H 3100 3500 50  0000 C CNN
@@ -48,7 +77,7 @@ F 3 "" H 3100 2000 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L cape-schema-rescue:CONN_02X10 P1
+L CONN_02X10 P1
 U 1 1 597D58A1
 P 1400 1950
 F 0 "P1" H 1400 2500 50  0000 C CNN
@@ -59,7 +88,7 @@ F 3 "" H 1400 1000 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L cape-schema-rescue:R R3
+L R R3
 U 1 1 597E6187
 P 9150 3500
 F 0 "R3" V 9230 3500 50  0000 C CNN
@@ -83,7 +112,7 @@ NoConn ~ 6200 7500
 Text Notes 850  850  0    60   ~ 12
 Panther-Cape Cape
 $Comp
-L cape-schema-rescue:GND #PWR01
+L GND #PWR01
 U 1 1 597F5B77
 P 1350 5050
 F 0 "#PWR01" H 1350 4800 50  0001 C CNN
@@ -94,7 +123,7 @@ F 3 "" H 1350 5050 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L cape-schema-rescue:R R1
+L R R1
 U 1 1 597DCA82
 P 3500 5400
 F 0 "R1" V 3580 5400 50  0000 C CNN
@@ -105,7 +134,7 @@ F 3 "" H 3500 5400 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cape-schema-rescue:GND #PWR02
+L GND #PWR02
 U 1 1 597DD37B
 P 3500 5700
 F 0 "#PWR02" H 3500 5450 50  0001 C CNN
@@ -116,7 +145,7 @@ F 3 "" H 3500 5700 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cape-schema-rescue:GND #PWR03
+L GND #PWR03
 U 1 1 597DE3B5
 P 6600 5500
 F 0 "#PWR03" H 6600 5250 50  0001 C CNN
@@ -127,7 +156,7 @@ F 3 "" H 6600 5500 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cape-schema-rescue:R R2
+L R R2
 U 1 1 597DE41A
 P 6600 4600
 F 0 "R2" V 6680 4600 50  0000 C CNN
@@ -168,7 +197,7 @@ EMERGENCY_STOP
 Text GLabel 2850 1900 3    47   Input ~ 0
 Z_PROBE
 $Comp
-L cape-schema-rescue:GND #PWR04
+L GND #PWR04
 U 1 1 5980718D
 P 2050 1850
 F 0 "#PWR04" H 2050 1600 50  0001 C CNN
@@ -179,7 +208,7 @@ F 3 "" H 2050 1850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cape-schema-rescue:GND #PWR05
+L GND #PWR05
 U 1 1 598088DD
 P 1100 2450
 F 0 "#PWR05" H 1100 2200 50  0001 C CNN
@@ -190,7 +219,7 @@ F 3 "" H 1100 2450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cape-schema-rescue:GND #PWR06
+L GND #PWR06
 U 1 1 59809B8D
 P 3350 1850
 F 0 "#PWR06" H 3350 1600 50  0001 C CNN
@@ -201,7 +230,7 @@ F 3 "" H 3350 1850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cape-schema-rescue:GND #PWR07
+L GND #PWR07
 U 1 1 59809E77
 P 2650 3250
 F 0 "#PWR07" H 2650 3000 50  0001 C CNN
@@ -320,7 +349,7 @@ PC+
 Text GLabel 9900 4500 0    47   Output ~ 0
 Z_ALARM
 $Comp
-L cape-schema-rescue:R R6
+L R R6
 U 1 1 59863833
 P 10150 4600
 F 0 "R6" V 10230 4600 50  0000 C CNN
@@ -333,7 +362,7 @@ $EndComp
 Text GLabel 9900 4200 0    47   Input ~ 0
 PC+
 $Comp
-L cape-schema-rescue:R R5
+L R R5
 U 1 1 5986417D
 P 10150 4400
 F 0 "R5" V 10230 4400 50  0000 C CNN
@@ -346,7 +375,7 @@ $EndComp
 Text GLabel 9900 4300 0    47   Output ~ 0
 Y_ALARM
 $Comp
-L cape-schema-rescue:R R4
+L R R4
 U 1 1 598659E4
 P 10150 4200
 F 0 "R4" V 10230 4200 50  0000 C CNN
@@ -359,7 +388,7 @@ $EndComp
 Text GLabel 9900 4100 0    47   Output ~ 0
 X_ALARM
 $Comp
-L cape-schema-rescue:GND #PWR08
+L GND #PWR08
 U 1 1 5986714A
 P 9150 4400
 F 0 "#PWR08" H 9150 4150 50  0001 C CNN
@@ -370,7 +399,7 @@ F 3 "" H 9150 4400 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9150 3650 9150 3700
+	9150 3650 9150 3850
 Wire Wire Line
 	9150 4250 9150 4400
 Wire Wire Line
@@ -386,7 +415,7 @@ Wire Notes Line
 Wire Wire Line
 	3500 4600 3500 4700
 Wire Wire Line
-	3500 5100 3500 5150
+	3500 5100 3500 5250
 Wire Wire Line
 	3500 5550 3500 5700
 Wire Wire Line
@@ -397,7 +426,7 @@ Wire Wire Line
 Wire Wire Line
 	6600 4400 6600 4450
 Wire Wire Line
-	6600 4750 6600 4950
+	6600 4750 6600 5000
 Wire Wire Line
 	6600 4950 6450 4950
 Connection ~ 6600 4950
@@ -422,7 +451,7 @@ Connection ~ 2950 2650
 Wire Wire Line
 	2650 3200 2650 3250
 Wire Wire Line
-	2650 3250 2750 3250
+	2650 3250 3650 3250
 Wire Wire Line
 	2850 3250 2850 3200
 Wire Wire Line
@@ -438,7 +467,7 @@ Connection ~ 3250 3250
 Wire Wire Line
 	1150 1900 1100 1900
 Wire Wire Line
-	1100 1900 1100 2000
+	1100 1900 1100 2450
 Wire Wire Line
 	1100 2400 1150 2400
 Wire Wire Line
@@ -465,14 +494,14 @@ Wire Wire Line
 Wire Wire Line
 	2250 1300 2250 1250
 Wire Wire Line
-	2250 1250 2350 1250
+	2250 1250 3100 1250
 Wire Wire Line
 	2450 1250 2450 1300
 Connection ~ 2350 1250
 Wire Wire Line
 	2050 1800 2050 1850
 Wire Wire Line
-	2050 1850 2150 1850
+	2050 1850 3100 1850
 Wire Wire Line
 	2250 1850 2250 1800
 Connection ~ 2150 1850
@@ -484,7 +513,7 @@ Connection ~ 2650 1850
 Wire Wire Line
 	3550 1300 3550 1250
 Wire Wire Line
-	3550 1250 3650 1250
+	3550 1250 4400 1250
 Wire Wire Line
 	3750 1250 3750 1300
 Connection ~ 3650 1250
@@ -496,7 +525,7 @@ Connection ~ 4150 1250
 Wire Wire Line
 	3350 1800 3350 1850
 Wire Wire Line
-	3350 1850 3450 1850
+	3350 1850 4400 1850
 Wire Wire Line
 	3550 1850 3550 1800
 Connection ~ 3450 1850
@@ -539,9 +568,10 @@ Connection ~ 2850 3250
 Connection ~ 3150 3250
 Wire Wire Line
 	3650 3250 3650 2650
+Connection ~ 3650 2650
 Connection ~ 3350 3250
 Wire Wire Line
-	3650 2650 3550 2650
+	3650 2650 2850 2650
 Wire Wire Line
 	2950 3300 2950 3200
 Wire Wire Line
@@ -631,11 +661,11 @@ Wire Wire Line
 Wire Wire Line
 	1350 5050 1350 5000
 Wire Wire Line
-	1350 5000 1850 5000
+	1350 5000 1950 5000
 Wire Wire Line
-	1350 4850 1650 4850
+	1350 4850 1950 4850
 Wire Wire Line
-	9900 4100 10300 4100
+	9900 4100 10500 4100
 Wire Wire Line
 	10300 4100 10300 4200
 Connection ~ 10300 4100
@@ -648,7 +678,7 @@ Wire Wire Line
 Wire Wire Line
 	10200 1800 10050 1800
 Wire Wire Line
-	9900 4300 10300 4300
+	9900 4300 10500 4300
 Wire Wire Line
 	10300 4400 10300 4300
 Connection ~ 10300 4300
@@ -657,14 +687,14 @@ Wire Wire Line
 Wire Wire Line
 	10200 2550 10050 2550
 Wire Wire Line
-	9900 4500 10300 4500
+	9900 4500 10500 4500
 Wire Wire Line
 	10300 4600 10300 4500
 Connection ~ 10300 4500
 Wire Wire Line
 	9900 4600 10000 4600
 $Comp
-L cape-schema-rescue:GND #PWR09
+L GND #PWR09
 U 1 1 5986A242
 P 7800 2850
 F 0 "#PWR09" H 7800 2600 50  0001 C CNN
@@ -700,7 +730,7 @@ Wire Wire Line
 Text GLabel 1700 2400 2    47   Output ~ 0
 SPINDLE_ENABLE
 $Comp
-L cape-schema-rescue:PWR_FLAG #FLG010
+L PWR_FLAG #FLG010
 U 1 1 5987144B
 P 1450 4600
 F 0 "#FLG010" H 1450 4695 50  0001 C CNN
@@ -711,7 +741,7 @@ F 3 "" H 1450 4600 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cape-schema-rescue:PWR_FLAG #FLG011
+L PWR_FLAG #FLG011
 U 1 1 59871491
 P 1650 4600
 F 0 "#FLG011" H 1650 4695 50  0001 C CNN
@@ -728,7 +758,7 @@ Wire Wire Line
 	1650 4600 1650 4850
 Connection ~ 1650 4850
 $Comp
-L cape-schema-rescue:PWR_FLAG #FLG012
+L PWR_FLAG #FLG012
 U 1 1 59871E82
 P 1850 4600
 F 0 "#FLG012" H 1850 4695 50  0001 C CNN
@@ -820,7 +850,7 @@ Wire Wire Line
 Wire Wire Line
 	7800 2750 7900 2750
 $Comp
-L cape-schema-rescue:GND #PWR013
+L GND #PWR013
 U 1 1 59877F6A
 P 8850 4850
 F 0 "#PWR013" H 8850 4600 50  0001 C CNN
@@ -867,7 +897,7 @@ Wire Wire Line
 Wire Wire Line
 	9150 3700 9250 3700
 $Comp
-L cape-schema-rescue:GND #PWR014
+L GND #PWR014
 U 1 1 5987BCE6
 P 1050 7350
 F 0 "#PWR014" H 1050 7100 50  0001 C CNN
@@ -934,7 +964,7 @@ Wire Wire Line
 Wire Wire Line
 	10100 2850 10200 2850
 $Comp
-L cape-schema-rescue:TEST_1P J17
+L TEST_1P J17
 U 1 1 5992D256
 P 2050 6500
 F 0 "J17" V 2004 6687 50  0000 L CNN
@@ -945,7 +975,7 @@ F 3 "" H -5450 1800 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J18
+L TEST_1P J18
 U 1 1 5992D693
 P 2050 6650
 F 0 "J18" V 2004 6837 50  0000 L CNN
@@ -956,7 +986,7 @@ F 3 "" H -5450 1950 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J19
+L TEST_1P J19
 U 1 1 5992D7D1
 P 2050 6800
 F 0 "J19" V 2004 6987 50  0000 L CNN
@@ -967,7 +997,7 @@ F 3 "" H -5450 2100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J20
+L TEST_1P J20
 U 1 1 5992D812
 P 2050 6950
 F 0 "J20" V 2004 7137 50  0000 L CNN
@@ -978,7 +1008,7 @@ F 3 "" H -5450 2250 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J21
+L TEST_1P J21
 U 1 1 5992D818
 P 2050 7100
 F 0 "J21" V 2004 7287 50  0000 L CNN
@@ -989,7 +1019,7 @@ F 3 "" H -5450 2400 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J3
+L TEST_1P J3
 U 1 1 5992E105
 P 5700 1600
 F 0 "J3" V 5654 1787 50  0000 L CNN
@@ -1000,7 +1030,7 @@ F 3 "" H -1800 -3100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J2
+L TEST_1P J2
 U 1 1 5992E4B4
 P 5700 1450
 F 0 "J2" V 5654 1637 50  0000 L CNN
@@ -1011,7 +1041,7 @@ F 3 "" H -1800 -3250 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J1
+L TEST_1P J1
 U 1 1 5992E4E9
 P 5700 1300
 F 0 "J1" V 5654 1487 50  0000 L CNN
@@ -1022,7 +1052,7 @@ F 3 "" H -1800 -3400 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J23
+L TEST_1P J23
 U 1 1 5992E998
 P 5700 2350
 F 0 "J23" V 5654 2537 50  0000 L CNN
@@ -1033,7 +1063,7 @@ F 3 "" H -1800 -2350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J22
+L TEST_1P J22
 U 1 1 5992E99E
 P 5700 2200
 F 0 "J22" V 5654 2387 50  0000 L CNN
@@ -1044,7 +1074,7 @@ F 3 "" H -1800 -2500 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J7
+L TEST_1P J7
 U 1 1 5992EB7E
 P 5700 1750
 F 0 "J7" V 5654 1937 50  0000 L CNN
@@ -1055,7 +1085,7 @@ F 3 "" H -1800 -2950 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J8
+L TEST_1P J8
 U 1 1 5992ECE9
 P 7050 1750
 F 0 "J8" V 7004 1937 50  0000 L CNN
@@ -1066,7 +1096,7 @@ F 3 "" H -450 -2950 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J9
+L TEST_1P J9
 U 1 1 5992ED29
 P 5700 2500
 F 0 "J9" V 5654 2687 50  0000 L CNN
@@ -1077,7 +1107,7 @@ F 3 "" H -1800 -2200 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J10
+L TEST_1P J10
 U 1 1 5992ED2F
 P 7300 4250
 F 0 "J10" V 7254 4437 50  0000 L CNN
@@ -1088,7 +1118,7 @@ F 3 "" H -200 -450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J12
+L TEST_1P J12
 U 1 1 5992EF33
 P 5700 1900
 F 0 "J12" V 5654 2087 50  0000 L CNN
@@ -1099,7 +1129,7 @@ F 3 "" H -1800 -2800 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J13
+L TEST_1P J13
 U 1 1 5992F060
 P 7050 1900
 F 0 "J13" V 7004 2087 50  0000 L CNN
@@ -1110,7 +1140,7 @@ F 3 "" H -450 -2800 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J14
+L TEST_1P J14
 U 1 1 5992F0B9
 P 7300 4400
 F 0 "J14" V 7254 4587 50  0000 L CNN
@@ -1121,7 +1151,7 @@ F 3 "" H -200 -300 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J16
+L TEST_1P J16
 U 1 1 5992F104
 P 5700 2650
 F 0 "J16" V 5654 2837 50  0000 L CNN
@@ -1132,7 +1162,7 @@ F 3 "" H -1800 -2050 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J5
+L TEST_1P J5
 U 1 1 5992F32E
 P 7050 1450
 F 0 "J5" V 7004 1637 50  0000 L CNN
@@ -1143,7 +1173,7 @@ F 3 "" H -450 -3250 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J4
+L TEST_1P J4
 U 1 1 5992F334
 P 7050 1300
 F 0 "J4" V 7004 1487 50  0000 L CNN
@@ -1154,7 +1184,7 @@ F 3 "" H -450 -3400 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J6
+L TEST_1P J6
 U 1 1 5992F3AC
 P 7050 1600
 F 0 "J6" V 7004 1787 50  0000 L CNN
@@ -1165,7 +1195,7 @@ F 3 "" H -450 -3100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J24
+L TEST_1P J24
 U 1 1 5992FA09
 P 10200 950
 F 0 "J24" V 10154 1137 50  0000 L CNN
@@ -1176,7 +1206,7 @@ F 3 "" H 2700 -3750 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J25
+L TEST_1P J25
 U 1 1 5992FBA7
 P 10200 1100
 F 0 "J25" V 10154 1287 50  0000 L CNN
@@ -1187,7 +1217,7 @@ F 3 "" H 2700 -3600 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J26
+L TEST_1P J26
 U 1 1 5992FBE4
 P 10200 1250
 F 0 "J26" V 10154 1437 50  0000 L CNN
@@ -1198,7 +1228,7 @@ F 3 "" H 2700 -3450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J27
+L TEST_1P J27
 U 1 1 5992FFFD
 P 10200 1650
 F 0 "J27" V 10154 1837 50  0000 L CNN
@@ -1209,7 +1239,7 @@ F 3 "" H 2700 -3050 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J28
+L TEST_1P J28
 U 1 1 59930003
 P 10200 1800
 F 0 "J28" V 10154 1987 50  0000 L CNN
@@ -1220,7 +1250,7 @@ F 3 "" H 2700 -2900 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J29
+L TEST_1P J29
 U 1 1 59930009
 P 10200 1950
 F 0 "J29" V 10154 2137 50  0000 L CNN
@@ -1231,7 +1261,7 @@ F 3 "" H 2700 -2750 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J30
+L TEST_1P J30
 U 1 1 59930260
 P 10200 2400
 F 0 "J30" V 10154 2587 50  0000 L CNN
@@ -1242,7 +1272,7 @@ F 3 "" H 2700 -2300 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J31
+L TEST_1P J31
 U 1 1 59930266
 P 10200 2550
 F 0 "J31" V 10154 2737 50  0000 L CNN
@@ -1253,7 +1283,7 @@ F 3 "" H 2700 -2150 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J32
+L TEST_1P J32
 U 1 1 5993026C
 P 10200 2700
 F 0 "J32" V 10154 2887 50  0000 L CNN
@@ -1264,7 +1294,7 @@ F 3 "" H 2700 -2000 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J33
+L TEST_1P J33
 U 1 1 599306C9
 P 10200 1400
 F 0 "J33" V 10154 1587 50  0000 L CNN
@@ -1275,7 +1305,7 @@ F 3 "" H 2700 -3300 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J34
+L TEST_1P J34
 U 1 1 59930856
 P 10200 2100
 F 0 "J34" V 10154 2287 50  0000 L CNN
@@ -1286,7 +1316,7 @@ F 3 "" H 2700 -2600 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J35
+L TEST_1P J35
 U 1 1 59930898
 P 10200 2850
 F 0 "J35" V 10154 3037 50  0000 L CNN
@@ -1297,7 +1327,7 @@ F 3 "" H 2700 -1850 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J36
+L TEST_1P J36
 U 1 1 59931062
 P 10500 4100
 F 0 "J36" V 10454 4287 50  0000 L CNN
@@ -1308,7 +1338,7 @@ F 3 "" H 3000 -600 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J37
+L TEST_1P J37
 U 1 1 599310B2
 P 10500 4300
 F 0 "J37" V 10454 4487 50  0000 L CNN
@@ -1319,7 +1349,7 @@ F 3 "" H 3000 -400 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J38
+L TEST_1P J38
 U 1 1 599310F7
 P 10500 4500
 F 0 "J38" V 10454 4687 50  0000 L CNN
@@ -1330,7 +1360,7 @@ F 3 "" H 3000 -200 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_2P J39
+L TEST_2P J39
 U 1 1 59934112
 P 9150 4050
 F 0 "J39" V 9196 3992 50  0000 R CNN
@@ -1341,7 +1371,7 @@ F 3 "" H 250 400 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_2P J44
+L TEST_2P J44
 U 1 1 59935683
 P 6600 5200
 F 0 "J44" V 6646 5142 50  0000 R CNN
@@ -1352,7 +1382,7 @@ F 3 "" H -2300 1550 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_2P J43
+L TEST_2P J43
 U 1 1 599356F6
 P 3500 4900
 F 0 "J43" V 3546 4842 50  0000 R CNN
@@ -1363,7 +1393,7 @@ F 3 "" H -5400 1250 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J40
+L TEST_1P J40
 U 1 1 59936E88
 P 1950 4700
 F 0 "J40" V 1904 4887 50  0000 L CNN
@@ -1374,7 +1404,7 @@ F 3 "" H -5550 0   50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J41
+L TEST_1P J41
 U 1 1 599370C5
 P 1950 4850
 F 0 "J41" V 1904 5037 50  0000 L CNN
@@ -1385,7 +1415,7 @@ F 3 "" H -5550 150 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cape-schema-rescue:TEST_1P J42
+L TEST_1P J42
 U 1 1 59937119
 P 1950 5000
 F 0 "J42" V 1904 5187 50  0000 L CNN
@@ -1396,93 +1426,5 @@ F 3 "" H -5550 300 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	1350 4700 1450 4700
-Wire Wire Line
-	3500 5150 3500 5250
-Wire Wire Line
-	6600 4950 6600 5000
-Wire Wire Line
-	3450 2650 3350 2650
-Wire Wire Line
-	2950 2650 2850 2650
-Wire Wire Line
-	2750 3250 2850 3250
-Wire Wire Line
-	3250 3250 3350 3250
-Wire Wire Line
-	1100 2300 1100 2400
-Wire Wire Line
-	1100 2200 1100 2300
-Wire Wire Line
-	1100 2100 1100 2200
-Wire Wire Line
-	1100 2000 1100 2100
-Wire Wire Line
-	1100 2400 1100 2450
-Wire Wire Line
-	2350 1250 2450 1250
-Wire Wire Line
-	2150 1850 2250 1850
-Wire Wire Line
-	2650 1850 2750 1850
-Wire Wire Line
-	3650 1250 3750 1250
-Wire Wire Line
-	4150 1250 4250 1250
-Wire Wire Line
-	3450 1850 3550 1850
-Wire Wire Line
-	3950 1850 4050 1850
-Wire Wire Line
-	2850 1250 2950 1250
-Wire Wire Line
-	2950 1250 3100 1250
-Wire Wire Line
-	4250 1250 4400 1250
-Wire Wire Line
-	3550 2650 3450 2650
-Wire Wire Line
-	3350 2650 3050 2650
-Wire Wire Line
-	3050 2650 2950 2650
-Wire Wire Line
-	2850 3250 3150 3250
-Wire Wire Line
-	3150 3250 3250 3250
-Wire Wire Line
-	3350 3250 3650 3250
-Wire Wire Line
-	4050 1250 4150 1250
-Wire Wire Line
-	3750 1250 4050 1250
-Wire Wire Line
-	4050 1850 4400 1850
-Wire Wire Line
-	3550 1850 3850 1850
-Wire Wire Line
-	3850 1850 3950 1850
-Wire Wire Line
-	2750 1250 2850 1250
-Wire Wire Line
-	2450 1250 2750 1250
-Wire Wire Line
-	2750 1850 3100 1850
-Wire Wire Line
-	2250 1850 2550 1850
-Wire Wire Line
-	2550 1850 2650 1850
-Wire Wire Line
-	10300 4100 10500 4100
-Wire Wire Line
-	10300 4300 10500 4300
-Wire Wire Line
-	10300 4500 10500 4500
-Wire Wire Line
-	9150 3700 9150 3850
-Wire Wire Line
-	1450 4700 1950 4700
-Wire Wire Line
-	1650 4850 1950 4850
-Wire Wire Line
-	1850 5000 1950 5000
+	1350 4700 1950 4700
 $EndSCHEMATC

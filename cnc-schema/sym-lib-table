@@ -1,0 +1,12 @@
+(sym_lib_table
+  (lib (name cnc-schema-rescue)(type Legacy)(uri ${KIPRJMOD}/cnc-schema-rescue.lib)(options "")(descr ""))
+  (lib (name sw_dpst_x2)(type Legacy)(uri ${KIPRJMOD}/sw_dpst_x2.lib)(options "")(descr ""))
+  (lib (name fuse)(type Legacy)(uri ${KIPRJMOD}/fuse.lib)(options "")(descr ""))
+  (lib (name am882h-sfq)(type Legacy)(uri ${KIPRJMOD}/am882h-sfq.lib)(options "")(descr ""))
+  (lib (name hws100-48)(type Legacy)(uri ${KIPRJMOD}/hws100-48.lib)(options "")(descr ""))
+  (lib (name ks400a-230s24-scn)(type Legacy)(uri ${KIPRJMOD}/ks400a-230s24-scn.lib)(options "")(descr ""))
+  (lib (name low-power-step-up)(type Legacy)(uri ${KIPRJMOD}/low-power-step-up.lib)(options "")(descr ""))
+  (lib (name jyqd_v7ei)(type Legacy)(uri ${KIPRJMOD}/jyqd_v7ei.lib)(options "")(descr ""))
+  (lib (name p5v1a)(type Legacy)(uri ${KIPRJMOD}/p5v1a.lib)(options "")(descr ""))
+  (lib (name lj12a3-4-z_ax)(type Legacy)(uri ${KIPRJMOD}/lj12a3-4-z_ax.lib)(options "")(descr ""))
+)

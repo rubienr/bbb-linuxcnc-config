@@ -1,21 +1,61 @@
-EESchema Schematic File Version 4
+EESchema Schematic File Version 2
+LIBS:sw_dpst_x2
+LIBS:fuse
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:am882h-sfq
+LIBS:hws100-48
+LIBS:ks400a-230s24-scn
+LIBS:low-power-step-up
+LIBS:switches
+LIBS:relays
+LIBS:jyqd_v7ei
+LIBS:p5v1a
+LIBS:lj12a3-4-z_ax
 LIBS:cnc-schema-cache
-EELAYER 29 0
+EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "3-Axis CNC Schema applying Panther Cape (BBB)"
-Date "2018-12-19"
-Rev "0.19"
-Comp "Rubien"
-Comment1 "She calls her frida!"
+Date "2017-07-29"
+Rev "0.18"
+Comp ""
+Comment1 ""
 Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L cnc-schema-rescue:L L1
+L L L1
 U 1 1 597CF2ED
 P 10800 1300
 F 0 "L1" V 10750 1300 50  0000 C CNN
@@ -26,7 +66,7 @@ F 3 "" H 10800 1300 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_01X04 P1
+L CONN_01X04 P1
 U 1 1 597CF3AA
 P 10000 1250
 F 0 "P1" H 10000 1500 50  0000 C CNN
@@ -37,7 +77,7 @@ F 3 "" H 10000 1250 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L cnc-schema-rescue:L L2
+L L L2
 U 1 1 597CF524
 P 10800 1100
 F 0 "L2" V 10750 1100 50  0000 C CNN
@@ -48,7 +88,7 @@ F 3 "" H 10800 1100 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L cnc-schema-rescue:L L3
+L L L3
 U 1 1 597CF71A
 P 10800 2200
 F 0 "L3" V 10750 2200 50  0000 C CNN
@@ -59,7 +99,7 @@ F 3 "" H 10800 2200 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_01X04 P2
+L CONN_01X04 P2
 U 1 1 597CF720
 P 10000 2150
 F 0 "P2" H 10000 2400 50  0000 C CNN
@@ -70,7 +110,7 @@ F 3 "" H 10000 2150 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L cnc-schema-rescue:L L4
+L L L4
 U 1 1 597CF726
 P 10800 2000
 F 0 "L4" V 10750 2000 50  0000 C CNN
@@ -81,7 +121,7 @@ F 3 "" H 10800 2000 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L cnc-schema-rescue:L L5
+L L L5
 U 1 1 597CF8FC
 P 10800 3100
 F 0 "L5" V 10750 3100 50  0000 C CNN
@@ -92,7 +132,7 @@ F 3 "" H 10800 3100 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_01X04 P3
+L CONN_01X04 P3
 U 1 1 597CF902
 P 10000 3050
 F 0 "P3" H 10000 3300 50  0000 C CNN
@@ -103,7 +143,7 @@ F 3 "" H 10000 3050 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L cnc-schema-rescue:L L6
+L L L6
 U 1 1 597CF908
 P 10800 2900
 F 0 "L6" V 10750 2900 50  0000 C CNN
@@ -114,7 +154,7 @@ F 3 "" H 10800 2900 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L am882h-sfq:AM882H-SFQ UX1
+L AM882H-SFQ UX1
 U 1 1 597D06DF
 P 8450 1650
 F 0 "UX1" H 8450 1650 60  0000 C CNN
@@ -125,7 +165,7 @@ F 3 "" H 8400 1500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L am882h-sfq:AM882H-SFQ UY1
+L AM882H-SFQ UY1
 U 1 1 597D07E6
 P 8450 3150
 F 0 "UY1" H 8450 3150 60  0000 C CNN
@@ -136,7 +176,7 @@ F 3 "" H 8400 3000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_01X04 P4
+L CONN_01X04 P4
 U 1 1 597D0889
 P 9500 1700
 F 0 "P4" H 9500 1950 50  0000 C CNN
@@ -147,7 +187,7 @@ F 3 "" H 9500 1700 50  0000 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_01X04 P5
+L CONN_01X04 P5
 U 1 1 597D0B01
 P 9500 3200
 F 0 "P5" H 9500 3450 50  0000 C CNN
@@ -158,7 +198,7 @@ F 3 "" H 9500 3200 50  0000 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_01X04 P6
+L CONN_01X04 P6
 U 1 1 597D0BE0
 P 9450 4750
 F 0 "P6" H 9450 5000 50  0000 C CNN
@@ -169,7 +209,7 @@ F 3 "" H 9450 4750 50  0000 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L hws100-48:HWS1000-48 U1
+L HWS1000-48 U1
 U 1 1 597D14C0
 P 1600 2950
 F 0 "U1" H 1600 2950 60  0000 C CNN
@@ -180,7 +220,7 @@ F 3 "" H 1600 2850 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR01
+L GND #PWR01
 U 1 1 597D1F28
 P 2600 4700
 F 0 "#PWR01" H 2600 4450 50  0001 C CNN
@@ -191,7 +231,7 @@ F 3 "" H 2600 4700 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR02
+L GND #PWR02
 U 1 1 597D35D6
 P 2450 3100
 F 0 "#PWR02" H 2450 2850 50  0001 C CNN
@@ -202,7 +242,7 @@ F 3 "" H 2450 3100 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR03
+L GND #PWR03
 U 1 1 597D35EF
 P 4900 1000
 F 0 "#PWR03" H 4900 750 50  0001 C CNN
@@ -213,7 +253,7 @@ F 3 "" H 4900 1000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR04
+L GND #PWR04
 U 1 1 597D3FA3
 P 7550 5000
 F 0 "#PWR04" H 7550 4750 50  0001 C CNN
@@ -224,7 +264,7 @@ F 3 "" H 7550 5000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR05
+L GND #PWR05
 U 1 1 597D407E
 P 7600 3450
 F 0 "#PWR05" H 7600 3200 50  0001 C CNN
@@ -235,7 +275,7 @@ F 3 "" H 7600 3450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR06
+L GND #PWR06
 U 1 1 597D411C
 P 7600 1950
 F 0 "#PWR06" H 7600 1700 50  0001 C CNN
@@ -246,7 +286,7 @@ F 3 "" H 7600 1950 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L low-power-step-up:N9510 U4
+L N9510 U4
 U 1 1 597D4F69
 P 5600 900
 F 0 "U4" H 5600 900 60  0000 C CNN
@@ -257,7 +297,7 @@ F 3 "" H 5650 900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_02X10 P8
+L CONN_02X10 P8
 U 1 1 597D5753
 P 5900 2300
 F 0 "P8" H 5900 2850 50  0000 C CNN
@@ -268,7 +308,7 @@ F 3 "" H 5900 1350 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_02X10 P9
+L CONN_02X10 P9
 U 1 1 597D5847
 P 4600 2300
 F 0 "P9" H 4600 2850 50  0000 C CNN
@@ -279,7 +319,7 @@ F 3 "" H 4600 1350 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_02X10 P10
+L CONN_02X10 P10
 U 1 1 597D589B
 P 5200 3700
 F 0 "P10" H 5200 4250 50  0000 C CNN
@@ -290,7 +330,7 @@ F 3 "" H 5200 2750 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_02X10 P11
+L CONN_02X10 P11
 U 1 1 597D58A1
 P 3500 2700
 F 0 "P11" H 3500 3250 50  0000 C CNN
@@ -301,7 +341,7 @@ F 3 "" H 3500 1750 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L p5v1a:OFM-0101 U3
+L OFM-0101 U3
 U 1 1 597D3244
 P 3950 900
 F 0 "U3" H 3950 900 60  0000 C CNN
@@ -312,7 +352,7 @@ F 3 "" H 3950 900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sw_dpst_x2:SW_DPST_x2 SW2
+L SW_DPST_x2 SW2
 U 1 1 597DCF4B
 P 3200 800
 F 0 "SW2" H 3200 700 50  0000 C CNN
@@ -323,7 +363,7 @@ F 3 "" H 3200 800 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sw_dpst_x2:SW_DPST_x2 SW3
+L SW_DPST_x2 SW3
 U 1 1 597DE6E7
 P 2150 2150
 F 0 "SW3" H 2150 2050 50  0000 C CNN
@@ -334,7 +374,7 @@ F 3 "" H 2150 2150 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR07
+L GND #PWR07
 U 1 1 597DF9D5
 P 950 1800
 F 0 "#PWR07" H 950 1550 50  0001 C CNN
@@ -345,7 +385,7 @@ F 3 "" H 950 1800 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sw_dpst_x2:SW_DPST_x2 SW5
+L SW_DPST_x2 SW5
 U 1 1 597E0CEB
 P 1200 3600
 F 0 "SW5" H 1200 3550 50  0000 C CNN
@@ -368,7 +408,7 @@ NoConn ~ 1650 3750
 NoConn ~ 1150 3750
 NoConn ~ 1250 3750
 $Comp
-L cnc-schema-rescue:FINDER-44.62 RL1
+L FINDER-44.62 RL1
 U 1 1 597E3037
 P 1900 1000
 F 0 "RL1" V 2750 1150 50  0000 L CNN
@@ -379,7 +419,7 @@ F 3 "" H 1900 1000 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L sw_dpst_x2:SW_DPST_x2 SW1
+L SW_DPST_x2 SW1
 U 1 1 597E318F
 P 1350 800
 F 0 "SW1" H 1350 700 50  0000 C CNN
@@ -392,7 +432,7 @@ $EndComp
 NoConn ~ 2200 1100
 NoConn ~ 2200 1500
 $Comp
-L sw_dpst_x2:SW_DPST_x2 SW4
+L SW_DPST_x2 SW4
 U 1 1 597E4F35
 P 10850 4800
 F 0 "SW4" H 10850 4700 50  0000 C CNN
@@ -403,7 +443,7 @@ F 3 "" H 10850 4800 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L cnc-schema-rescue:R R1
+L R R1
 U 1 1 597E6187
 P 10850 4100
 F 0 "R1" V 10930 4100 50  0000 C CNN
@@ -482,7 +522,7 @@ NoConn ~ 3550 4200
 Text Notes 2900 1550 0    60   ~ 12
 BeagleBone Black & Panther Cape
 $Comp
-L cnc-schema-rescue:CONN_01X02 P7
+L CONN_01X02 P7
 U 1 1 597F5892
 P 6350 4100
 F 0 "P7" H 6350 4250 50  0000 C CNN
@@ -493,7 +533,7 @@ F 3 "" H 6350 4100 50  0000 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR08
+L GND #PWR08
 U 1 1 597F5B77
 P 6050 4200
 F 0 "#PWR08" H 6050 3950 50  0001 C CNN
@@ -504,7 +544,7 @@ F 3 "" H 6050 4200 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:R R2
+L R R2
 U 1 1 597DCA82
 P 3150 5700
 F 0 "R2" V 3230 5700 50  0000 C CNN
@@ -515,7 +555,7 @@ F 3 "" H 3150 5700 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sw_dpst_x2:SW_DPST_x2 SW6
+L SW_DPST_x2 SW6
 U 1 1 597DCD43
 P 3150 5200
 F 0 "SW6" H 3150 5150 50  0000 C CNN
@@ -526,7 +566,7 @@ F 3 "" H 3150 5200 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR09
+L GND #PWR09
 U 1 1 597DD37B
 P 3150 5900
 F 0 "#PWR09" H 3150 5650 50  0001 C CNN
@@ -537,7 +577,7 @@ F 3 "" H 3150 5900 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sw_dpst_x2:SW_DPST_x2 SW7
+L SW_DPST_x2 SW7
 U 1 1 597DE2A8
 P 3650 5650
 F 0 "SW7" H 3650 5750 50  0000 C CNN
@@ -548,7 +588,7 @@ F 3 "" H 3650 5650 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR010
+L GND #PWR010
 U 1 1 597DE3B5
 P 3650 5900
 F 0 "#PWR010" H 3650 5650 50  0001 C CNN
@@ -559,7 +599,7 @@ F 3 "" H 3650 5900 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:R R3
+L R R3
 U 1 1 597DE41A
 P 3650 5100
 F 0 "R3" V 3730 5100 50  0000 C CNN
@@ -572,7 +612,7 @@ $EndComp
 Text Notes 2900 3700 0    60   ~ 12
 Unconnected Cape Pins
 $Comp
-L cnc-schema-rescue:GNDPWR #PWR011
+L GNDPWR #PWR011
 U 1 1 597E25FE
 P 700 1800
 F 0 "#PWR011" H 700 1600 50  0001 C CNN
@@ -583,7 +623,7 @@ F 3 "" H 700 1750 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L jyqd_v7ei:JYQD_V7.3Ei U5
+L JYQD_V7.3Ei U5
 U 1 1 597E423E
 P 1400 6850
 F 0 "U5" H 1400 6700 60  0000 C CNN
@@ -594,7 +634,7 @@ F 3 "" H 1350 6750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR012
+L GND #PWR012
 U 1 1 597E4671
 P 800 7500
 F 0 "#PWR012" H 800 7250 50  0001 C CNN
@@ -605,7 +645,7 @@ F 3 "" H 800 7500 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_01X03 P13
+L CONN_01X03 P13
 U 1 1 597E49AA
 P 2300 6650
 F 0 "P13" H 2300 6850 50  0000 C CNN
@@ -616,7 +656,7 @@ F 3 "" H 2300 6650 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_01X05 P12
+L CONN_01X05 P12
 U 1 1 597E4A2B
 P 2300 7100
 F 0 "P12" H 2300 6800 50  0000 C CNN
@@ -627,7 +667,7 @@ F 3 "" H 2300 7100 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:POT RV1
+L POT RV1
 U 1 1 597E6B22
 P 2050 5800
 F 0 "RV1" V 1875 5800 50  0000 C CNN
@@ -639,7 +679,7 @@ F 4 "SPEENDLE_RPM" V 2200 5800 60  0000 C CNN "DESC"
 	-1   0    0    1   
 $EndComp
 $Comp
-L cnc-schema-rescue:R R4
+L R R4
 U 1 1 597E9DB1
 P 800 6300
 F 0 "R4" V 880 6300 50  0000 C CNN
@@ -650,7 +690,7 @@ F 3 "" H 800 6300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GNDPWR #PWR013
+L GNDPWR #PWR013
 U 1 1 597ECDAC
 P 750 3100
 F 0 "#PWR013" H 750 2900 50  0001 C CNN
@@ -661,7 +701,7 @@ F 3 "" H 750 3050 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GNDPWR #PWR014
+L GNDPWR #PWR014
 U 1 1 597ECE0E
 P 700 4550
 F 0 "#PWR014" H 700 4350 50  0001 C CNN
@@ -672,7 +712,7 @@ F 3 "" H 700 4500 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:PWR_FLAG #FLG015
+L PWR_FLAG #FLG015
 U 1 1 597EC3EB
 P 2400 1700
 F 0 "#FLG015" H 2400 1795 50  0001 C CNN
@@ -683,7 +723,7 @@ F 3 "" H 2400 1700 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L cnc-schema-rescue:PWR_FLAG #FLG016
+L PWR_FLAG #FLG016
 U 1 1 597EC3B7
 P 2400 1300
 F 0 "#FLG016" H 2400 1395 50  0001 C CNN
@@ -694,7 +734,7 @@ F 3 "" H 2400 1300 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L cnc-schema-rescue:PWR_FLAG #FLG017
+L PWR_FLAG #FLG017
 U 1 1 597ED372
 P 700 1250
 F 0 "#FLG017" H 700 1345 50  0001 C CNN
@@ -705,7 +745,7 @@ F 3 "" H 700 1250 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L am882h-sfq:AM882H-SFQ UZ1
+L AM882H-SFQ UZ1
 U 1 1 597D0821
 P 8400 4700
 F 0 "UZ1" H 8400 4700 60  0000 C CNN
@@ -716,7 +756,7 @@ F 3 "" H 8350 4550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L fuse:Fuse F4
+L Fuse F4
 U 1 1 597F069A
 P 2600 4150
 F 0 "F4" V 2680 4150 50  0000 C CNN
@@ -727,7 +767,7 @@ F 3 "" H 2600 4150 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L fuse:Fuse F2
+L Fuse F2
 U 1 1 597F2E73
 P 2450 2750
 F 0 "F2" V 2530 2750 50  0000 C CNN
@@ -738,7 +778,7 @@ F 3 "" H 2450 2750 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L fuse:Fuse F1
+L Fuse F1
 U 1 1 597F3604
 P 900 1200
 F 0 "F1" V 980 1200 50  0000 C CNN
@@ -749,7 +789,7 @@ F 3 "" H 900 1200 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L fuse:Fuse F3
+L Fuse F3
 U 1 1 597F6C40
 P 4650 800
 F 0 "F3" V 4730 800 50  0000 C CNN
@@ -764,7 +804,7 @@ Text Notes 550  1150 0    60   ~ 0
 Text Notes 550  1550 0    60   ~ 0
 230VAC
 $Comp
-L cnc-schema-rescue:Lj12a3-4-z_Ax U6
+L Lj12a3-4-z/Ax U6
 U 1 1 597FAC82
 P 4650 4800
 F 0 "U6" H 4950 4700 60  0000 C CNN
@@ -775,7 +815,7 @@ F 3 "" H 4750 4600 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:Lj12a3-4-z_Ax U8
+L Lj12a3-4-z/Ax U8
 U 1 1 597FAD14
 P 4650 5500
 F 0 "U8" H 4950 5400 60  0000 C CNN
@@ -786,7 +826,7 @@ F 3 "" H 4750 5300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:Lj12a3-4-z_Ax U7
+L Lj12a3-4-z/Ax U7
 U 1 1 597FAD0E
 P 4650 5150
 F 0 "U7" H 4950 5050 60  0000 C CNN
@@ -797,7 +837,7 @@ F 3 "" H 4750 4950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:Lj12a3-4-z_Ax U9
+L Lj12a3-4-z/Ax U9
 U 1 1 597FF95A
 P 4650 5850
 F 0 "U9" H 4950 5750 60  0000 C CNN
@@ -808,7 +848,7 @@ F 3 "" H 4750 5650 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:Lj12a3-4-z_Ax U11
+L Lj12a3-4-z/Ax U11
 U 1 1 597FF960
 P 4650 6550
 F 0 "U11" H 4950 6450 60  0000 C CNN
@@ -819,7 +859,7 @@ F 3 "" H 4750 6350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:Lj12a3-4-z_Ax U12
+L Lj12a3-4-z/Ax U12
 U 1 1 597FFE4F
 P 4650 6900
 F 0 "U12" H 4950 6800 60  0000 C CNN
@@ -830,7 +870,7 @@ F 3 "" H 4750 6700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR018
+L GND #PWR018
 U 1 1 597FFE66
 P 4150 7400
 F 0 "#PWR018" H 4150 7150 50  0001 C CNN
@@ -841,7 +881,7 @@ F 3 "" H 4150 7400 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:Lj12a3-4-z_Ax U13
+L Lj12a3-4-z/Ax U13
 U 1 1 597FFE6E
 P 4650 7250
 F 0 "U13" H 4950 7150 60  0000 C CNN
@@ -862,7 +902,7 @@ Stepper Drivers
 Text Notes 9800 650  0    60   ~ 12
 X/Y/Z-Axis Stepper
 $Comp
-L ks400a-230s24-scn:KS400A-230S24-SCN U2
+L KS400A-230S24-SCN U2
 U 1 1 597D275D
 P 1550 4400
 F 0 "U2" H 1550 4350 60  0000 C CNN
@@ -873,7 +913,7 @@ F 3 "" H 50  -100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR019
+L GND #PWR019
 U 1 1 597E620A
 P 6250 1000
 F 0 "#PWR019" H 6250 750 50  0001 C CNN
@@ -884,7 +924,7 @@ F 3 "" H 6250 1000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:Lj12a3-4-z_Ax U10
+L Lj12a3-4-z/Ax U10
 U 1 1 597FF979
 P 4650 6200
 F 0 "U10" H 4950 6100 60  0000 C CNN
@@ -977,7 +1017,7 @@ EMERGENCY_STOP
 Text GLabel 4950 2650 3    47   Input ~ 0
 Z_PROBE
 $Comp
-L cnc-schema-rescue:GND #PWR020
+L GND #PWR020
 U 1 1 5980718D
 P 4150 2600
 F 0 "#PWR020" H 4150 2350 50  0001 C CNN
@@ -988,7 +1028,7 @@ F 3 "" H 4150 2600 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR021
+L GND #PWR021
 U 1 1 598088DD
 P 3200 3200
 F 0 "#PWR021" H 3200 2950 50  0001 C CNN
@@ -999,7 +1039,7 @@ F 3 "" H 3200 3200 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR022
+L GND #PWR022
 U 1 1 59809B8D
 P 5450 2600
 F 0 "#PWR022" H 5450 2350 50  0001 C CNN
@@ -1010,7 +1050,7 @@ F 3 "" H 5450 2600 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:GND #PWR023
+L GND #PWR023
 U 1 1 59809E77
 P 4750 4000
 F 0 "#PWR023" H 4750 3750 50  0001 C CNN
@@ -1133,7 +1173,7 @@ NoConn ~ 4150 3900
 Text GLabel 6400 850  3    47   Output ~ 0
 SENSORS+
 $Comp
-L cnc-schema-rescue:CONN_01X03 P14
+L CONN_01X03 P14
 U 1 1 5982D672
 P 2750 6600
 F 0 "P14" H 2750 6800 50  0000 C CNN
@@ -1144,7 +1184,7 @@ F 3 "" H 2750 6600 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:CONN_01X05 P15
+L CONN_01X05 P15
 U 1 1 5982D7E9
 P 2750 7050
 F 0 "P15" H 2750 6750 50  0000 C CNN
@@ -1155,7 +1195,7 @@ F 3 "" H 2750 7050 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:L L8
+L L L8
 U 1 1 5982EC4D
 P 3400 6450
 F 0 "L8" V 3350 6450 50  0000 C CNN
@@ -1166,7 +1206,7 @@ F 3 "" H 3400 6450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cnc-schema-rescue:L L9
+L L L9
 U 1 1 5982F034
 P 3550 6600
 F 0 "L9" V 3500 6600 50  0000 C CNN
@@ -1177,7 +1217,7 @@ F 3 "" H 3550 6600 50  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L cnc-schema-rescue:L L7
+L L L7
 U 1 1 5982F0C2
 P 3250 6600
 F 0 "L7" V 3200 6600 50  0000 C CNN
@@ -1239,9 +1279,13 @@ Wire Wire Line
 Wire Wire Line
 	9250 1550 9300 1550
 Wire Wire Line
+	9250 1700 9250 1700
+Wire Wire Line
 	9250 1700 9250 1650
 Wire Wire Line
 	9250 1650 9300 1650
+Wire Wire Line
+	9250 1850 9250 1850
 Wire Wire Line
 	9250 1850 9250 1750
 Wire Wire Line
@@ -1253,9 +1297,13 @@ Wire Wire Line
 Wire Wire Line
 	9250 3050 9300 3050
 Wire Wire Line
+	9250 3200 9250 3200
+Wire Wire Line
 	9250 3200 9250 3150
 Wire Wire Line
 	9250 3150 9300 3150
+Wire Wire Line
+	9250 3350 9250 3350
 Wire Wire Line
 	9250 3350 9250 3250
 Wire Wire Line
@@ -1267,9 +1315,13 @@ Wire Wire Line
 Wire Wire Line
 	9200 4600 9250 4600
 Wire Wire Line
+	9200 4750 9200 4750
+Wire Wire Line
 	9200 4750 9200 4700
 Wire Wire Line
 	9200 4700 9250 4700
+Wire Wire Line
+	9200 4900 9200 4900
 Wire Wire Line
 	9200 4900 9200 4800
 Wire Wire Line
@@ -1320,6 +1372,12 @@ Wire Wire Line
 	7600 1000 7600 1850
 Wire Wire Line
 	7600 1850 7600 1950
+Wire Wire Line
+	7600 1850 7600 1850
+Wire Wire Line
+	7550 4900 7550 4900
+Wire Wire Line
+	7600 3350 7600 3350
 Wire Wire Line
 	2450 3050 2400 3050
 Wire Wire Line
@@ -1658,6 +1716,7 @@ Wire Wire Line
 Connection ~ 4150 5250
 Wire Wire Line
 	4200 4900 4150 4900
+Connection ~ 4150 4900
 Connection ~ 4150 5600
 Wire Wire Line
 	4200 4800 4100 4800
@@ -2016,6 +2075,7 @@ Connection ~ 4950 4000
 Connection ~ 5250 4000
 Wire Wire Line
 	5750 4000 5750 3400
+Connection ~ 5750 3400
 Connection ~ 5450 4000
 Wire Wire Line
 	5750 3400 5650 3400
@@ -2201,7 +2261,7 @@ Wire Wire Line
 	8950 1000 8950 1050
 Connection ~ 8650 1000
 $Comp
-L cnc-schema-rescue:R R7
+L R R7
 U 1 1 59863833
 P 9100 4000
 F 0 "R7" V 9180 4000 50  0000 C CNN
@@ -2223,7 +2283,7 @@ Wire Wire Line
 Wire Wire Line
 	8800 2450 8800 2550
 $Comp
-L cnc-schema-rescue:R R6
+L R R6
 U 1 1 5986417D
 P 9150 2450
 F 0 "R6" V 9230 2450 50  0000 C CNN
@@ -2251,7 +2311,7 @@ Wire Wire Line
 Wire Wire Line
 	8800 950  8800 1050
 $Comp
-L cnc-schema-rescue:R R5
+L R R5
 U 1 1 598659E4
 P 9150 950
 F 0 "R5" V 9230 950 50  0000 C CNN
@@ -2271,7 +2331,7 @@ X_ALARM
 Wire Wire Line
 	8850 800  8800 800 
 $Comp
-L cnc-schema-rescue:GND #PWR024
+L GND #PWR024
 U 1 1 5986714A
 P 10850 5050
 F 0 "#PWR024" H 10850 4800 50  0001 C CNN
@@ -2297,7 +2357,7 @@ SPINDLE_ENABLE
 Wire Wire Line
 	650  6000 650  6100
 $Comp
-L cnc-schema-rescue:R R8
+L R R8
 U 1 1 598701B2
 P 1450 5800
 F 0 "R8" V 1530 5800 50  0000 C CNN
