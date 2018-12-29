@@ -5,8 +5,11 @@
 # ######################################################################
 # Load components
 # ######################################################################
+
+# load pendant component
 loadusr -W xhc-whb04b-6 -H [XHC_WHB04B_6_CONFIG]COMPONENT_ARGUMENTS
 
+# pass jog counts through lowpass to prevent jerking and following errors
 loadrt ilowpass names=ilowpass.jog.0,ilowpass.jog.1,ilowpass.jog.2
 addf   ilowpass.jog.0       servo-thread
 addf   ilowpass.jog.1       servo-thread
@@ -18,6 +21,7 @@ setp   ilowpass.jog.0.gain  0.007
 setp   ilowpass.jog.1.gain  0.007
 setp   ilowpass.jog.2.gain  0.007
 
+# re-scale low-passed jog counts
 loadrt scale names=scale.axis.0,scale.axis.1,scale.axis.2
 addf   scale.axis.0         servo-thread
 addf   scale.axis.1         servo-thread
@@ -118,12 +122,13 @@ net  pdnt.axis.2.jog-vel-mode            whb.axis.2.jog-vel-mode            axis
 #net pdnt.macro.3                        whb.button.macro-3
 #net pdnt.macro.4                        whb.button.macro-4
 #net pdnt.macro.5                        whb.button.macro-5                 halui.mdi-command-05
-net  pdnt.home-all                       whb.button.macro-5                 halui.home-all
+#net pdnt.home-all                       whb.button.macro-5                 halui.home-all
 #net pdnt.macro.6                        whb.button.macro-6                 halui.mdi-command-06
 #net pdnt.macro.7                        whb.button.macro-7                 halui.mdi-command-07
 #net pdnt.macro.8                        whb.button.macro-8                 halui.mdi-command-08
 #net pdnt.macro.9                        whb.button.macro-9                 halui.mdi-command-09
-#net  pdnt.home-all                       whb.button.macro-10                halui.home-all
+#net pdnt.home-all                       whb.button.macro-10                halui.home-all
+net  pdnt.home-all                       whb.halui.home-all                 halui.home-all
 #net pdnt.macro.14                       whb.button.macro-14                halui.mdi-command-14
 #net pdnt.macro.15                       whb.button.macro-15                halui.mdi-command-15
 #net pdnt.macro.16                       whb.button.macro-16                halui.mdi-command-16
@@ -175,11 +180,11 @@ net  spindle.velocity.abs-rpm            whb.motion.spindle-speed-abs
 
 # Connect machine mode related signals
 net  pdnt.halui.mode.auto                whb.halui.mode.auto                halui.mode.auto
-net  pdnt.halui.mode.joint               whb.halui.mode.joint               halui.mode.joint
+#net  pdnt.halui.mode.joint               whb.halui.mode.joint               halui.mode.joint
 net  pdnt.halui.mode.manual              whb.halui.mode.manual              halui.mode.manual
 net  pdnt.halui.mode.mdi                 whb.halui.mode.mdi                 halui.mode.mdi
 net  pdnt.halui.mode.is-auto             halui.mode.is-auto                 whb.halui.mode.is-auto
-net  pdnt.halui.mode.is-joint            halui.mode.is-joint                whb.halui.mode.is-joint
+#net  pdnt.halui.mode.is-joint            halui.mode.is-joint                whb.halui.mode.is-joint
 net  pdnt.halui.mode.is-manual           halui.mode.is-manual               whb.halui.mode.is-manual
 net  pdnt.halui.mode.is-mdi              halui.mode.is-mdi                  whb.halui.mode.is-mdi
 
