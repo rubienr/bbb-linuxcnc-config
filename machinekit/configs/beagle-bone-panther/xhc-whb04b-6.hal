@@ -180,11 +180,9 @@ net  spindle.velocity.abs-rpm            whb.motion.spindle-speed-abs
 
 # Connect machine mode related signals
 net  pdnt.halui.mode.auto                whb.halui.mode.auto                halui.mode.auto
-#net  pdnt.halui.mode.joint               whb.halui.mode.joint               halui.mode.joint
 net  pdnt.halui.mode.manual              whb.halui.mode.manual              halui.mode.manual
 net  pdnt.halui.mode.mdi                 whb.halui.mode.mdi                 halui.mode.mdi
 net  pdnt.halui.mode.is-auto             halui.mode.is-auto                 whb.halui.mode.is-auto
-#net  pdnt.halui.mode.is-joint            halui.mode.is-joint                whb.halui.mode.is-joint
 net  pdnt.halui.mode.is-manual           halui.mode.is-manual               whb.halui.mode.is-manual
 net  pdnt.halui.mode.is-mdi              halui.mode.is-mdi                  whb.halui.mode.is-mdi
 
