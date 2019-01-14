@@ -19,13 +19,14 @@ loadrt trivkins
 # motion controller, get name and thread periods from ini file
 # trajectory planner
 loadrt tp
-loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES tp=tp kins=trivkins
+loadrt [EMCMOT]EMCMOT base_period_nsec=[EMCMOT]BASE_PERIOD servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES tp=tp kins=trivkins
+#loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES tp=tp kins=trivkins
 
 # load low-level drivers
 loadrt hal_bb_gpio output_pins=916,914,819,813 input_pins=911,913,915,817,923,925,927,926,924,826,912,815,942,818,922,921
 loadrt [PRUCONF](DRIVER) prucode=$(HAL_RTMOD_DIR)/[PRUCONF](PRUBIN) [PRUCONF](CONFIG) halname=hpg
 #loadrt pid names=spindle
-loadrt limit1 count=2
+#loadrt limit1 count=2
 
 # Python user-mode HAL module to read ADC value and generate a thermostat output for PWM
 # c = analog input channel and thermistor table
@@ -41,8 +42,8 @@ addf  motion-command-handler               servo-thread
 addf  motion-controller                    servo-thread
 #addf pid.0.do-pid-calcs                   servo-thread
 #addf pid.1.do-pid-calcs                   servo-thread
-addf  limit1.0                             servo-thread
-addf  limit1.1                             servo-thread
+#addf  limit1.0                             servo-thread
+#addf  limit1.1                             servo-thread
 addf  hpg.update                           servo-thread
 addf  bb_gpio.write                        servo-thread
 
@@ -292,3 +293,7 @@ net  spindle.spindle-override.increase  halui.spindle-override.increase
 net  spindle.spindle-override.decrease  halui.spindle-override.decrease
 
 net  spindle.velocity.abs-rpm           motion.spindle-speed-out-abs
+
+setp motion.spindle.speed-change-step-abs 400
+setp motion.spindle.speed-change-max-abs  24000
+setp motion.spindle.speed-change-min-abs  800

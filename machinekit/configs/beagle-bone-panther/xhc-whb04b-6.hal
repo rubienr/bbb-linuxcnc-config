@@ -17,9 +17,9 @@ addf   ilowpass.jog.2       servo-thread
 setp   ilowpass.jog.0.scale 100
 setp   ilowpass.jog.1.scale 100
 setp   ilowpass.jog.2.scale 100
-setp   ilowpass.jog.0.gain  0.007
-setp   ilowpass.jog.1.gain  0.007
-setp   ilowpass.jog.2.gain  0.007
+setp   ilowpass.jog.0.gain  0.2
+setp   ilowpass.jog.1.gain  0.2
+setp   ilowpass.jog.2.gain  0.2
 
 # re-scale low-passed jog counts
 loadrt scale names=scale.axis.0,scale.axis.1,scale.axis.2
@@ -166,12 +166,12 @@ net  spindle.is-on                       whb.halui.spindle.is-on
 net  spindle.stop                        whb.halui.spindle.stop
 net  spindle.forward                     whb.halui.spindle.forward
 net  spindle.reverse                     whb.halui.spindle.reverse
+# spindle override
 net  pdnt.button.spindle-plus            whb.button.spindle-plus
 net  pdnt.button.spindle-minus           whb.button.spindle-minus
-#net  spindle.increase                    whb.halui.spindle.increase
-#net  spindle.decrease                    whb.halui.spindle.decrease
-net  spindle.increase                    whb.button.macro-3
-net  spindle.decrease                    whb.button.macro-4
+# spindle speed
+net  spindle.increase                    whb.halui.spindle.increase
+net  spindle.decrease                    whb.halui.spindle.decrease
 # min/max override depends on [DISPLAY]MIN_SPINDLE_OVERRIDE and [DISPLAY]MAX_SPINDLE_OVERRIDE
 net  spindle.spindle-override.value      whb.halui.spindle-override.value
 net  spindle.spindle-override.increase   whb.halui.spindle-override.increase
