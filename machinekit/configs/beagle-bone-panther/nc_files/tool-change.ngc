@@ -43,17 +43,17 @@ O<tool-change> SUB
 (------------------------------- CONFIGURATION PARAMETERS ----------------------------------------------)
 #<_UseInches> =           0     ( set to 1 to use inches here, or 0 to use millimeters; should match units on tool.tbl dimensions )
 #<_TravelZ> =           0.0     ( machine Z coordinate for travelling, typically near max Z to avoid ever hitting the work )
-#<_TravelFeed> =     1800.0     ( feedrate used for general Z moves when avoiding G0 )
-#<_ProbeX> =           60.0     ( machine X coordinate of switch/touch-off plate )
-#<_ProbeY> =          490.0     ( machine Y coordinate of switch/touch-off plate )
-#<_FineProbeX> =       75.0     ( machine X coordinate of switch/touch-off plate when fine pobing with _ProbeFeed2)
-#<_FineProbeY> =      490.0     ( machine Y coordinate of switch/touch-off plate when fine pobing with _ProbeFeed2)
+#<_TravelFeed> =     2000.0     ( feedrate used for general Z moves when avoiding G0 )
+#<_ProbeX> =           62.0     ( machine X coordinate of switch/touch-off plate )
+#<_ProbeY> =          489.0     ( machine Y coordinate of switch/touch-off plate )
+#<_FineProbeX> =       77.0     ( machine X coordinate of switch/touch-off plate when fine pobing with _ProbeFeed2)
+#<_FineProbeY> =      489.0     ( machine Y coordinate of switch/touch-off plate when fine pobing with _ProbeFeed2)
 #<_ProbeFastZ> =      -75.0     ( machine Z coord to move to before starting probe, longest tool should not touch switch at this Z )
 #<_ProbeMinZ> =      -129.0     ( machine Z coord to stop probe, shortest tool must touch switch at this Z, must be > min Z )
 #<_ProbeRetract> =      1.0     ( small distance to retract before approaching switch/touch-off plate second time )
 #<_ProbeFastFeed> =  2000.0     ( feed rate for moving to _ProbeFastZ )
 #<_ProbeFeed1> =      180.0     ( feed rate for touching switch/touch-off plate first time )
-#<_ProbeFeed2> =        0.5     ( feed rate for touching switch/touch-off plate second time )
+#<_ProbeFeed2> =       10.0     ( feed rate for touching switch/touch-off plate second time )
 #<_ToolChangeX> =     480.0     ( machine X coordinate to pause at for manual tool changing )
 #<_ToolChangeY> =      50.0     ( machine Y coordinate to pause at for manual tool changing )
 #<_MistOnDuringProbe> =   0     ( set to 1 for mist, or 2 for coolant, or 0 for nothing during probing, to clear switch of swarf )
@@ -118,6 +118,7 @@ O200 ELSE
   O102 ELSE
     #<ToolDiamMM> = [ #<ToolDiamIn> * 25.4 ]
   O102 ENDIF
+  (MSG, pause)
   M0                                           ( pause execution )
  
   G53 G0 X[#<_ProbeX>] Y[#<_ProbeY>]           ( to high place directly over switch )

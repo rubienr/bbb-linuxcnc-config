@@ -248,8 +248,8 @@ net estop bb_gpio.p9.in-24 => iocontrol.0.emc-enable-in
 # ######################################################################
 # Limit Switches
 # ######################################################################
-net Xmin bb_gpio.p9.in-11 => axis.0.neg-lim-sw-in
-net Xmax bb_gpio.p9.in-13 => axis.0.pos-lim-sw-in axis.0.home-sw-in
+net Xmin bb_gpio.p9.in-11 => axis.0.neg-lim-sw-in axis.0.home-sw-in
+net Xmax bb_gpio.p9.in-13 => axis.0.pos-lim-sw-in
 net Ymin bb_gpio.p9.in-15 => axis.1.neg-lim-sw-in
 net Ymax bb_gpio.p8.in-17 => axis.1.pos-lim-sw-in axis.1.home-sw-in
 net Zmin bb_gpio.p9.in-26 => axis.2.neg-lim-sw-in
@@ -302,9 +302,9 @@ setp motion.spindle.speed-change-min-abs  800
 # Manual Tool Change 
 # ######################################################################
 # http://linuxcnc.org/docs/html/man/man1/hal_manualtoolchange.1.html
-#loadusr -W hal_manualtoolchange
-#net tool-change           iocontrol.0.tool-change      => hal_manualtoolchange.change
-#net tool-changed          iocontrol.0.tool-changed     <= hal_manualtoolchange.changed
-#net tool-number           iocontrol.0.tool-prep-number => hal_manualtoolchange.number
-#net tool-prepare-loopback iocontrol.0.tool-prepare     => iocontrol.0.tool-prepared
+loadusr -W hal_manualtoolchange
+net tool-change           iocontrol.0.tool-change      => hal_manualtoolchange.change
+net tool-changed          iocontrol.0.tool-changed     <= hal_manualtoolchange.changed
+net tool-number           iocontrol.0.tool-prep-number => hal_manualtoolchange.number
+net tool-prepare-loopback iocontrol.0.tool-prepare     => iocontrol.0.tool-prepared
 ##net tool-changed-btn hal_manualtoolchange.change_button <= parport.0.pin-15-in
