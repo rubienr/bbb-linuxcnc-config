@@ -239,19 +239,19 @@ net estop bb_gpio.p9.in-24 => iocontrol.0.emc-enable-in
 #setp hpg.pwmgen.00.pwm_period       10000000
 
 # ######################################################################
-# Home Switches
+# Home Switches (aternatively use limit switches)
 # ######################################################################
-net  Xhome bb_gpio.p9.in-23 => axis.0.home-sw-in
-net  Yhome bb_gpio.p9.in-27 => axis.1.home-sw-in
-#net Zhome bb_gpio.p9.in-25 => axis.2.home-sw-in
+#net  Xhome bb_gpio.p9.in-23 => axis.0.home-sw-in
+#net  Yhome bb_gpio.p9.in-27 => axis.1.home-sw-in
+##net Zhome bb_gpio.p9.in-25 => axis.2.home-sw-in
 
 # ######################################################################
 # Limit Switches
 # ######################################################################
 net Xmin bb_gpio.p9.in-11 => axis.0.neg-lim-sw-in
-net Xmax bb_gpio.p9.in-13 => axis.0.pos-lim-sw-in
+net Xmax bb_gpio.p9.in-13 => axis.0.pos-lim-sw-in axis.0.home-sw-in
 net Ymin bb_gpio.p9.in-15 => axis.1.neg-lim-sw-in
-net Ymax bb_gpio.p8.in-17 => axis.1.pos-lim-sw-in
+net Ymax bb_gpio.p8.in-17 => axis.1.pos-lim-sw-in axis.1.home-sw-in
 net Zmin bb_gpio.p9.in-26 => axis.2.neg-lim-sw-in
 net Zmax bb_gpio.p9.in-25 => axis.2.pos-lim-sw-in axis.2.home-sw-in
 
@@ -297,3 +297,14 @@ net  spindle.velocity.abs-rpm           motion.spindle-speed-out-abs
 setp motion.spindle.speed-change-step-abs 400
 setp motion.spindle.speed-change-max-abs  24000
 setp motion.spindle.speed-change-min-abs  800
+
+# ######################################################################
+# Manual Tool Change 
+# ######################################################################
+# http://linuxcnc.org/docs/html/man/man1/hal_manualtoolchange.1.html
+#loadusr -W hal_manualtoolchange
+#net tool-change           iocontrol.0.tool-change      => hal_manualtoolchange.change
+#net tool-changed          iocontrol.0.tool-changed     <= hal_manualtoolchange.changed
+#net tool-number           iocontrol.0.tool-prep-number => hal_manualtoolchange.number
+#net tool-prepare-loopback iocontrol.0.tool-prepare     => iocontrol.0.tool-prepared
+##net tool-changed-btn hal_manualtoolchange.change_button <= parport.0.pin-15-in
