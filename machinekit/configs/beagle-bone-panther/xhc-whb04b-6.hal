@@ -114,22 +114,21 @@ net  pdnt.axis.2.jog-vel-mode            whb.axis.2.jog-vel-mode            axis
 #net pdnt.axis.5.jog-vel-mode            whb.axis.5.jog-vel-mode            axis.5.jog-vel-mode
 
 # Connect macro buttons to mdi commands
-#net pdnt.macro.11                       whb.button.macro-11                halui.mdi-command-11
-#net pdnt.macro.12                       whb.button.macro-12                halui.mdi-command-12
-#net pdnt.macro.13                       whb.button.macro-13                halui.mdi-command-13
+net  pdnt.macro.11                       whb.button.macro-11                halui.mdi-command-11
+net  pdnt.macro.12                       whb.button.macro-12                halui.mdi-command-12
+net  pdnt.macro.13                       whb.button.macro-13                halui.mdi-command-13
 #net pdnt.macro.1                        whb.button.macro-1                 halui.mdi-command-01
 #net pdnt.macro.2                        whb.button.macro-2                 halui.mdi-command-02
-#net pdnt.macro.3                        whb.button.macro-3
-#net pdnt.macro.4                        whb.button.macro-4
-#net pdnt.macro.5                        whb.button.macro-5                 halui.mdi-command-05
-#net pdnt.home-all                       whb.button.macro-5                 halui.home-all
-#net pdnt.macro.6                        whb.button.macro-6                 halui.mdi-command-06
-#net pdnt.macro.7                        whb.button.macro-7                 halui.mdi-command-07
-#net pdnt.macro.8                        whb.button.macro-8                 halui.mdi-command-08
-#net pdnt.macro.9                        whb.button.macro-9                 halui.mdi-command-09
-#net pdnt.home-all                       whb.button.macro-10                halui.home-all
+#net pdnt.macro.3                        whb.button.macro-3                 halui.mdi-command-03
+#net pdnt.macro.4                        whb.button.macro-4                 halui.mdi-command-04
+net  pdnt.macro.5                        whb.button.macro-5                 halui.mdi-command-05
+net  pdnt.macro.6                        whb.button.macro-6                 halui.mdi-command-06
+net  pdnt.macro.7                        whb.button.macro-7                 halui.mdi-command-07
+net  pdnt.macro.8                        whb.button.macro-8                 halui.mdi-command-08
+net  pdnt.macro.9                        whb.button.macro-9                 halui.mdi-command-09
+#net pdnt.macro.10                       whb.button.macro-10                halui.mdi-command-10
 net  pdnt.home-all                       whb.halui.home-all                 halui.home-all
-#net pdnt.macro.14                       whb.button.macro-14                halui.mdi-command-14
+net  pdnt.macro.14                       whb.button.macro-14                halui.mdi-command-14
 #net pdnt.macro.15                       whb.button.macro-15                halui.mdi-command-15
 #net pdnt.macro.16                       whb.button.macro-16                halui.mdi-command-16
 
@@ -144,16 +143,16 @@ net  pdnt.button.stop                    whb.button.stop
 net  pdnt.button.start-pause             whb.button.start-pause     
 
 # Connect special positions signals
-net  pdnt.button.m-home                  whb.button.m-home                  halui.mdi-command-01
-net  pdnt.button.safe-z                  whb.button.safe-z                  halui.mdi-command-00
-net  pdnt.button.w-home                  whb.button.w-home                  halui.mdi-command-05
+net  pdnt.button.m-home                  whb.button.m-home                  halui.mdi-command-20
+net  pdnt.button.safe-z                  whb.button.safe-z                  halui.mdi-command-21
+net  pdnt.button.w-home                  whb.button.w-home                  halui.mdi-command-22
 net  pdnt.button.s-on-off                whb.button.s-on-off
 
 # unused, just exposes pendant interna
 net pdnt.button.fn                       whb.button.fn
 
 #halui.TODO, eventually mdi-command
-net  pdnt.button.probe-z                 whb.button.probe-z                 halui.mdi-command-02
+net  pdnt.button.probe-z                 whb.button.probe-z                 halui.mdi-command-25
 
 # unused, just exposes pendant interna
 net  pdnt.button.mode-continuous         whb.button.mode-continuous

@@ -302,9 +302,13 @@ setp motion.spindle.speed-change-min-abs  800
 # Manual Tool Change 
 # ######################################################################
 # http://linuxcnc.org/docs/html/man/man1/hal_manualtoolchange.1.html
-loadusr -W hal_manualtoolchange
-net tool-change           iocontrol.0.tool-change      => hal_manualtoolchange.change
-net tool-changed          iocontrol.0.tool-changed     <= hal_manualtoolchange.changed
-net tool-number           iocontrol.0.tool-prep-number => hal_manualtoolchange.number
-net tool-prepare-loopback iocontrol.0.tool-prepare     => iocontrol.0.tool-prepared
+#loadusr -W hal_manualtoolchange
+#net tool-change           iocontrol.0.tool-change      => hal_manualtoolchange.change
+#net tool-changed          iocontrol.0.tool-changed     <= hal_manualtoolchange.changed
+#net tool-number           iocontrol.0.tool-prep-number => hal_manualtoolchange.number
+#net tool-prepare-loopback iocontrol.0.tool-prepare     => iocontrol.0.tool-prepared
 ##net tool-changed-btn hal_manualtoolchange.change_button <= parport.0.pin-15-in
+
+# bypass manual tool change and use remapped M6 and M600
+net bypass-tool-prepare-loopback iocontrol.0.tool-prepare iocontrol.0.tool-prepared
+net bypass-tool-change           iocontrol.0.tool-change  iocontrol.0.tool-changed

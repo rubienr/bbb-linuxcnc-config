@@ -1,0 +1,63 @@
+O<probe-touch-off> SUB
+
+  #<axis_number>           = #1                                ( 0,1,2,3,4,5 for x,y,z,a,b,c )
+  #<max_incremental_delta> = #2                                ( maximal distance to move for probe )
+  #<probe_feed>            = #3                                ( feed rate when probing )
+  #<probe_thickness>       = #4                                ( set touch probe offset relative to table/workpiece )
+  #<probe_retract>         = #5                                ( distance to move back slightly after prove done )
+
+
+  G91                                                          ( move incrmental )
+  G10 L2 P0 Z0                                                 ( reset current coordinate system's axis offset )
+
+  O100 if [ #<axis_number> EQ 0 ]
+    G38.2 X#<max_incremental_delta> F#<probe_feed>             ( touch off slowly, store to 5061 )
+    #<reference>=#5061
+    (DEBUG, touched off X at #<reference>)
+    G10 L2 P0 X[#<reference> - #<probe_thickness>]             ( set the origin of the current coordinate system )
+    G0 X[#<probe_retract>]                                     ( go back slightly )
+  O100 endif
+
+  O101 if [ #<axis_number> EQ 1 ]
+    G38.2 Y#<max_incremental_delta> F#<probe_feed>             ( touch off slowly, store to 5062 )
+    #<reference>=#5062
+    (DEBUG, touched off Y at #<reference>)
+    G10 L2 P0 Y[#<reference> - #<probe_thickness>]             ( set the origin of the current coordinate system )
+    G0 Y[#<probe_retract>]                                     ( go back slightly )
+  O101 endif
+
+  O102 if [ #<axis_number> EQ 2 ]
+    G38.2 Z#<max_incremental_delta> F#<probe_feed>             ( touch off slowly, store to 5063 )
+    #<reference>=#5063
+    (DEBUG, touched off Z at #<reference>)
+    G10 L2 P0 Z[#<reference> - #<probe_thickness>]             ( set the origin of the current coordinate system )
+    G0 Z[#<probe_retract>]                                     ( go back slightly )
+  O102 endif
+
+  O103 if [ #<axis_number> EQ 3 ]
+    G38.2 A#<max_incremental_delta> F#<probe_feed>             ( touch off slowly, store to 5064 )
+    #<reference>=#5064
+    (DEBUG, touched off A at #<reference>)
+    G10 L2 P0 A[#<reference> - #<probe_thickness>]             ( set the origin of the current coordinate system )
+    G0 A[#<probe_retract>]                                     ( go back slightly )
+  O103 endif
+
+  O104 if [ #<axis_number> EQ 4 ]
+    G38.2 B#<max_incremental_delta> F#<probe_feed>             ( touch off slowly, store to 5065 )
+    #<reference>=#5065
+    (DEBUG, touched off B at #<reference>)
+    G10 L2 P0 B[#<reference> - #<probe_thickness>]             ( set the origin of the current coordinate system )
+    G0 B[#<probe_retract>]                                     ( go back slightly )
+  O104 endif
+
+  O105 if [ #<axis_number> EQ 5 ]
+    G38.2 C#<max_incremental_delta> F#<probe_feed>             ( touch off slowly, store to 5066 )
+    #<reference>=#5066
+    (DEBUG, touched off C at #<reference>)
+    G10 L2 P0 C[#<reference> - #<probe_thickness>]             ( set the origin of the current coordinate system )
+    G0 C[#<probe_retract>]                                     ( go back slightly )
+  O105 endif
+
+  G90
+
+O<probe-touch-off> ENDSUB

@@ -7,9 +7,9 @@ o<go-workpiece-home> sub
   
   G90
   G53 G0 Z#<z_mhome>
-  G4 P0.010
+  G4 P0.10
   G0 X#<x_whome> Y#<y_whome>
-  G4 P0.010
+  G4 P0.10
   G0 Z#<z_whome>
 
 o<go-workpiece-home> endsub

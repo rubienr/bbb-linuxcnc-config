@@ -6,7 +6,7 @@ o<go-machine-home> sub
   
   G90
   G53 G0 Z#<z_mhome>
-  G4  P0.010
+  G4  P0.10
   G53 G0 X#<x_mhome> Y#<y_mhome>
 
 o<go-machine-home> endsub
