@@ -56,7 +56,7 @@ O<tool-change> SUB
 #<probe_fast_feed> =  2000.0     ( feed rate for moving to probe_fast_z )
 #<probe_feed_1> =      180.0     ( feed rate for touching switch/touch-off plate first time )
 #<probe_feed_2> =       10.0     ( feed rate for touching switch/touch-off plate second time )
-#<tool_change_x> =     480.0     ( machine X coordinate to pause at for manual tool changing )
+#<tool_change_x> =     120.0     ( machine X coordinate to pause at for manual tool changing )
 #<tool_change_y> =      50.0     ( machine Y coordinate to pause at for manual tool changing )
 #<mist_on_during_probe> =  0     ( set to 1 for mist, or 2 for coolant, or 0 for nothing during probing, to clear switch of swarf )
 (-------------------------------------------------------------------------------------------------------)
@@ -92,21 +92,23 @@ O200 IF [ #<_ToolDidFirst> EQ 0 ]
   G38.2 Z[#<probe_min_z> - #<probe_fast_z>] F[#<probe_feed_1>]    ( trip switch slowly )
   G0 Z[#<probe_retract>]                       ( go up slightly )
 
-  G53 G0 X[#<fine_probe_x>] Y[#<fine_probe_y>] G90  ( go to fine probe area )
+  G53 G0 X[#<fine_probe_x>] Y[#<fine_probe_y>] G90   ( go to fine probe area )
   G54 G1 F[#<probe_feed_1>] G91
-  G38.2 Z[#<probe_retract>*-1.25] F[#<probe_feed_2>]   ( trip switch very slowly )
-  
+  G38.2 Z[#<probe_retract>*-1.25] F[#<probe_feed_2>] ( trip switch very slowly )
+
   M9                                           ( turn off mist )
   G90                                          ( use absolute positioning )
   #<_tool_z_ref> = #5063                       ( save trip point )
+  (DEBUG, Initial trip point Z=#<_tool_z_ref>)
   #<_tool_z_last> = #<_tool_z_ref>             ( save last tool Z position )
+
   G53 G1 F[#<travel_feed>] Z[#<travel_z>]      ( return to safe level )
   G53 G0 X[#5181] Y[#5182]                     ( return to where we were in X Y)
   G53 G1 F[#<travel_feed>] Z[#5183]            ( return to where we were in Z )
   M72                                          ( restore modal state )
   #<_ToolDidFirst> = 1                         ( we have been in this section to set reference value already )
 O200 ELSE
-  G53 G1 F[#<travel_feed>] Z[#<travel_z>]      ( go to high travel level on Z )
+  G53 G1 F[#<travel_feed>] Z[#<travel_z>]        ( go to high travel level on Z )
   G53 G0 X[#<tool_change_x>] Y[#<tool_change_y>] ( nice place for changing tool )
   O107 IF [#<use_inches> EQ 1 ]
     #<tool_diameter_inch> = #5410
@@ -124,7 +126,7 @@ O200 ELSE
 
   (MSG, Exchange tool and resume program.)
   M0                                            ( pause execution )
- 
+
   G53 G0 X[#<probe_x>] Y[#<probe_y>]            ( to high place directly over switch )
   G53 G1 F[#<probe_fast_feed>] Z[#<probe_fast_z>]( move tool closer to switch -- we shouldn't hit it )
   G54 G1 F[#<probe_feed_1>] G91                 ( use relative positioning )
@@ -136,20 +138,31 @@ O200 ELSE
 
   G53 G0 X[#<fine_probe_x>] Y[#<fine_probe_y>] G90  ( go to fine probe area )
   G54 G1 F[#<probe_feed_1>] G91
-  
+
   G38.2 Z[#<probe_retract>*-1.25] F[#<probe_feed_2>]   ( trip switch very slowly )
   M9                                            ( turn off mist )
   G90                                           ( use absolute positioning )
   #<_tool_z> = #5063                            ( save new tool length )
+  (DEBUG, New tool trip point Z=#<_tool_z>)
 
-  G43.1 Z[#<_tool_z> - #<_tool_z_ref>]            ( set new tool length Z offset, we do this now to show operator even though it has to be set again after M72 )
+  #<_new_tool_z_offset> = [#<_tool_z> - #<_tool_z_ref>]
+  #<_new_position_z_offset> = [#<_tool_z> - #<_tool_z_last>]
+
+  (DEBUG, Offset Z=#<_new_z_offset>)
+
+  G43.1 Z[#<_new_tool_z_offset>]                ( set new tool length Z offset, we do this now to show operator even though it has to be set again after M72 )
   G53 G1 F[#<travel_feed>] Z[#<travel_z>]       ( return to high travel level )
   G53 G0 X[#5181] Y[#5182]                      ( return to where we were in X Y)
-  G53 G1 F[#<travel_feed>] Z[#5183 - #<_tool_z_last> + #<_tool_z>]   ( return to where we were in Z, ajusting for tool length change )
+  G53 G1 F[#<travel_feed>] Z[#5183 + #<_new_position_z_offset>] ( return to where we were in Z, ajusting for tool length change )
+
+  (DEBUG, tool offset from initial tool Z=[#<_new_tool_z_offset>])
+  (DEBUG, tool offset from last position Z=[#<_new_position_z_offset>])
+  (xDEBUG, travel to offsetted Z=[#5183 + #<_new_position_z_offset>])
+
   #<_tool_z_last> = #<_tool_z>                  ( save last tool length )
 
   M72                                           ( restore modal state )
-  G43.1 Z[#<_tool_z> - #<_tool_z_ref>]          ( set new tool length Z offset )
+  G43.1 Z[#<_new_tool_z_offset>]                ( set new tool length Z offset )
 O200 ENDIF
 
 O<tool-change> ENDSUB
